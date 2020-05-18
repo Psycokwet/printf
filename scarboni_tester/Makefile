@@ -28,9 +28,6 @@ RM			= 	rm -f
 
 all	: $(NAME) $(BONUS)
 
-test :
-		echo $(LDFLAGS)
-
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 		mkdir -p $(OBJ_PATH)
 		$(CC) -o $@ -c $<
@@ -42,7 +39,7 @@ $(NAME)		: 	$(OBJ) $(LIBFT)
 		$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS)
 
 $(BONUS)	:	$(OBJBONUS) $(LIBFT)
-		$(CC) -o $(NAME) $(OBJBONUS) $(CFLAGS) $(LDFLAGS)
+		$(CC) -o $(BONUS) $(OBJBONUS) $(CFLAGS) $(LDFLAGS)
 		
 clean	:									## delete all .o
 		$(RM) $(OBJ) $(OBJBONUS)
