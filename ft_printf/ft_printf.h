@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/05/13 16:17:55 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/05/20 16:31:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
+typedef struct s_argument_data t_arg_data, *tp_arg_data;
+typedef struct s_data t_data, *tp_data;
 
 typedef struct s_argument_data{
     char code;

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/05/13 16:57:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/05/20 17:10:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,18 @@
 
 
 void print_c(tp_arg_data arg_data){
+    char tmp =  va_arg(arg_data->format_data->list, int);
+
+    arg_data->format_data->written_char_count += write(1, &tmp, 1);
 }
+
 void print_s(tp_arg_data arg_data){
-    write(1, arg_data->format_s, arg_data->size);
+    char* tmp =  va_arg(arg_data->format_data->list, char*);
+    
+    arg_data->format_data->written_char_count += write(1, tmp, ft_strlen(tmp));
+}
+void print_S(tp_arg_data arg_data){//print natural format_s, no arg
+    arg_data->format_data->written_char_count += write(1, arg_data->format_data->format_s + arg_data->cursor , arg_data->arg_size);
 }
 void print_p(tp_arg_data arg_data){
     
@@ -47,7 +56,29 @@ void print_modulo(tp_arg_data arg_data){
     
 }
 
-void parse_format(tp_arg_data arg_data)
+void parse_format(tp_data data)
+{
+    if(arg_data->code == 'c')
+        print_c(arg_data);
+    else if(arg_data->code == 's')
+        print_s(arg_data);
+    else if(arg_data->code == 'p')
+        print_p(arg_data);
+    else if(arg_data->code == 'd')
+        print_d(arg_data);
+    else if(arg_data->code == 'i')
+        print_i(arg_data);
+    else if(arg_data->code == 'u')
+        print_u(arg_data);
+    else if(arg_data->code == 'x')
+        print_x(arg_data);
+    else if(arg_data->code == 'X')
+        print_X(arg_data);
+    else if(arg_data->code == '%')
+        print_modulo(arg_data);
+}
+
+void print_all_format_format(tp_arg_data arg_data)
 {
     if(arg_data->code == 'c')
         print_c(arg_data);
@@ -70,7 +101,6 @@ void parse_format(tp_arg_data arg_data)
 }
 
 void extract_flags(tp_arg_data arg_data){
-    (void) data;
 }
 
 int ft_printf(const char *format_s, ...)
@@ -91,14 +121,14 @@ int ft_printf(const char *format_s, ...)
     {
         if(format_s[i] == '%')
         {
-            write(1, data->format_s + data->cursor , i);
-            data->cursor = i;
             parse_format(data);
+            data->argument_count++;
         }
         i++;
     }
+    printf("Aegument count\n", data->argument_count);
 
-    va_start(data->list, 2);
+    va_start(data->list, data->argument_count);
     va_end(data->list);
     return 0;
 }
