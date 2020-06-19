@@ -6,7 +6,8 @@ SRC_PATH		= ./
 OBJ_PATH		= bin/
 LIBFT_PATH		= libft/
 ## No need for a \ on the last line
-SRC_FILES	=		ft_printf.c
+SRC_FILES	=		ft_printf.c\
+					ft_putstr_fd_len.c
 
 SRCBONUS_FILES	=	ft_bonus.c
 
