@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/25 08:07:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/25 21:45:01 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,20 @@ typedef struct		s_data
 typedef struct		s_flag
 {
 	int				flag;
-	char			*valid_convert;
 	char			*override_flags;
 }					t_flag;
 
+# define FT_PF_FLAG_DIESE	(1u << 0)
+# define FT_PF_FLAG_ZERO	(1u << 1)
+# define FT_PF_FLAG_LESS	(1u << 2)
+# define FT_PF_FLAG_MORE	(1u << 3)
+# define FT_PF_FLAG_SPACE	(1u << 4)
+
 static const t_flag FLAGS[MAX_FLAG_OPT] = {
-	(t_flag){'-', "", "0"},
-	(t_flag){'0', "diouxXaAeEfFgG", ""},
-	(t_flag){'.', "", ""},
-	(t_flag){'*', "", ""},
+	(t_flag){'-', "0"},
+	(t_flag){'0', ""},
+	(t_flag){'.', ""},
+	(t_flag){'*', ""},
 };
 
 

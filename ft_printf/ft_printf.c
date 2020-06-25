@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/25 08:07:47 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/25 21:50:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux
 	unsigned int	tmp;
 	unsigned int	len;
 
-    if (base > 10 || !buffer)
+    if (!buffer)
 		return (-1);
 	len = uitoa_len(nbr, base);
     i = len;
@@ -101,7 +101,7 @@ int ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux
 	while (nbr)
 	{
         tmp = nbr % base;
-		buffer[i--] = (tmp < 10 )? ('0' + tmp) : faux_chiffre + (tmp - 9);
+		buffer[i--] = (tmp < 10 )? ('0' + tmp) : faux_chiffre + (tmp - 10);
 		nbr /= base;
 	}
 	return (len);
@@ -157,7 +157,6 @@ void convert_x(t_data *datas)
     const int len  = ft_uitoa_ext_buffer(value, datas->nbr_buffer, 16, 'a');
     if(len == 0)
         return;
-
     write(0, datas->nbr_buffer, len);
     datas->written_count += len;
 }
@@ -168,7 +167,6 @@ void convert_X(t_data *datas)
     const int len  = ft_uitoa_ext_buffer(value, datas->nbr_buffer, 16, 'A');
     if(len == 0)
         return;
-
     write(0, datas->nbr_buffer, len);
     datas->written_count += len;
 }
