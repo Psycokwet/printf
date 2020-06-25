@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/19 20:16:59 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/25 08:07:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int ft_itoa_ext_buffer(int nbr, char *buffer, int base, int faux_chiffre)
 	return (-1);
 }
 
-//wireguard
-
 int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiffre)
 {
 	unsigned int	i;
@@ -87,7 +85,6 @@ int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiff
     return (ft_uitoa_ext_buffer_up_10(nbr, buffer, base, faux_chiffre));
 }
 
-//darkreader
 int ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux_chiffre)
 {
 	unsigned int	i;

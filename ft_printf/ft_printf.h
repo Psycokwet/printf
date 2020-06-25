@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/19 20:15:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/25 08:07:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft/libft.h"
-
-
-
 
 # define MAX_NBR_LENGTH	    	30
 typedef struct		s_data
@@ -36,13 +33,15 @@ typedef struct		s_data
 typedef struct		s_flag
 {
 	int				flag;
+	char			*valid_convert;
+	char			*override_flags;
 }					t_flag;
 
 static const t_flag FLAGS[MAX_FLAG_OPT] = {
-	(t_flag){'-'},
-	(t_flag){'0'},
-	(t_flag){'.'},
-	(t_flag){'*'},
+	(t_flag){'-', "", "0"},
+	(t_flag){'0', "diouxXaAeEfFgG", ""},
+	(t_flag){'.', "", ""},
+	(t_flag){'*', "", ""},
 };
 
 
