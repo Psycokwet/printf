@@ -43,7 +43,6 @@ all				:	 $(MAKE_LIBFT) $(NAME)
 $(MAKE_LIBFT)	:
 	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
 
-
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	mkdir -p $(OBJ_PATH)
 	$(CC) -o $@ -c $< $(CFLAGS)
