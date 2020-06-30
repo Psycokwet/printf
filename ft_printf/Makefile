@@ -1,6 +1,8 @@
 BONUS		=	bonus
 NAME		=	libftprintf.a	
-LIBFT		=	libft/libft.a
+MAKE_LIBFT	=	makelibft
+LIBFT		=	libft
+LIBFT_AR	=	libft/libft.a
 
 SRC_PATH		= ./
 OBJ_PATH		= bin/
@@ -32,39 +34,39 @@ CC			=	clang
 
 CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
-LDFLAG		=	-l$(LIBFT)		
+LDFLAG		=	-l$(LIBFT_AR)		
 
 RM			= 	rm -f
 
-all	: $(NAME)
+all				:	 $(MAKE_LIBFT) $(NAME)
 
-test :
-	echo $(SRC_FILES)
+$(MAKE_LIBFT)	:
+	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
-		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $< $(CFLAGS)
 
-$(LIBFT):
-		$(MAKE) -C $(LIBFT_PATH) $(BONUS)
-		cp $(LIBFT) ./$(NAME)
+$(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
+	mkdir -p $(OBJ_PATH)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(NAME)		: 	$(OBJ) $(LIBFT) 
-		echo ar -src $(NAME) $(OBJ) 
-		ar -src $(NAME) $(OBJ) 
+$(NAME)			: 	$(OBJ)  $(LIBFT_AR)
+	cp $(LIBFT_AR) ./$(NAME)
+	ar -src $(NAME) $(OBJ) 
 
-$(BONUS)	:
-		$(MAKE) WITH_BONUS=1 all
+$(BONUS)		:
+	$(MAKE) WITH_BONUS=1 all
 		
-clean	:									## delete all .o
-		$(RM) $(OBJ) $(OBJBONUS)
-		$(MAKE) -C $(LIBFT_PATH) clean	
+clean_local		:									## delete all .o
+	$(RM) $(OBJ) $(OBJBONUS)
 
-fclean	:	clean							## clean + delete executable
-		$(RM) $(NAMETEST) $(NAME)
-		$(MAKE) -C $(LIBFT_PATH) fclean					
+clean			:									## delete all .o
+	$(RM) $(OBJ) $(OBJBONUS)
+	$(MAKE) -C $(LIBFT_PATH) clean	
 
-re		:	fclean all							## delete all .o and recompile all. Must use when editing a .h
+fclean			:	clean_local							## clean + delete executable
+	$(RM) $(NAMETEST) $(NAME)
+	$(MAKE) -C $(LIBFT_PATH) fclean					
 
-.PHONY	: all bonus clean fclean re
+re				:	fclean all							## delete all .o and recompile all. Must use when editing a .h
+
+.PHONY			:	all bonus clean fclean re
 ## voir dependances plus tard 
