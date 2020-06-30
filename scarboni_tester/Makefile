@@ -1,18 +1,26 @@
 BONUS		=	bonus
-PRINTF_BONUS=	printf_bonus
 NAME		=	scarboni_tester
 PRINTF		=	libftprintf.a
+MAKE_PRINTF = 	make_printf
 
 SRC_PATH		= ./
 OBJ_PATH		= bin/
 PRINTF_PATH		= ./../ft_printf/
 ## No need for a \ on the last line
-SRC_FILES	=		main.c
+SRC_FILES		=	main.c
 
 SRCBONUS_FILES	=	main_bonus.c
 
-OBJ_FILES 		= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
-OBJBONUS_FILES	=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
+OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
+OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
+
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJBONUS_FILES)
+PRINTF_MAKE_COMMAND		=	$(BONUS)
+else
+OBJ_FILES = $(OBJREGULAR_FILES)
+PRINTF_MAKE_COMMAND		=	all
+endif
 
 SRC 		= $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRCBONUS 	= $(addprefix $(SRC_PATH), $(SRCBONUS_FILES))
@@ -27,7 +35,7 @@ LDFLAGS		=	-L$(PRINTF_PATH) -l:$(PRINTF)
 
 RM			= 	rm -f
 
-all	: $(NAME) $(BONUS)
+all	: $(MAKE_PRINTF) $(NAME)
 
 test :
 	echo $(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
@@ -36,23 +44,24 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 		mkdir -p $(OBJ_PATH)
 		$(CC) -o $@ -c $< $(CFLAGS)
 
-$(PRINTF_BONUS):
-		$(MAKE) -C $(PRINTF_PATH) bonus
+$(MAKE_PRINTF):
+		$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
 
-$(PRINTF):
-		$(MAKE) -C $(PRINTF_PATH) $(PRINTF)
-
-$(NAME)		: 	$(OBJ) $(PRINTF)
+$(NAME)		: 	$(OBJ) $(PRINTF_PATH)$(PRINTF)
+		$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
 		$(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
 
-$(BONUS)	:	$(OBJBONUS) $(PRINTF)
-		$(CC) -o $(BONUS) $(OBJBONUS) $(LDFLAGS)
+$(BONUS)	:
+	$(MAKE) WITH_BONUS=1 all
 		
+clean_local		:									## delete all .o
+	$(RM) $(OBJ) $(OBJBONUS)
+
 clean	:									## delete all .o
 		$(RM) $(OBJ) $(OBJBONUS)
 		$(MAKE) -C $(PRINTF_PATH) clean	
 
-fclean	:	clean							## clean + delete executable
+fclean	:	clean_local							## clean + delete executable
 		$(RM) $(BONUS) $(NAME)
 		$(MAKE) -C $(PRINTF_PATH) fclean					
 
