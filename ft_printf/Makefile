@@ -6,14 +6,22 @@ SRC_PATH		= ./
 OBJ_PATH		= bin/
 LIBFT_PATH		= libft/
 ## No need for a \ on the last line
-SRC_FILES	=		ft_printf.c\
-					ft_convert.c\
+HEADERS_FILES	=	ft_printf.h
+SRC_FILES		=	ft_printf.c			\
+					ft_convert.c		\
+					ft_commands.c		\
 					ft_putstr_fd_len.c
 
 SRCBONUS_FILES	=	ft_bonus.c
 
-OBJ_FILES 		= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
-OBJBONUS_FILES	=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
+OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
+OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 
+
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJREGULAR_FILES) $(OBJBONUS_FILES)
+else
+OBJ_FILES = $(OBJREGULAR_FILES)
+endif
 
 SRC 		= $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRCBONUS 	= $(addprefix $(SRC_PATH), $(SRCBONUS_FILES))
@@ -28,24 +36,25 @@ LDFLAG		=	-l$(LIBFT)
 
 RM			= 	rm -f
 
-all	: $(BONUS)
+all	: $(NAME)
 
 test :
-	echo $(OBJ) $(LDFLAG)  $(LIBFT)
+	echo $(SRC_FILES)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $<
+		$(CC) -o $@ -c $< $(CFLAGS)
 
 $(LIBFT):
-		$(MAKE) -C $(LIBFT_PATH) all
+		$(MAKE) -C $(LIBFT_PATH) $(BONUS)
 		cp $(LIBFT) ./$(NAME)
 
-$(NAME)		: 	$(OBJ) $(LIBFT)
+$(NAME)		: 	$(OBJ) $(LIBFT) 
+		echo ar -src $(NAME) $(OBJ) 
 		ar -src $(NAME) $(OBJ) 
 
-$(BONUS)	: $(NAME) $(OBJBONUS)
-		ar -src $(NAME) $(OBJBONUS)
+$(BONUS)	:
+		$(MAKE) WITH_BONUS=1 all
 		
 clean	:									## delete all .o
 		$(RM) $(OBJ) $(OBJBONUS)

@@ -1,10 +1,11 @@
 BONUS		=	bonus
+PRINTF_BONUS=	printf_bonus
 NAME		=	scarboni_tester
-LIBFT		=	libftprintf.a
+PRINTF		=	libftprintf.a
 
 SRC_PATH		= ./
 OBJ_PATH		= bin/
-LIBFT_PATH		= ./../ft_printf/
+PRINTF_PATH		= ./../ft_printf/
 ## No need for a \ on the last line
 SRC_FILES	=		main.c
 
@@ -22,32 +23,38 @@ CC			=	clang
 
 CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
-LDFLAGS		=	-L$(LIBFT_PATH) -l:$(LIBFT)		
+LDFLAGS		=	-L$(PRINTF_PATH) -l:$(PRINTF)		
 
 RM			= 	rm -f
 
 all	: $(NAME) $(BONUS)
 
+test :
+	echo $(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
+
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $<
+		$(CC) -o $@ -c $< $(CFLAGS)
 
-$(LIBFT):
-		$(MAKE) -C $(LIBFT_PATH) all
+$(PRINTF_BONUS):
+		$(MAKE) -C $(PRINTF_PATH) bonus
 
-$(NAME)		: 	$(OBJ) $(LIBFT)
-		$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS)
+$(PRINTF):
+		$(MAKE) -C $(PRINTF_PATH) $(PRINTF)
 
-$(BONUS)	:	$(OBJBONUS) $(LIBFT)
-		$(CC) -o $(BONUS) $(OBJBONUS) $(CFLAGS) $(LDFLAGS)
+$(NAME)		: 	$(OBJ) $(PRINTF)
+		$(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
+
+$(BONUS)	:	$(OBJBONUS) $(PRINTF)
+		$(CC) -o $(BONUS) $(OBJBONUS) $(LDFLAGS)
 		
 clean	:									## delete all .o
 		$(RM) $(OBJ) $(OBJBONUS)
-		$(MAKE) -C $(LIBFT_PATH) clean	
+		$(MAKE) -C $(PRINTF_PATH) clean	
 
 fclean	:	clean							## clean + delete executable
 		$(RM) $(BONUS) $(NAME)
-		$(MAKE) -C $(LIBFT_PATH) fclean					
+		$(MAKE) -C $(PRINTF_PATH) fclean					
 
 re		:	fclean all							## delete all .o and recompile all. Must use when editing a .h
 

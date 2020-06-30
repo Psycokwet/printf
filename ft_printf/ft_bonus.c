@@ -6,13 +6,14 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/05/08 16:46:41 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:06:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "ft_bonus.h"
 
-int ft_printf(void)
+int ft_printfm(void)
 {
     printf("Hello Wrolrggd !d\n");
     return 0;

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/26 19:37:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/06/30 13:12:32 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,49 +41,19 @@ void prepare_flag_wild_card(t_data *datas)
 }
 
 
-int set_flag(char c, t_data *datas){
-    int i = MAX_FLAG_OPT;
-
-    while(--i >= 0){
-        if(FLAGS[i].flag == c){
-            printf("Found flag namely :%c\n", c );
-            FLAGS[i].prepare_flag(datas);
-            return 1;
-        }
-    }
-    return 0;
-}
-
-int set_convert(char c, t_data *datas){
-    int i = MAX_CONVERT_OPT;
-
-    while(--i >= 0){
-        if(CONVERTS[i].letter == c){
-            CONVERTS[i].print(datas);
-            //printf("Found convert namely :%c\n", c );
-            return 1;
-        }
-    }
-    return 0;
-}
-
 void parse_format(t_data *datas){
     int i = -1;
     datas->active_flags = 0;
     while(datas->format_s[(++i) + datas->cursor]){
-        if(set_convert(datas->format_s[i + datas->cursor], datas)){
+        if(set_convert(datas->format_s + i + datas->cursor, datas)){
             //printf("Found a convert FOR [%c]i%d:cursor%d, exit\n",datas->format_s[i + datas->cursor], i, datas->cursor);
             datas->cursor += i + 1;
             return;
         }
-        else if(set_flag(datas->format_s[i + datas->cursor], datas)){
-        }
-        else if(ft_isdigit(datas->format_s[i + datas->cursor])){
-            //printf("Found a value\n");
+        else if(set_flag(datas->format_s + i + datas->cursor, datas)){
         }
         else{
 
-        printf("\nUNDEFINED BEHAVIOR %c\n",datas->format_s[i + datas->cursor]);
             return;
         }
     }
