@@ -37,19 +37,16 @@ RM			= 	rm -f
 
 all	: $(MAKE_PRINTF) $(NAME)
 
-test :
-	echo $(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
-
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $< $(CFLAGS)
+	mkdir -p $(OBJ_PATH)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 $(MAKE_PRINTF):
-		$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
+	$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
 
 $(NAME)		: 	$(OBJ) $(PRINTF_PATH)$(PRINTF)
-		$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
-		$(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
+	$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
+	$(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
 
 $(BONUS)	:
 	$(MAKE) WITH_BONUS=1 all
