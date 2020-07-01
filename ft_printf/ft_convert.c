@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 11:22:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 12:02:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int convert_c(t_data *datas)
     int ret_read;
 
     ret_read = write(datas->fd, &value, 1);
-    if(ret_read < 0)
-        return -EXIT_FAILURE;
+    if (ret_read < 0)
+        return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 int convert_s(t_data *datas)
@@ -35,10 +35,10 @@ int convert_s(t_data *datas)
     len = ft_strlen(value);
 
     ret_read = write(datas->fd, value, len);
-    if(ret_read < 0 || (size_t)ret_read != len)
-        return -EXIT_FAILURE;
+    if (ret_read < 0 || (size_t)ret_read != len)
+        return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 int convert_p(t_data *datas)
@@ -52,9 +52,9 @@ int convert_p(t_data *datas)
 
     ret_read = write(datas->fd, value, len);
     if(ret_read < 0)
-        return -EXIT_FAILURE;
+        return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 
@@ -148,7 +148,7 @@ int convert_d(t_data *datas)
     if (ret_read < 0)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 int convert_u(t_data *datas)
@@ -164,8 +164,7 @@ int convert_u(t_data *datas)
     if (ret_read < 0)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
-    
+    return (EXIT_CODE_END_FOUND);    
 }
 
 int convert_x(t_data *datas)
@@ -180,7 +179,7 @@ int convert_x(t_data *datas)
     if (ret_read != len)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 int convert_up_x(t_data *datas)
@@ -195,7 +194,7 @@ int convert_up_x(t_data *datas)
     if (ret_read != len)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 
@@ -208,5 +207,5 @@ int convert_percent(t_data *datas)
     if (ret_read < 0)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
-    return EXIT_CODE_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }

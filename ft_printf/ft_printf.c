@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 10:41:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 12:00:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int parse_format(t_data *datas)
     while(--command_id >= 0){
         //printf("COMMAND :{");
         ret = COMMANDS[command_id].command(datas->format_s + datas->cursor, datas);
-        if(ret != 0 ){
+        //printf("ret = COMMAND [%d]\n", ret);
+        if(ret == EXIT_CODE_END_FOUND || ret <= -EXIT_FAILURE){
             //printf("} COMMAND : %d\n", command_id);
             return ret;
         }

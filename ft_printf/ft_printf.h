@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 10:44:21 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 11:59:45 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 
 
+# define EXIT_CODE_END_FOUND	2
 # define EXIT_CODE_FOUND		1
 # define EXIT_CODE_NOT_FOUND	0
 
