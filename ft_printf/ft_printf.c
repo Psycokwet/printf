@@ -6,19 +6,22 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 10:31:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:41:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int parse_format(t_data *datas){
+int parse_format(t_data *datas)
+{
     int ret = -EXIT_FAILURE;
     int command_id = MAX_COMMAND;
     datas->active_flags = 0;
     while(--command_id >= 0){
+        //printf("COMMAND :{");
         ret = COMMANDS[command_id].command(datas->format_s + datas->cursor, datas);
         if(ret != 0 ){
+            //printf("} COMMAND : %d\n", command_id);
             return ret;
         }
     }
@@ -49,8 +52,10 @@ int ft_printf(const char *format_s, ...)
             datas.cursor += i + 1;
             i = -1;
             ret = parse_format(&datas);
-            if(ret <= EXIT_FAILURE)
+            if(ret <= -EXIT_FAILURE){
+                printf("FAILURE %d\n", ret);
                 break;
+            }
         }
         i++;
     }

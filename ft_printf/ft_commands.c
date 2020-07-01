@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 10:32:59 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:41:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int set_undefined(const char *code, t_data *datas){
 
 int set_flag(const char *code, t_data *datas){
     int i = MAX_FLAG_OPT;
+    //printf("SET_FLAG\n");
 
     while(--i >= 0){
         if(ft_strncmp(FLAGS[i].code.str, code, FLAGS[i].code.size) == 0){
@@ -35,11 +36,12 @@ int set_flag(const char *code, t_data *datas){
 
 int set_convert(const char *code, t_data *datas){
     int i = MAX_CONVERT_OPT;
+    //printf("SET_CONVERT\n");
     while(--i >= 0){
         if(ft_strncmp(CONVERTS[i].code.str, code, CONVERTS[i].code.size) == 0){
             datas->cursor += CONVERTS[i].code.size;
             CONVERTS[i].print(datas);
-           // printf("Found convert namely :[%ld][%s]\n", CONVERTS[i].code.size, datas->format_s + datas->cursor);
+            //printf("Found convert namely :[%ld][%s]\n", CONVERTS[i].code.size, datas->format_s + datas->cursor);
             return EXIT_CODE_FOUND;
         }
     }
