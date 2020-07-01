@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/30 15:31:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 09:37:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int set_undefined(const char *str_start, t_data *datas);
 # define MAX_COMMAND		3
 typedef struct		s_command
 {
-	int			(*print)(const char *, t_data *);
+	int			(*command)(const char *, t_data *);
 }					t_command;
 
 static const t_command COMMANDS[MAX_COMMAND] = {

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/30 15:24:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:22:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int main(int argc, const char * argv[])
     (void)argv;
     char * str2 = "hello";
     char * str = "Ah que coucou bob %X%s Je suis là!%p ahaha%%sdfghjkl%s%i%u\n";
-    printf("ft_printf returns %d\n", ft_printf(str, 42, NULL, NULL, str2, 36, -2));
     printf("printf returns %d\n", printf(str, 42, NULL, NULL, str2, 36, -2));
+    printf("ft_printf returns %d\n", ft_printf(str, 42, NULL, NULL, str2, 36, -2));
 }
