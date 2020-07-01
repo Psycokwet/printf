@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 09:37:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:33:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft/libft.h"
+
+
+
+# define EXIT_CODE_FOUND		1
+# define EXIT_CODE_NOT_FOUND	0
+
+
 
 # define MAX_NBR_LENGTH	    	30
 typedef struct		s_data
