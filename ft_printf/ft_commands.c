@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 13:44:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 15:17:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int set_convert(const char *code, t_data *datas){
     while(--i >= 0){
         if(ft_strncmp(CONVERTS[i].code.str, code, CONVERTS[i].code.size) == 0){
             datas->cursor += CONVERTS[i].code.size;
-            //printf("Found convert namely :[%s][%s]\n", CONVERTS[i].code.str, datas->format_s + datas->cursor);
+            printf("Found convert :[%d][%d][%ud]\n", datas->precision, datas->field_width, datas->active_flags);
             return CONVERTS[i].print(datas);
         }
     }
