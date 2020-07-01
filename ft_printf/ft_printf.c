@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 12:00:56 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:43:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int parse_format(t_data *datas)
             //printf("} COMMAND : %d\n", command_id);
             return ret;
         }
+        else if(ret == EXIT_CODE_FOUND)
+            command_id = MAX_COMMAND;
     }
     return -EXIT_FAILURE;
 }

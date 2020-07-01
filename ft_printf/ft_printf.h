@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 11:59:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:06:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,16 @@ static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
 
 int ft_printf(const char *, ...);
 
+void set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
 
 
-int set_flag(const char *str_start, t_data *datas);
-int set_convert(const char *str_start, t_data *datas);
 int set_undefined(const char *str_start, t_data *datas);
+int set_convert(const char *str_start, t_data *datas);
+int set_value(const char *str_start, t_data *datas);
+int set_flag(const char *str_start, t_data *datas);
 
-# define MAX_COMMAND		3
+# define MAX_COMMAND		4
 typedef struct		s_command
 {
 	int			(*command)(const char *, t_data *);
@@ -150,6 +152,7 @@ typedef struct		s_command
 static const t_command COMMANDS[MAX_COMMAND] = {
 	(t_command){&set_undefined},
 	(t_command){&set_convert},
+	(t_command){&set_value},
 	(t_command){&set_flag},
 };
 
