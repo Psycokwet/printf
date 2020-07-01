@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 10:33:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 10:44:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,19 @@ int ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base);
 typedef struct		s_convert
 {
 	t_str 			code;
-	void			(*print)(t_data *);
+	int				(*print)(t_data *);
 }					t_convert;
 
 //converts :
 
-void convert_c(t_data *datas);
-void convert_s(t_data *datas);
-void convert_p(t_data *datas);
-void convert_d(t_data *datas);
-void convert_u(t_data *datas);
-void convert_x(t_data *datas);
-void convert_up_x(t_data *datas);
-void convert_percent(t_data *datas);
+int convert_c(t_data *datas);
+int convert_s(t_data *datas);
+int convert_p(t_data *datas);
+int convert_d(t_data *datas);
+int convert_u(t_data *datas);
+int convert_x(t_data *datas);
+int convert_up_x(t_data *datas);
+int convert_percent(t_data *datas);
 
 static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
 	(t_convert){(t_str){"c", 1u}, &convert_c},

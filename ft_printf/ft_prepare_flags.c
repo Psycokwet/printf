@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 09:43:21 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 11:04:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void prepare_flag_less(t_data *datas)
 
 void prepare_flag_0(t_data *datas)
 {
+    printf("AH QUE COUCOU BOB \n");
     datas->active_flags &= FT_PF_FLAG_ZERO;
 }
 
