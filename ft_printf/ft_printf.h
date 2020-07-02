@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 08:19:12 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:38:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ static const t_command COMMANDS[MAX_COMMAND] = {
 
 
 void set_padding_c(t_data *datas);
-void set_s_len(t_data *datas, size_t str_len);
+void set_s_len(t_data *datas);
 
 # define MAX_WRITTER_S		3
 int write_padding(t_data *datas);
@@ -179,6 +179,22 @@ static const t_write WRITER_S[MAX_WRITTER_S] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding},
+};
+
+# define MAX_SETTER_S		3
+void set_padding_c(t_data *datas);
+void set_s_len(t_data *datas);
+void set_value_s(t_data *datas);
+
+typedef struct		s_setter
+{
+	void				(*setter)(t_data *);
+}					t_setter;
+
+static const t_setter SETTER_S[MAX_SETTER_S] = {
+	(t_setter){&set_padding_c},
+	(t_setter){&set_s_len},
+	(t_setter){&set_value_s},
 };
 
 #endif

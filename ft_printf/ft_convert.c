@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 11:06:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:39:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void set_padding_c(t_data *datas)
     else
         datas->padding_c = ' ';
 }
-void set_s_len(t_data *datas, size_t str_len)
+void set_s_len(t_data *datas)
 {
-    datas->len = str_len;
+    datas->len = ft_strlen(datas->value_s);
     //printf(" W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
     if(datas->active_flags & FT_PF_FLAG_PRECISION)
     {
@@ -64,6 +64,13 @@ void set_s_len(t_data *datas, size_t str_len)
         else
             datas->field_width = 0;
     }
+}
+
+void set_value_s(t_data *datas)
+{
+    datas->value_s  = va_arg(datas->list, char*);
+    if(!datas->value_s)
+        datas->value_s = "(null)";
 }
 
 int    write_s(t_data *datas)
@@ -79,14 +86,13 @@ int    write_s(t_data *datas)
 int convert_s(t_data *datas)
 {
     int ret_writer;
+    int i ;
     
-    datas->value_s  = va_arg(datas->list, char*);
-    if(!datas->value_s)
-        datas->value_s = "(null)";
-    set_s_len(datas, ft_strlen(datas->value_s));
-    set_padding_c(datas);
+    i = MAX_SETTER_S;
+    while (i--)
+        SETTER_S[i].setter(datas);
 
-    int i = MAX_WRITTER_S;
+    i = MAX_WRITTER_S;
     while (i--)
     { 
         if(!((datas->active_flags & WRITER_S[i].flags_concerned) == WRITER_S[i].flags_awaited))
