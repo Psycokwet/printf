@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 13:39:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:44:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int write_padding(t_data *datas)
         ret_read = write(datas->fd, &(datas->padding_c), 1);
         padding_count += ret_read;
         if (ret_read < 0 )
-        return (-EXIT_FAILURE);
+            return (-EXIT_FAILURE);
     }
     if (padding_count < 0 || padding_count != datas->field_width)
         return (-EXIT_FAILURE);
@@ -53,13 +53,13 @@ void set_s_len(t_data *datas)
 {
     datas->len = ft_strlen(datas->value_s);
     //printf(" W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
-    if(datas->active_flags & FT_PF_FLAG_PRECISION)
+    if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
-        if(datas->len > (size_t)datas->precision)
+        if (datas->len > (size_t)datas->precision)
             datas->len = datas->precision;
         else
             datas->precision = 0;
-        if(datas->field_width > datas->precision)
+        if (datas->field_width > datas->precision)
             datas->field_width -= datas->precision;
         else
             datas->field_width = 0;
@@ -69,7 +69,7 @@ void set_s_len(t_data *datas)
 void set_value_s(t_data *datas)
 {
     datas->value_s  = va_arg(datas->list, char*);
-    if(!datas->value_s)
+    if (!datas->value_s)
         datas->value_s = "(null)";
 }
 
@@ -95,7 +95,7 @@ int convert_s(t_data *datas)
     i = MAX_WRITTER_S;
     while (i--)
     { 
-        if(!((datas->active_flags & WRITER_S[i].flags_concerned) == WRITER_S[i].flags_awaited))
+        if (!((datas->active_flags & WRITER_S[i].flags_concerned) == WRITER_S[i].flags_awaited))
             continue;
         ret_writer = WRITER_S[i].write(datas);
         if (ret_writer < EXIT_SUCCESS)
@@ -110,13 +110,13 @@ int convert_p(t_data *datas)
 {
     int ret_read;
     void *value  = va_arg(datas->list, void*);
-    if(!value){
+    if (!value){
         value = "(nil)";
     }
     size_t len = ft_strlen(value);
 
     ret_read = write(datas->fd, value, len);
-    if(ret_read < 0)
+    if (ret_read < 0)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;
     return (EXIT_CODE_END_FOUND);
