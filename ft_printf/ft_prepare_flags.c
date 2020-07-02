@@ -6,21 +6,20 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 15:27:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/01 20:32:00 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+//left padding
+//override a given 0
 void prepare_flag_less(t_data *datas)
 {
     datas->active_flags |= FT_PF_FLAG_LESS;
 }
-
+//valide conversion :"diouxXaAeEfFgG"
 void prepare_flag_0(t_data *datas)
 {
-   // printf("AH QUE COUCOU BOB \n");
-    (void)datas;
     datas->active_flags |= FT_PF_FLAG_ZERO;
 }
 
@@ -37,6 +36,8 @@ void set_precision_or_fieldwith(t_data *datas, const int value)
         datas->active_flags |= FT_PF_FLAG_FIELD_WIDTH;
         datas->field_width = value;
     }
+    if(value < 0)
+        prepare_flag_less(datas);
 }
 
 

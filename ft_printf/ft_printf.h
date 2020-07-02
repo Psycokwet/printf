@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/01 13:06:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 07:50:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct		s_data
 {
 	int				fd;
 	int				cursor;
+	int				padding_c;
+    size_t			len;
 	int				written_count;
 	const char		*format_s;
 	char			nbr_buffer[MAX_NBR_LENGTH];
@@ -54,6 +56,7 @@ typedef struct		s_data
        if the result of a conversion is wider than the field width, the field is expanded to contain the conversion result.*/
 	unsigned int	active_flags;
     va_list			list;
+	char			*value_s;
 }					t_data;
 
 typedef struct		s_str
@@ -154,6 +157,27 @@ static const t_command COMMANDS[MAX_COMMAND] = {
 	(t_command){&set_convert},
 	(t_command){&set_value},
 	(t_command){&set_flag},
+};
+
+
+void set_padding_c(t_data *datas);
+void set_s_len(t_data *datas, size_t str_len);
+
+# define MAX_WRITTER_S		3
+int write_padding(t_data *datas);
+int write_left_padding(t_data *datas);
+int write_right_padding(t_data *datas);
+int write_s(t_data *datas);
+
+typedef struct		s_write
+{
+	int			(*write)(t_data *);
+}					t_write;
+
+static const t_write WRITER_S[MAX_WRITTER_S] = {
+	(t_write){&write_right_padding},
+	(t_write){&write_s},
+	(t_write){&write_left_padding},
 };
 
 #endif
