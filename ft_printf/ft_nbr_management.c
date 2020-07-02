@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 13:46:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:55:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ unsigned int		uitoa_len(unsigned int nb, int base)
 int ft_itoa_ext_buffer(int nbr, char *buffer, int base, int faux_chiffre)
 {
 	if (!buffer)
-		return (-1);
+    	return (-EXIT_FAILURE);
 	if ((nbr < 0)){
 		buffer[0] = '-';
         return (ft_uitoa_ext_buffer(-nbr, buffer + 1, base, faux_chiffre) + 1);
     }
     else
         return (ft_uitoa_ext_buffer(nbr, buffer, base, faux_chiffre));
-    return (-1);
+    return (-EXIT_FAILURE);
 }
 
 int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiffre)
 {
 	if (!buffer)
-		return (-1);
+    	return (-EXIT_FAILURE);
     if(base <= 10)
         return (ft_uitoa_ext_buffer_sub_10(nbr, buffer, base));
     return (ft_uitoa_ext_buffer_up_10(nbr, buffer, base, faux_chiffre));
@@ -53,7 +53,7 @@ int ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux
 	unsigned int	len;
 
     if (!buffer)
-		return (-1);
+		return (-EXIT_FAILURE);
 	len = uitoa_len(nbr, base);
     i = len;
 	buffer[i--] = '\0';
@@ -74,7 +74,7 @@ int ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base)
 	unsigned int	len;
 
     if (base > 10 || !buffer)
-		return (-1);
+		return (-EXIT_FAILURE);
 	len = uitoa_len(nbr, base);
     i = len;
 	buffer[i--] = '\0';

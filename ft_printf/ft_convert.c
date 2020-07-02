@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 14:08:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:54:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,26 +147,35 @@ int convert_p(t_data *datas)
     return convert(datas, MAX_SETTER_P, SETTER_P, MAX_WRITTER_P, WRITER_P);
 }
 
+void set_value_d(t_data *datas)
+{
+    datas->value_i  = va_arg(datas->list, int);
+}
+
+int set_d_len(t_data *datas)
+{
+    const int len  = ft_itoa_ext_buffer(datas->value_i, datas->nbr_buffer, 10, 0);
+    if (len <= EXIT_SUCCESS)
+        return (-EXIT_FAILURE);
+    datas->len = (size_t)len;
+    return (EXIT_SUCCESS);
+}
+int    write_d(t_data *datas)
+{
+    int ret_read;
+    ret_read = write(datas->fd, datas->nbr_buffer, datas->len);
+    return (ret_read);
+}
+
 int convert_d(t_data *datas)
 {
-    const int value  = va_arg(datas->list, int);
-    const int len  = ft_itoa_ext_buffer(value, datas->nbr_buffer, 10, 0);
-    int ret_read;
-    if (len == 0)
-        return (-EXIT_FAILURE);
-
-
-    ret_read = write(datas->fd, datas->nbr_buffer, len);
-    if (ret_read < 0)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
+    return convert(datas, MAX_SETTER_D, SETTER_D, MAX_WRITTER_D, WRITER_D);
 }
 
 int convert_u(t_data *datas)
 {
-    const unsigned int value  = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(value, datas->nbr_buffer, 10, 0);
+    datas->value_ui  = va_arg(datas->list, unsigned int);
+    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 10, 0);
     int ret_read;
     if (len == 0)
         return (-EXIT_FAILURE);
@@ -181,8 +190,8 @@ int convert_u(t_data *datas)
 
 int convert_x(t_data *datas)
 {
-    const unsigned int value  = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(value, datas->nbr_buffer, 16, 'a');
+    datas->value_ui  = va_arg(datas->list, unsigned int);
+    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'a');
     int ret_read;
     if (len == 0)
         return (-EXIT_FAILURE);
@@ -196,8 +205,8 @@ int convert_x(t_data *datas)
 
 int convert_up_x(t_data *datas)
 {
-    const unsigned int value  = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(value, datas->nbr_buffer, 16, 'A');
+    datas->value_ui = va_arg(datas->list, unsigned int);
+    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'A');
     int ret_read;
     //printf("AH convert_up_x \n");
     if (len == 0)
@@ -212,10 +221,10 @@ int convert_up_x(t_data *datas)
 
 int convert_percent(t_data *datas)
 {
-    char value = '%';
+    datas->value_c = '%';
     int ret_read;
 
-    ret_read = write(datas->fd, &value, 1);
+    ret_read = write(datas->fd, &(datas->value_c), 1);
     if (ret_read < 0)
         return (-EXIT_FAILURE);
     datas->written_count += ret_read;

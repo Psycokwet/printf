@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 14:04:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:54:24 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ typedef struct		s_data
     va_list			list;
 	char			*value_s;
 	void			*value_p;
+	int				value_i;
+	unsigned int	value_ui;
+	char			value_c;
 }					t_data;
 
 typedef struct		s_str
@@ -190,6 +193,16 @@ static const t_write WRITER_P[MAX_WRITTER_P] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
 };
 
+
+# define MAX_WRITTER_D		2
+int set_d_len(t_data *datas);
+int    write_d(t_data *datas);
+static const t_write WRITER_D[MAX_WRITTER_D] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_d_len},
+};
+
+
 typedef struct		s_setter
 {
 	void				(*setter)(t_data *);
@@ -212,5 +225,11 @@ void set_value_p(t_data *datas);
 static const t_setter SETTER_P[MAX_SETTER_P] = {
 	(t_setter){&set_p_len},
 	(t_setter){&set_value_p},
+};
+
+# define MAX_SETTER_D		1
+void set_value_d(t_data *datas);
+static const t_setter SETTER_D[MAX_SETTER_D] = {
+	(t_setter){&set_value_d},
 };
 #endif
