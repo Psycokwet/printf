@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 13:46:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 14:08:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,21 @@ int    write_s(t_data *datas)
     return (ret_read);
 }
 
-int convert_s(t_data *datas)
+int convert(t_data *datas, int max_setter, const t_setter *setter, int max_writer, const t_write *writer)
 {
     int ret_writer;
     int i ;
     
-    i = MAX_SETTER_S;
+    i = max_setter;
     while (i--)
-        SETTER_S[i].setter(datas);
+        setter[i].setter(datas);
 
-    i = MAX_WRITTER_S;
+    i = max_writer;
     while (i--)
     { 
-        if (!((datas->active_flags & WRITER_S[i].flags_concerned) == WRITER_S[i].flags_awaited))
+        if (!((datas->active_flags & writer[i].flags_concerned) == writer[i].flags_awaited))
             continue;
-        ret_writer = WRITER_S[i].write(datas);
+        ret_writer = writer[i].write(datas);
         if (ret_writer < EXIT_SUCCESS)
             return (-EXIT_FAILURE);
         datas->written_count += ret_writer;
@@ -106,20 +106,45 @@ int convert_s(t_data *datas)
     return (EXIT_CODE_END_FOUND);
 }
 
+int convert_s(t_data *datas)
+{
+    return convert(datas, MAX_SETTER_S, SETTER_S, MAX_WRITTER_S, WRITER_S);
+}
+
+void set_p_len(t_data *datas)
+{
+    if (datas->value_p){
+        printf("NEED IMPLEMENTATION\n");
+        return;
+    }
+    set_s_len(datas);
+}
+
+void set_value_p(t_data *datas)
+{
+    datas->value_p  = va_arg(datas->list, char*);
+    if (datas->value_p){
+        printf("NEED IMPLEMENTATION\n");
+        return;
+    }
+    datas->value_s = "(nil)";
+    datas->len = ft_strlen(datas->value_s);
+}
+
+int    write_p(t_data *datas)
+{
+    if (datas->value_p)
+    {
+        //do something else for Oxqsdhh
+        printf("NEED IMPLEMENTATION\n");
+        return EXIT_FAILURE;
+    }
+    return write_s(datas);
+}
+
 int convert_p(t_data *datas)
 {
-    int ret_read;
-    void *value  = va_arg(datas->list, void*);
-    if (!value){
-        value = "(nil)";
-    }
-    size_t len = ft_strlen(value);
-
-    ret_read = write(datas->fd, value, len);
-    if (ret_read < 0)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
+    return convert(datas, MAX_SETTER_P, SETTER_P, MAX_WRITTER_P, WRITER_P);
 }
 
 int convert_d(t_data *datas)

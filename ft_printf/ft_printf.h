@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 13:38:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 14:04:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_data
 	unsigned int	active_flags;
     va_list			list;
 	char			*value_s;
+	void			*value_p;
 }					t_data;
 
 typedef struct		s_str
@@ -164,10 +165,6 @@ static const t_command COMMANDS[MAX_COMMAND] = {
 void set_padding_c(t_data *datas);
 void set_s_len(t_data *datas);
 
-# define MAX_WRITTER_S		3
-int write_padding(t_data *datas);
-int write_s(t_data *datas);
-
 typedef struct		s_write
 {
 	unsigned int 	flags_concerned;
@@ -175,21 +172,33 @@ typedef struct		s_write
 	int				(*write)(t_data *);
 }					t_write;
 
+# define MAX_WRITTER_S		3
+int write_padding(t_data *datas);
+int write_s(t_data *datas);
+
 static const t_write WRITER_S[MAX_WRITTER_S] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding},
 };
 
-# define MAX_SETTER_S		3
-void set_padding_c(t_data *datas);
-void set_s_len(t_data *datas);
-void set_value_s(t_data *datas);
+# define MAX_WRITTER_P		1
+int    write_p(t_data *datas);
+
+
+static const t_write WRITER_P[MAX_WRITTER_P] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
+};
 
 typedef struct		s_setter
 {
 	void				(*setter)(t_data *);
 }					t_setter;
+
+# define MAX_SETTER_S		3
+void set_padding_c(t_data *datas);
+void set_s_len(t_data *datas);
+void set_value_s(t_data *datas);
 
 static const t_setter SETTER_S[MAX_SETTER_S] = {
 	(t_setter){&set_padding_c},
@@ -197,4 +206,11 @@ static const t_setter SETTER_S[MAX_SETTER_S] = {
 	(t_setter){&set_value_s},
 };
 
+# define MAX_SETTER_P		2
+void set_p_len(t_data *datas);
+void set_value_p(t_data *datas);
+static const t_setter SETTER_P[MAX_SETTER_P] = {
+	(t_setter){&set_p_len},
+	(t_setter){&set_value_p},
+};
 #endif
