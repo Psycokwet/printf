@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 06:59:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 08:19:26 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int parse_format(t_data *datas)
 {
     int ret = -EXIT_FAILURE;
     int command_id = MAX_COMMAND;
-    datas->active_flags = 0;
+    datas->active_flags = FT_PF_FLAG_WRITE;
     datas->field_width = 0;
     datas->precision = 0;
     while(--command_id >= 0){

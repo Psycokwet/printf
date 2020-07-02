@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 07:51:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 11:06:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int write_padding(t_data *datas)
 {
     int ret_read;
     int padding_count;
-     //printf(" W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, len);
+    //printf("write_padding W :[%d] P:[%d]\n",  datas->field_width, datas->precision);
     padding_count = 0;
     while (padding_count < datas->field_width)
     {
@@ -40,22 +40,6 @@ int write_padding(t_data *datas)
     if (padding_count < 0 || padding_count != datas->field_width)
         return (-EXIT_FAILURE);
     return (padding_count);
-}
-
-int write_left_padding(t_data *datas)
-{
-    if(datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && !(datas->active_flags & FT_PF_FLAG_LESS))
-        return (write_padding(datas));
-    //printf(" PADDING:[%d]\n",  i);
-    return (EXIT_SUCCESS);
-}
-
-int write_right_padding(t_data *datas)
-{
-    if(datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_LESS)
-        return (write_padding(datas));
-    //printf(" PADDING:[%d]\n",  i);
-    return (EXIT_SUCCESS);
 }
 
 void set_padding_c(t_data *datas)
@@ -85,10 +69,11 @@ void set_s_len(t_data *datas, size_t str_len)
 int    write_s(t_data *datas)
 {
     int ret_read;
+    //printf("WRITE\n");
     ret_read = write(datas->fd, datas->value_s, datas->len);
     if (ret_read < 0 || (size_t)ret_read != datas->len)
         return (-EXIT_FAILURE);
-    return (EXIT_SUCCESS);
+    return (ret_read);
 }
 
 int convert_s(t_data *datas)
@@ -103,7 +88,9 @@ int convert_s(t_data *datas)
 
     int i = MAX_WRITTER_S;
     while (i--)
-    {
+    { 
+        if(!((datas->active_flags & WRITER_S[i].flags_concerned) == WRITER_S[i].flags_awaited))
+            continue;
         ret_writer = WRITER_S[i].write(datas);
         if (ret_writer < EXIT_SUCCESS)
             return (-EXIT_FAILURE);

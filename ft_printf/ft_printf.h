@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 07:50:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 08:19:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct		s_flag
 	void			(*prepare_flag)(t_data *);
 }					t_flag;
 
+# define FT_PF_FLAG_WRITE		(1u << 0)
 # define FT_PF_FLAG_ZERO		(1u << 1)
 # define FT_PF_FLAG_LESS		(1u << 2)
 # define FT_PF_FLAG_FIELD_WIDTH	(1u << 3)
@@ -165,19 +166,19 @@ void set_s_len(t_data *datas, size_t str_len);
 
 # define MAX_WRITTER_S		3
 int write_padding(t_data *datas);
-int write_left_padding(t_data *datas);
-int write_right_padding(t_data *datas);
 int write_s(t_data *datas);
 
 typedef struct		s_write
 {
-	int			(*write)(t_data *);
+	unsigned int 	flags_concerned;
+	unsigned int 	flags_awaited;
+	int				(*write)(t_data *);
 }					t_write;
 
 static const t_write WRITER_S[MAX_WRITTER_S] = {
-	(t_write){&write_right_padding},
-	(t_write){&write_s},
-	(t_write){&write_left_padding},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding},
 };
 
 #endif
