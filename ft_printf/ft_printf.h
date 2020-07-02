@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 19:36:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 19:51:59 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static const t_flag FLAGS[MAX_FLAG_OPT] = {
 };
 
 
-
+size_t	strlen_from_int(int value);
 unsigned int		uitoa_len(unsigned int nb, int base);
 int ft_itoa_ext_buffer(int nbr, char *buffer, int base, int faux_chiffre);
 int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiffre);
