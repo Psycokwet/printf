@@ -6,23 +6,11 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 16:54:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 17:25:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int convert_c(t_data *datas)
-{
-    const int value  = va_arg(datas->list, int);
-    int ret_read;
-
-    ret_read = write(datas->fd, &value, 1);
-    if (ret_read < 0)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
-}
 
 int write_padding(t_data *datas)
 {
@@ -162,9 +150,7 @@ int set_d_len(t_data *datas)
 }
 int    write_d(t_data *datas)
 {
-    int ret_read;
-    ret_read = write(datas->fd, datas->nbr_buffer, datas->len);
-    return (ret_read);
+    return (write(datas->fd, datas->nbr_buffer, datas->len));
 }
 
 int convert_d(t_data *datas)
@@ -172,61 +158,72 @@ int convert_d(t_data *datas)
     return convert(datas, MAX_SETTER_D, SETTER_D, MAX_WRITTER_D, WRITER_D);
 }
 
+void set_value_u(t_data *datas)
+{
+    datas->value_ui  = va_arg(datas->list, unsigned int);
+}
+
+int set_u_len(t_data *datas)
+{
+    const int len = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 10, 0);
+    if (len <= EXIT_SUCCESS)
+        return (-EXIT_FAILURE);
+    datas->len = (size_t)len;
+    return (EXIT_SUCCESS);
+}
+
 int convert_u(t_data *datas)
 {
-    datas->value_ui  = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 10, 0);
-    int ret_read;
-    if (len == 0)
-        return (-EXIT_FAILURE);
-
-
-    ret_read = write(datas->fd, datas->nbr_buffer, len);
-    if (ret_read < 0)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);    
+    return convert(datas, MAX_SETTER_U, SETTER_U, MAX_WRITTER_U, WRITER_U);
 }
 
+int set_x_len(t_data *datas)
+{
+    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'a');
+    if (len <= EXIT_SUCCESS)
+        return (-EXIT_FAILURE);
+    datas->len = (size_t)len;
+    return (EXIT_SUCCESS);
+}
 int convert_x(t_data *datas)
 {
-    datas->value_ui  = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'a');
-    int ret_read;
-    if (len == 0)
-        return (-EXIT_FAILURE);
-
-    ret_read = write(datas->fd, datas->nbr_buffer, len);
-    if (ret_read != len)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
+    return convert(datas, MAX_SETTER_U, SETTER_U, MAX_WRITTER_X, WRITER_X);
 }
 
+int set_up_x_len(t_data *datas)
+{
+    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'A');
+    if (len <= EXIT_SUCCESS)
+        return (-EXIT_FAILURE);
+    datas->len = (size_t)len;
+    return (EXIT_SUCCESS);
+}
 int convert_up_x(t_data *datas)
 {
-    datas->value_ui = va_arg(datas->list, unsigned int);
-    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'A');
-    int ret_read;
-    //printf("AH convert_up_x \n");
-    if (len == 0)
-        return (-EXIT_FAILURE);
-    ret_read = write(datas->fd, datas->nbr_buffer, len);
-    if (ret_read != len)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
+    return convert(datas, MAX_SETTER_U, SETTER_U, MAX_WRITTER_UP_X, WRITER_UP_X);
 }
 
+void set_value_percent(t_data *datas)
+{
+    datas->value_i = '%';
+}
+
+int    write_c(t_data *datas)
+{
+    return (write(datas->fd, &(datas->value_i), 1));
+}
 
 int convert_percent(t_data *datas)
 {
-    datas->value_c = '%';
-    int ret_read;
+    return (convert(datas, MAX_SETTER_PERCENT, SETTER_PERCENT, MAX_WRITTER_C, WRITER_C));
+}
 
-    ret_read = write(datas->fd, &(datas->value_c), 1);
-    if (ret_read < 0)
-        return (-EXIT_FAILURE);
-    datas->written_count += ret_read;
-    return (EXIT_CODE_END_FOUND);
+void set_value_c(t_data *datas)
+{
+    datas->value_i = va_arg(datas->list, int);
+}
+
+int convert_c(t_data *datas)
+{
+    return (convert(datas, MAX_SETTER_C, SETTER_C, MAX_WRITTER_C, WRITER_C));
 }

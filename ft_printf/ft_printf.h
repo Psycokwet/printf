@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 16:54:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 17:26:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct		s_data
 	void			*value_p;
 	int				value_i;
 	unsigned int	value_ui;
-	char			value_c;
 }					t_data;
 
 typedef struct		s_str
@@ -188,11 +187,9 @@ static const t_write WRITER_S[MAX_WRITTER_S] = {
 # define MAX_WRITTER_P		1
 int    write_p(t_data *datas);
 
-
 static const t_write WRITER_P[MAX_WRITTER_P] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
 };
-
 
 # define MAX_WRITTER_D		2
 int set_d_len(t_data *datas);
@@ -202,6 +199,32 @@ static const t_write WRITER_D[MAX_WRITTER_D] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_d_len},
 };
 
+# define MAX_WRITTER_U		2
+int set_u_len(t_data *datas);
+static const t_write WRITER_U[MAX_WRITTER_U] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_u_len},
+};
+# define MAX_WRITTER_X		2
+int set_x_len(t_data *datas);
+static const t_write WRITER_X[MAX_WRITTER_X] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_x_len},
+};
+
+# define MAX_WRITTER_UP_X	2
+int set_up_x_len(t_data *datas);
+static const t_write WRITER_UP_X[MAX_WRITTER_UP_X] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_up_x_len},
+};
+
+
+# define MAX_WRITTER_C		1
+int    write_c(t_data *datas);
+static const t_write WRITER_C[MAX_WRITTER_C] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
+};
 
 typedef struct		s_setter
 {
@@ -231,5 +254,23 @@ static const t_setter SETTER_P[MAX_SETTER_P] = {
 void set_value_d(t_data *datas);
 static const t_setter SETTER_D[MAX_SETTER_D] = {
 	(t_setter){&set_value_d},
+};
+
+# define MAX_SETTER_U		1
+void set_value_u(t_data *datas);
+static const t_setter SETTER_U[MAX_SETTER_U] = {
+	(t_setter){&set_value_u},
+};
+
+# define MAX_SETTER_PERCENT		1
+void set_value_percent(t_data *datas);
+static const t_setter SETTER_PERCENT[MAX_SETTER_PERCENT] = {
+	(t_setter){&set_value_percent},
+};
+
+# define MAX_SETTER_C			1
+void set_value_c(t_data *datas);
+static const t_setter SETTER_C[MAX_SETTER_C] = {
+	(t_setter){&set_value_c},
 };
 #endif
