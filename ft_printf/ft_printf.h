@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 17:26:56 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/02 19:36:00 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,29 +115,6 @@ typedef struct		s_convert
 	t_str 			code;
 	int				(*print)(t_data *);
 }					t_convert;
-
-//converts :
-
-int convert_c(t_data *datas);
-int convert_s(t_data *datas);
-int convert_p(t_data *datas);
-int convert_d(t_data *datas);
-int convert_u(t_data *datas);
-int convert_x(t_data *datas);
-int convert_up_x(t_data *datas);
-int convert_percent(t_data *datas);
-
-static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
-	(t_convert){(t_str){"c", 1u}, &convert_c},
-	(t_convert){(t_str){"s", 1u}, &convert_s},
-	(t_convert){(t_str){"p", 1u}, &convert_p},
-	(t_convert){(t_str){"d", 1u}, &convert_d},
-	(t_convert){(t_str){"i", 1u}, &convert_d},
-	(t_convert){(t_str){"u", 1u}, &convert_u},
-	(t_convert){(t_str){"x", 1u}, &convert_x},
-	(t_convert){(t_str){"X", 1u}, &convert_up_x},
-	(t_convert){(t_str){"%", 1u}, &convert_percent},
-};
 
 int ft_printf(const char *, ...);
 
@@ -273,4 +250,30 @@ void set_value_c(t_data *datas);
 static const t_setter SETTER_C[MAX_SETTER_C] = {
 	(t_setter){&set_value_c},
 };
+
+
+//converts :
+
+int convert(t_data *datas, int max_setter, const t_setter *setter, int max_writer, const t_write *writer);
+int convert_c(t_data *datas);
+int convert_s(t_data *datas);
+int convert_p(t_data *datas);
+int convert_d(t_data *datas);
+int convert_u(t_data *datas);
+int convert_x(t_data *datas);
+int convert_up_x(t_data *datas);
+int convert_percent(t_data *datas);
+
+static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
+	(t_convert){(t_str){"c", 1u}, &convert_c},
+	(t_convert){(t_str){"s", 1u}, &convert_s},
+	(t_convert){(t_str){"p", 1u}, &convert_p},
+	(t_convert){(t_str){"d", 1u}, &convert_d},
+	(t_convert){(t_str){"i", 1u}, &convert_d},
+	(t_convert){(t_str){"u", 1u}, &convert_u},
+	(t_convert){(t_str){"x", 1u}, &convert_x},
+	(t_convert){(t_str){"X", 1u}, &convert_up_x},
+	(t_convert){(t_str){"%", 1u}, &convert_percent},
+};
+
 #endif

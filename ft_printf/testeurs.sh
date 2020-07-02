@@ -7,10 +7,10 @@ git clone https://github.com/gavinfielder/pft.git pft && echo "pft/" >> .gitigno
 make
 cp libftprintf.a ./
 cd /tmp/ft_printf
-git clone https://github.com/alelievr/printf-unit-test
+git clone https://github.com/alelievr/printf-unit-test ???
 cp ./stud/libftprintf.a ./
 git clone https://github.com/AntoineBourin/printf-tester
 cd /tmp/ft_printf/stud
 git clone https://github.com/Mazoise/42TESTERS-PRINTF
-
+git clone https://github.com/charMstr/printf_lover_v2
 printfdestructor

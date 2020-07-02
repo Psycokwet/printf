@@ -5,18 +5,53 @@ LIBFT		=	libft
 LIBFT_AR	=	libft/libft.a
 
 SRC_PATH		= ./
+WRITERS_PATH	= writers/
+SETTERS_PATH	= setters/
+CONVERTS_PATH	= converts/
 OBJ_PATH		= bin/
 LIBFT_PATH		= libft/
 ## No need for a \ on the last line
-HEADERS_FILES	=	ft_printf.h
-SRC_FILES		=	ft_printf.c			\
-					ft_convert.c		\
-					ft_commands.c		\
-					ft_prepare_flags.c	\
-					ft_nbr_management.c	\
-					ft_putstr_fd_len.c
+HEADERS_FILES		=	ft_printf.h
+SRC_FILES			=	ft_printf.c				\
+						ft_commands.c			\
+						ft_prepare_flags.c		\
+						ft_nbr_management.c		\
+						ft_putstr_fd_len.c
+CONVERTS_SRC_FILES	=	convert.c	 			\
+						convert_c.c				\
+						convert_d.c				\
+						convert_p.c				\
+						convert_percent.c		\
+						convert_s.c				\
+						convert_u.c				\
+						convert_up_x.c			\
+						convert_x.c
+WRITERS_SRC_FILES	=	set_d_len.c				\
+						set_u_len.c				\
+						set_up_x_len.c			\
+						set_x_len.c				\
+						write_c.c				\
+						write_d.c				\
+						write_padding.c			\
+						write_p.c				\
+						write_s.c
+SETTERS_SRC_FILES	=	set_d_len.c				\
+						set_padding_c.c			\
+						set_p_len.c				\
+						set_s_len.c				\
+						set_u_len.c				\
+						set_value_c.c			\
+						set_value_d.c			\
+						set_value_p.c			\
+						set_value_percent.c		\
+						set_value_s.c			\
+						set_value_u.c
 
 SRCBONUS_FILES	=	ft_bonus.c
+
+SRC_FILES	+=	$(addprefix $(CONVERTS_PATH), $(CONVERTS_SRC_FILES))
+SRC_FILES	+=	$(addprefix $(SETTERS_PATH), $(SETTERS_SRC_FILES))
+SRC_FILES	+=	$(addprefix $(WRITERS_PATH), $(WRITERS_SRC_FILES))
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
 OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 
@@ -47,6 +82,9 @@ $(MAKE_LIBFT)	:
 
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	mkdir -p $(OBJ_PATH)
+	mkdir -p $(OBJ_PATH)$(SETTERS_PATH)
+	mkdir -p $(OBJ_PATH)$(WRITERS_PATH)
+	mkdir -p $(OBJ_PATH)$(CONVERTS_PATH)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 $(NAME)			: 	$(OBJ)  $(LIBFT_AR)
