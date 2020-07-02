@@ -13,6 +13,7 @@ SRC_FILES		=	ft_printf.c			\
 					ft_convert.c		\
 					ft_commands.c		\
 					ft_prepare_flags.c	\
+					ft_nbr_management.c	\
 					ft_putstr_fd_len.c
 
 SRCBONUS_FILES	=	ft_bonus.c
