@@ -3,6 +3,7 @@ NAME		=	libftprintf.a
 MAKE_LIBFT	=	makelibft
 LIBFT		=	libft
 LIBFT_AR	=	libft/libft.a
+INIT_DIRECTORIES = init_dir
 
 SRC_PATH			= ./
 WRITERS_PATH		= writers/
