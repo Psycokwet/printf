@@ -108,12 +108,11 @@ LDFLAG		=	-l$(LIBFT_AR)
 
 RM			= 	rm -f
 
-all				:	 $(MAKE_LIBFT) $(NAME)
+all				:	 $(INIT_DIRECTORIES) $(MAKE_LIBFT) $(NAME)
 
 $(MAKE_LIBFT)	:
 	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
-
-$(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
+$(INIT_DIRECTORIES)	:
 	mkdir -p $(OBJ_PATH)
 	mkdir -p $(OBJ_PATH)$(SETTERS_PATH)
 	mkdir -p $(OBJ_PATH)$(WRITERS_PATH)
@@ -121,6 +120,8 @@ $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	mkdir -p $(OBJ_PATH)$(PREPARE_FLAGS_PATH)
 	mkdir -p $(OBJ_PATH)$(NBR_MANAGEMENT_PATH)
 	mkdir -p $(OBJ_PATH)$(COMMANDS_PATH)
+
+$(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 $(NAME)			: 	$(OBJ)  $(LIBFT_AR)
