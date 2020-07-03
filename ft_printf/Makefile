@@ -112,6 +112,7 @@ all				:	 $(INIT_DIRECTORIES) $(MAKE_LIBFT) $(NAME)
 
 $(MAKE_LIBFT)	:
 	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
+	
 $(INIT_DIRECTORIES)	:
 	mkdir -p $(OBJ_PATH)
 	mkdir -p $(OBJ_PATH)$(SETTERS_PATH)
