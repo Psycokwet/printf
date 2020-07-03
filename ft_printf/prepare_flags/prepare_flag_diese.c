@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_x_len.c                                        :+:      :+:    :+:   */
+/*   prepare_flag_diese.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 18:12:07 by scarboni         ###   ########.fr       */
+/*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
+/*   Updated: 2020/07/02 20:18:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
-int set_x_len(t_data *datas)
+//valide conversion :"diouxXaAeEfFgG"
+void prepare_flag_diese(t_data *datas)
 {
-    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'a');
-    if (len <= EXIT_SUCCESS)
-        return (-EXIT_FAILURE);
-    datas->len = (size_t)len;
-    return (EXIT_SUCCESS);
+    datas->active_flags |= FT_PF_FLAG_DIESE;
 }

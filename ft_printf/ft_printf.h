@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 19:51:59 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 07:44:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,43 @@ typedef struct		s_str
 	size_t			size;
 }					t_str;
 
+# define FT_PF_FLAG_WRITE		(1u << 0)
+# define FT_PF_FLAG_ZERO		(1u << 1)
+# define FT_PF_FLAG_LESS		(1u << 2)
+# define FT_PF_FLAG_FIELD_WIDTH	(1u << 3)
+# define FT_PF_FLAG_PRECISION	(1u << 4)
+# define FT_PF_FLAG_DIESE		(1u << 5)
+# define FT_PF_FLAG_SPACE		(1u << 6)
+# define FT_PF_FLAG_PLUS		(1u << 7)
+# define FT_PF_FLAG_L			(1u << 8)
+# define FT_PF_FLAG_LL			(1u << 9)
+# define FT_PF_FLAG_H			(1u << 10)
+# define FT_PF_FLAG_HH			(1u << 11)
+# define FT_PF_NO_FLAG			0
 
-# define MAX_FLAG_OPT	    	4
+int		ft_printf(const char *, ...);
+void	set_precision_or_fieldwith(t_data *datas, const int value);
+void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);int ft_printf(const char *, ...);
+void	set_precision_or_fieldwith(t_data *datas, const int value);
+void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
+
+/* ************************************************************************** */
+/* 									PREPARE_FLAGS                             */
+/* ************************************************************************** */
+
+void prepare_flag_less(t_data *datas);
+void prepare_flag_0(t_data *datas);
+void prepare_flag_precision(t_data *datas);
+void prepare_flag_wild_card(t_data *datas);
+void prepare_flag_diese(t_data *datas);
+void prepare_flag_space(t_data *datas);
+void prepare_flag_plus(t_data *datas);
+void prepare_flag_l(t_data *datas);
+void prepare_flag_ll(t_data *datas);
+void prepare_flag_h(t_data *datas);
+void prepare_flag_hh(t_data *datas);
+
+# define MAX_FLAG_OPT	    	11
 
 typedef struct		s_flag
 {
@@ -78,25 +113,23 @@ typedef struct		s_flag
 	void			(*prepare_flag)(t_data *);
 }					t_flag;
 
-# define FT_PF_FLAG_WRITE		(1u << 0)
-# define FT_PF_FLAG_ZERO		(1u << 1)
-# define FT_PF_FLAG_LESS		(1u << 2)
-# define FT_PF_FLAG_FIELD_WIDTH	(1u << 3)
-# define FT_PF_FLAG_PRECISION	(1u << 4)
-# define FT_PF_NO_FLAG			0
-
-void prepare_flag_less(t_data *datas);
-void prepare_flag_0(t_data *datas);
-void prepare_flag_precision(t_data *datas);
-void prepare_flag_wild_card(t_data *datas);
-
 static const t_flag FLAGS[MAX_FLAG_OPT] = {
 	(t_flag){(t_str){"-", 1u}, FT_PF_FLAG_ZERO, &prepare_flag_less},
 	(t_flag){(t_str){"0", 1u}, FT_PF_NO_FLAG, &prepare_flag_0},
 	(t_flag){(t_str){".", 1u}, FT_PF_NO_FLAG, &prepare_flag_precision},
 	(t_flag){(t_str){"*", 1u}, FT_PF_NO_FLAG, &prepare_flag_wild_card},
+	(t_flag){(t_str){"#", 1u}, FT_PF_NO_FLAG, &prepare_flag_diese},
+	(t_flag){(t_str){" ", 1u}, FT_PF_NO_FLAG, &prepare_flag_space},
+	(t_flag){(t_str){"+", 1u}, FT_PF_NO_FLAG, &prepare_flag_plus},
+	(t_flag){(t_str){"l", 1u}, FT_PF_NO_FLAG, &prepare_flag_l},
+	(t_flag){(t_str){"ll", 1u}, FT_PF_NO_FLAG, &prepare_flag_ll},
+	(t_flag){(t_str){"h", 1u}, FT_PF_NO_FLAG, &prepare_flag_h},
+	(t_flag){(t_str){"hh", 1u}, FT_PF_NO_FLAG, &prepare_flag_hh},
 };
 
+/* ************************************************************************** */
+/* 									NBR_MANAGEMENT                            */
+/* ************************************************************************** */
 
 size_t	strlen_from_int(int value);
 unsigned int		uitoa_len(unsigned int nb, int base);
@@ -105,45 +138,49 @@ int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiff
 int ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux_chiffre);
 int ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base);
 
+/* ************************************************************************** */
+/* 									SETTERS                                   */
+/* ************************************************************************** */
 
-
-
-
-# define MAX_CONVERT_OPT		9
-typedef struct		s_convert
+typedef struct		s_setter
 {
-	t_str 			code;
-	int				(*print)(t_data *);
-}					t_convert;
-
-int ft_printf(const char *, ...);
-
-void set_precision_or_fieldwith(t_data *datas, const int value);
-void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
-
-
-int set_undefined(const char *str_start, t_data *datas);
-int set_convert(const char *str_start, t_data *datas);
-int set_value(const char *str_start, t_data *datas);
-int set_flag(const char *str_start, t_data *datas);
-
-# define MAX_COMMAND		4
-typedef struct		s_command
-{
-	int			(*command)(const char *, t_data *);
-}					t_command;
-
-static const t_command COMMANDS[MAX_COMMAND] = {
-	(t_command){&set_undefined},
-	(t_command){&set_convert},
-	(t_command){&set_value},
-	(t_command){&set_flag},
-};
-
+	void				(*setter)(t_data *);
+}					t_setter;
 
 void set_padding_c(t_data *datas);
 void set_s_len(t_data *datas);
+void set_value_c(t_data *datas);
+void set_value_d(t_data *datas);
+void set_p_len(t_data *datas);
+void set_value_p(t_data *datas);
+void set_value_percent(t_data *datas);
+void set_padding_c(t_data *datas);
+void set_s_len(t_data *datas);
+void set_value_s(t_data *datas);
+void set_value_u(t_data *datas);
 
+void setter_undefined(t_data *datas);
+
+# define MAX_SETTER_U		1
+static const t_setter SETTER_U[MAX_SETTER_U] = {
+	(t_setter){&set_value_u},
+};
+
+/* ************************************************************************** */
+/* 									WRITTERS                                   */
+/* ************************************************************************** */
+
+int write_c(t_data *datas);
+int write_d_in_buffer(t_data *datas);
+int write_d(t_data *datas);
+int write_p(t_data *datas);
+int write_padding(t_data *datas);
+int write_s(t_data *datas);
+int write_u_in_buffer(t_data *datas);
+int write_up_x_in_buffer(t_data *datas);
+int write_x_in_buffer(t_data *datas);
+
+int writer_undefined(t_data *datas);
 typedef struct		s_write
 {
 	unsigned int 	flags_concerned;
@@ -151,108 +188,23 @@ typedef struct		s_write
 	int				(*write)(t_data *);
 }					t_write;
 
-# define MAX_WRITTER_S		3
-int write_padding(t_data *datas);
-int write_s(t_data *datas);
-
-static const t_write WRITER_S[MAX_WRITTER_S] = {
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding},
-};
-
-# define MAX_WRITTER_P		1
-int    write_p(t_data *datas);
-
-static const t_write WRITER_P[MAX_WRITTER_P] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
-};
-
-# define MAX_WRITTER_D		2
-int set_d_len(t_data *datas);
-int    write_d(t_data *datas);
-static const t_write WRITER_D[MAX_WRITTER_D] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_d_len},
-};
-
-# define MAX_WRITTER_U		2
-int set_u_len(t_data *datas);
-static const t_write WRITER_U[MAX_WRITTER_U] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_u_len},
-};
-# define MAX_WRITTER_X		2
-int set_x_len(t_data *datas);
-static const t_write WRITER_X[MAX_WRITTER_X] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_x_len},
-};
-
-# define MAX_WRITTER_UP_X	2
-int set_up_x_len(t_data *datas);
-static const t_write WRITER_UP_X[MAX_WRITTER_UP_X] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &set_up_x_len},
-};
-
-
 # define MAX_WRITTER_C		1
-int    write_c(t_data *datas);
 static const t_write WRITER_C[MAX_WRITTER_C] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
 };
 
-typedef struct		s_setter
-{
-	void				(*setter)(t_data *);
-}					t_setter;
+/* ************************************************************************** */
+/* 									COMMANDS                                  */
+/* ************************************************************************** */
 
-# define MAX_SETTER_S		3
-void set_padding_c(t_data *datas);
-void set_s_len(t_data *datas);
-void set_value_s(t_data *datas);
+int set_undefined(const char *str_start, t_data *datas);
+int set_convert(const char *str_start, t_data *datas);
+int set_value(const char *str_start, t_data *datas);
+int set_flag(const char *str_start, t_data *datas);
 
-static const t_setter SETTER_S[MAX_SETTER_S] = {
-	(t_setter){&set_padding_c},
-	(t_setter){&set_s_len},
-	(t_setter){&set_value_s},
-};
-
-# define MAX_SETTER_P		2
-void set_p_len(t_data *datas);
-void set_value_p(t_data *datas);
-static const t_setter SETTER_P[MAX_SETTER_P] = {
-	(t_setter){&set_p_len},
-	(t_setter){&set_value_p},
-};
-
-# define MAX_SETTER_D		1
-void set_value_d(t_data *datas);
-static const t_setter SETTER_D[MAX_SETTER_D] = {
-	(t_setter){&set_value_d},
-};
-
-# define MAX_SETTER_U		1
-void set_value_u(t_data *datas);
-static const t_setter SETTER_U[MAX_SETTER_U] = {
-	(t_setter){&set_value_u},
-};
-
-# define MAX_SETTER_PERCENT		1
-void set_value_percent(t_data *datas);
-static const t_setter SETTER_PERCENT[MAX_SETTER_PERCENT] = {
-	(t_setter){&set_value_percent},
-};
-
-# define MAX_SETTER_C			1
-void set_value_c(t_data *datas);
-static const t_setter SETTER_C[MAX_SETTER_C] = {
-	(t_setter){&set_value_c},
-};
-
-
-//converts :
+/* ************************************************************************** */
+/* 									CONVERTS                                 */
+/* ************************************************************************** */
 
 int convert(t_data *datas, int max_setter, const t_setter *setter, int max_writer, const t_write *writer);
 int convert_c(t_data *datas);
@@ -263,17 +215,9 @@ int convert_u(t_data *datas);
 int convert_x(t_data *datas);
 int convert_up_x(t_data *datas);
 int convert_percent(t_data *datas);
-
-static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
-	(t_convert){(t_str){"c", 1u}, &convert_c},
-	(t_convert){(t_str){"s", 1u}, &convert_s},
-	(t_convert){(t_str){"p", 1u}, &convert_p},
-	(t_convert){(t_str){"d", 1u}, &convert_d},
-	(t_convert){(t_str){"i", 1u}, &convert_d},
-	(t_convert){(t_str){"u", 1u}, &convert_u},
-	(t_convert){(t_str){"x", 1u}, &convert_x},
-	(t_convert){(t_str){"X", 1u}, &convert_up_x},
-	(t_convert){(t_str){"%", 1u}, &convert_percent},
-};
+int convert_n(t_data *datas);
+int convert_f(t_data *datas);
+int convert_g(t_data *datas);
+int convert_e(t_data *datas);
 
 #endif

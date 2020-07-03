@@ -23,36 +23,47 @@ SRC_FILES					=	ft_printf.c						\
 CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_c.c						\
 								convert_d.c						\
+								convert_e.c						\
+								convert_f.c						\
+								convert_g.c						\
+								convert_n.c						\
 								convert_p.c						\
 								convert_percent.c				\
 								convert_s.c						\
 								convert_u.c						\
 								convert_up_x.c					\
 								convert_x.c
-WRITERS_SRC_FILES			=	set_d_len.c						\
-								set_u_len.c						\
-								set_up_x_len.c					\
-								set_x_len.c						\
-								write_c.c						\
+WRITERS_SRC_FILES			=	write_c.c						\
 								write_d.c						\
-								write_padding.c					\
+								write_d_in_buffer.c				\
 								write_p.c						\
-								write_s.c
-SETTERS_SRC_FILES			=	set_d_len.c						\
+								write_padding.c					\
+								write_s.c						\
+								write_u_in_buffer.c				\
+								write_up_x_in_buffer.c			\
+								write_x_in_buffer.c				\
+								writer_undefined.c
+SETTERS_SRC_FILES			=	set_p_len.c						\
 								set_padding_c.c					\
-								set_p_len.c						\
 								set_s_len.c						\
-								set_u_len.c						\
 								set_value_c.c					\
 								set_value_d.c					\
 								set_value_p.c					\
 								set_value_percent.c				\
 								set_value_s.c					\
-								set_value_u.c
+								set_value_u.c					\
+								setter_undefined.c
 PREPARE_FLAGS_SRC_FILES		=	prepare_flag_0.c				\
-								prepare_flag_less.c				\
+								prepare_flag_h.c				\
+								prepare_flag_l.c				\
+								prepare_flag_ll.c				\
 								prepare_flag_precision.c		\
 								prepare_flag_wild_card.c		\
+								prepare_flag_diese.c			\
+								prepare_flag_hh.c				\
+								prepare_flag_less.c				\
+								prepare_flag_plus.c				\
+								prepare_flag_space.c			\
 								set_precision_or_fieldwith.c
 NBR_MANAGEMENT_SRC_FILES	=	ft_itoa_ext_buffer.c			\
 								ft_uitoa_ext_buffer.c			\

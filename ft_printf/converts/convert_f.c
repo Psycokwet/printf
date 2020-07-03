@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_s.c                                        :+:      :+:    :+:   */
+/*   convert_f.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:20:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 07:31:55 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_WRITTER_S		3
-
-static const t_write WRITER_S[MAX_WRITTER_S] = {
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding},
+# define MAX_WRITTER_F		1
+static const t_write WRITER_F[MAX_WRITTER_F] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &writer_undefined},
 };
 
-# define MAX_SETTER_S		3
-
-static const t_setter SETTER_S[MAX_SETTER_S] = {
-	(t_setter){&set_padding_c},
-	(t_setter){&set_s_len},
-	(t_setter){&set_value_s},
+# define MAX_SETTER_F		1
+static const t_setter SETTER_F[MAX_SETTER_F] = {
+	(t_setter){&setter_undefined},
 };
 
-int convert_s(t_data *datas)
+int convert_f(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_S, SETTER_S, MAX_WRITTER_S, WRITER_S);
+    return convert(datas, MAX_SETTER_F, SETTER_F, MAX_WRITTER_F, WRITER_F);
 }

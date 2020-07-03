@@ -6,11 +6,24 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 08:19:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 07:23:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+# define MAX_COMMAND		4
+typedef struct		s_command
+{
+	int			(*command)(const char *, t_data *);
+}					t_command;
+
+static const t_command COMMANDS[MAX_COMMAND] = {
+	(t_command){&set_undefined},
+	(t_command){&set_convert},
+	(t_command){&set_value},
+	(t_command){&set_flag},
+};
 
 int parse_format(t_data *datas)
 {
