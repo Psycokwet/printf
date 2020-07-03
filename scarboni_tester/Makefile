@@ -31,7 +31,7 @@ CC			=	clang
 
 CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
-LDFLAGS		=	-L$(PRINTF_PATH) -l:$(PRINTF)		
+LDFLAGS		=	-L$(PRINTF_PATH) -lftprintf
 
 RM			= 	rm -f
 

@@ -105,13 +105,14 @@ CC			=	clang
 
 CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
-LDFLAG		=	-l$(LIBFT_AR)		
-
 RM			= 	rm -f
 
-all				:	 $(INIT_DIRECTORIES) $(MAKE_LIBFT) $(NAME)
+all					:	 $(INIT_DIRECTORIES) $(MAKE_LIBFT) $(NAME)
 
-$(MAKE_LIBFT)	:
+$(LIBFT_PATH)  		:
+	git clone https://github.com/Psycokwet/libft.git $(LIBFT_PATH)
+
+$(MAKE_LIBFT)		: $(LIBFT_PATH)
 	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
 	
 $(INIT_DIRECTORIES)	:
