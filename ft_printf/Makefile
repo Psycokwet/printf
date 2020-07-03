@@ -37,6 +37,8 @@ CONVERTS_SRC_FILES			=	convert.c	 					\
 WRITERS_SRC_FILES			=	write_c.c						\
 								write_d.c						\
 								write_d_in_buffer.c				\
+								write_diese_up_x.c				\
+								write_diese_x.c					\
 								write_p.c						\
 								write_padding.c					\
 								write_s.c						\

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_e.c                                        :+:      :+:    :+:   */
+/*   write_diese_x.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 08:17:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 08:06:55 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_WRITTER_E		1
-static const t_write WRITER_E[MAX_WRITTER_E] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &writer_undefined},
-};
-
-# define MAX_SETTER_E		1
-static const t_setter SETTER_E[MAX_SETTER_E] = {
-	(t_setter){&set_padding_c},
-};
-
-int convert_e(t_data *datas)
+int write_diese_x(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_E, SETTER_E, MAX_WRITTER_E, WRITER_E);
+    char *diese = "0x";
+    return (write_str(datas->fd, diese, 2));
 }

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:41:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 08:12:32 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static const t_write WRITER_D[MAX_WRITTER_D] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d_in_buffer},
 };
 
-# define MAX_SETTER_D		1
+# define MAX_SETTER_D		2
 static const t_setter SETTER_D[MAX_SETTER_D] = {
 	(t_setter){&set_value_d},
+	(t_setter){&set_padding_c},
 };
 
 int convert_d(t_data *datas)

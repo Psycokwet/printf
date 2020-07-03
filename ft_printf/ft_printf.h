@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 08:01:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 08:18:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,10 @@ void set_value_u(t_data *datas);
 
 void setter_undefined(t_data *datas);
 
-# define MAX_SETTER_U		1
-static const t_setter SETTER_U[MAX_SETTER_U] = {
+# define MAX_SETTER_U_X_UP_X		2
+static const t_setter SETTER_U_X_UP_X[MAX_SETTER_U_X_UP_X] = {
 	(t_setter){&set_value_u},
+	(t_setter){&set_padding_c},
 };
 
 /* ************************************************************************** */
@@ -172,8 +173,10 @@ static const t_setter SETTER_U[MAX_SETTER_U] = {
 /* ************************************************************************** */
 
 int write_c(t_data *datas);
-int write_d_in_buffer(t_data *datas);
 int write_d(t_data *datas);
+int write_d_in_buffer(t_data *datas);
+int write_diese_up_x(t_data *datas);
+int write_diese_x(t_data *datas);
 int write_p(t_data *datas);
 int write_padding(t_data *datas);
 int write_s(t_data *datas);

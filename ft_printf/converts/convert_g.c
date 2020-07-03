@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:31:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 08:14:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static const t_write WRITER_G[MAX_WRITTER_G] = {
 
 # define MAX_SETTER_G		1
 static const t_setter SETTER_G[MAX_SETTER_G] = {
-	(t_setter){&setter_undefined},
+	(t_setter){&set_padding_c},
 };
 
 int convert_g(t_data *datas)
