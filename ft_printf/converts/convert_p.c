@@ -6,23 +6,35 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 09:24:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:24:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+# define MAX_WRITTER_P		3
+static const t_write WRITER_P[MAX_WRITTER_P] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p_in_buffer},
+	(t_write){FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, &write_diese_x},
+};
+
+#ifndef LINUX
+
+# define MAX_SETTER_P		2
+static const t_setter SETTER_P[MAX_SETTER_P] = {
+	(t_setter){&set_s_len},
+	(t_setter){&set_value_p},
+};
+
+#else
 
 # define MAX_SETTER_P		1
 static const t_setter SETTER_P[MAX_SETTER_P] = {
 	(t_setter){&set_value_p},
 };
 
-# define MAX_WRITTER_P		3
-static const t_write WRITER_P[MAX_WRITTER_P] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p_in_buffer},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_diese_x},
-};
+#endif
 
 int convert_p(t_data *datas)
 {
