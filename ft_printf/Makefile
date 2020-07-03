@@ -19,7 +19,8 @@ SRC_FILES					=	ft_printf.c						\
 								ft_commands.c					\
 								ft_prepare_flags.c				\
 								ft_nbr_management.c				\
-								ft_putstr_fd_len.c
+								ft_putstr_fd_len.c				\
+								write_str.c
 CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_c.c						\
 								convert_d.c						\

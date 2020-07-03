@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:44:06 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 08:01:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);int ft_printf(const char *, ...);
 void	set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
+int		write_str(int fd, char *str, size_t len);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
