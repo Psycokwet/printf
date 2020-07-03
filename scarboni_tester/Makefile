@@ -46,7 +46,7 @@ $(MAKE_PRINTF):
 
 $(NAME)		: 	$(OBJ) $(PRINTF_PATH)$(PRINTF)
 	$(MAKE) -C $(PRINTF_PATH) $(PRINTF_MAKE_COMMAND)
-	$(CC) -o $(NAME) $(OBJ)  $(LDFLAGS)
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 $(BONUS)	:
 	$(MAKE) WITH_BONUS=1 all
