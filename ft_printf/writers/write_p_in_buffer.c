@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_p_len.c                                        :+:      :+:    :+:   */
+/*   write_p_in_buffer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 18:13:47 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 09:18:14 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void set_p_len(t_data *datas)
+int write_p_in_buffer(t_data *datas)
 {
-    if (datas->value_p){
-        printf("NEED IMPLEMENTATION\n");
-        return;
-    }
-    set_s_len(datas);
+    return (write_ui_value_in_buffer(datas, (unsigned int)datas->value_p));
 }

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 08:12:32 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 09:01:25 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define MAX_WRITTER_D		2
 static const t_write WRITER_D[MAX_WRITTER_D] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d_in_buffer},
 };
 

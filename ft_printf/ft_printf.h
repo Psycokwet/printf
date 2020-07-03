@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 08:18:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 09:22:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);int ft_printf(const ch
 void	set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
 int		write_str(int fd, char *str, size_t len);
+int		write_ui_value_in_buffer(t_data *datas, unsigned int value);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
@@ -152,7 +153,6 @@ void set_padding_c(t_data *datas);
 void set_s_len(t_data *datas);
 void set_value_c(t_data *datas);
 void set_value_d(t_data *datas);
-void set_p_len(t_data *datas);
 void set_value_p(t_data *datas);
 void set_value_percent(t_data *datas);
 void set_padding_c(t_data *datas);
@@ -173,11 +173,12 @@ static const t_setter SETTER_U_X_UP_X[MAX_SETTER_U_X_UP_X] = {
 /* ************************************************************************** */
 
 int write_c(t_data *datas);
-int write_d(t_data *datas);
+int write_nbr_buffer(t_data *datas);
 int write_d_in_buffer(t_data *datas);
 int write_diese_up_x(t_data *datas);
 int write_diese_x(t_data *datas);
 int write_p(t_data *datas);
+int write_p_in_buffer(t_data *datas);
 int write_padding(t_data *datas);
 int write_s(t_data *datas);
 int write_u_in_buffer(t_data *datas);
@@ -195,6 +196,13 @@ typedef struct		s_write
 # define MAX_WRITTER_C		1
 static const t_write WRITER_C[MAX_WRITTER_C] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
+};
+
+# define MAX_WRITTER_X		3
+static const t_write WRITER_X[MAX_WRITTER_X] = {
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_x_in_buffer},
+	(t_write){FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, &write_diese_x},
 };
 
 /* ************************************************************************** */

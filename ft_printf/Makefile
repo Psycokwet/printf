@@ -20,7 +20,8 @@ SRC_FILES					=	ft_printf.c						\
 								ft_prepare_flags.c				\
 								ft_nbr_management.c				\
 								ft_putstr_fd_len.c				\
-								write_str.c
+								write_str.c						\
+								write_ui_value_in_buffer.c
 CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_c.c						\
 								convert_d.c						\
@@ -39,15 +40,16 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_d_in_buffer.c				\
 								write_diese_up_x.c				\
 								write_diese_x.c					\
+								write_nbr_buffer.c				\
 								write_p.c						\
+								write_p_in_buffer.c				\
 								write_padding.c					\
 								write_s.c						\
 								write_u_in_buffer.c				\
 								write_up_x_in_buffer.c			\
 								write_x_in_buffer.c				\
 								writer_undefined.c
-SETTERS_SRC_FILES			=	set_p_len.c						\
-								set_padding_c.c					\
+SETTERS_SRC_FILES			=	set_padding_c.c					\
 								set_s_len.c						\
 								set_value_c.c					\
 								set_value_d.c					\

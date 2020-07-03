@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_p.c                                        :+:      :+:    :+:   */
+/*   write_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 09:24:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 09:00:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_SETTER_P		1
-static const t_setter SETTER_P[MAX_SETTER_P] = {
-	(t_setter){&set_value_p},
-};
-
-# define MAX_WRITTER_P		3
-static const t_write WRITER_P[MAX_WRITTER_P] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p_in_buffer},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_diese_x},
-};
-
-int convert_p(t_data *datas)
+int    write_nbr_buffer(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_P, SETTER_P, MAX_WRITTER_P, WRITER_P);
+    return (write(datas->fd, datas->nbr_buffer, datas->len));
 }

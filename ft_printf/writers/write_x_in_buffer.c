@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:45:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 09:09:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 int write_x_in_buffer(t_data *datas)
 {
-    const int len  = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, 16, 'a');
-    if (len <= EXIT_SUCCESS)
-        return (-EXIT_FAILURE);
-    datas->len = (size_t)len;
-    return (EXIT_SUCCESS);
+    return (write_ui_value_in_buffer(datas, datas->value_ui));
 }
