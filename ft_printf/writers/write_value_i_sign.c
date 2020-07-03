@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_value_c.c                                      :+:      :+:    :+:   */
+/*   write_value_i_sign.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 19:03:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 19:09:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void set_value_c(t_data *datas)
+int    write_value_i_sign(t_data *datas)
 {
-    datas->value_i = va_arg(datas->list, int);
+    int sign;
+
+    if(datas->value_i < 0)
+        return EXIT_SUCCESS;
+    sign = '+';
+    return (write(datas->fd, &sign, 1));
 }

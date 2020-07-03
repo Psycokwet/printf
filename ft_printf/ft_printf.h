@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:39:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 19:08:00 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ int write_padding(t_data *datas);
 int write_s(t_data *datas);
 int write_u_in_buffer(t_data *datas);
 int write_up_x_in_buffer(t_data *datas);
+int write_value_i_sign(t_data *datas);
 int write_x_in_buffer(t_data *datas);
 
 int writer_undefined(t_data *datas);

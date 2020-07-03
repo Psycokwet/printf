@@ -51,6 +51,7 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_s.c						\
 								write_u_in_buffer.c				\
 								write_up_x_in_buffer.c			\
+								write_value_i_sign.c			\
 								write_x_in_buffer.c				\
 								writer_undefined.c
 SETTERS_SRC_FILES			=	set_padding_c.c					\
