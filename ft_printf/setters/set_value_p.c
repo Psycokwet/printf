@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:30:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:39:32 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void set_value_p(t_data *datas)
         datas->active_flags |= FT_PF_FLAG_DIESE;
         return;
     }
-    datas->value_s = nil;
+    datas->value_s = "(nil)";
     datas->len = ft_strlen(datas->value_s);
 }
 #endif

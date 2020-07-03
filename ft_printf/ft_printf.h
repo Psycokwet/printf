@@ -6,34 +6,22 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:30:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:39:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF
 # define FT_PRINTF
 
-
 # include <stdio.h>
-
-
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft/libft.h"
 
-
-
 # define EXIT_CODE_END_FOUND	2
 # define EXIT_CODE_FOUND		1
 # define EXIT_CODE_NOT_FOUND	0
-
-# ifndef LINUX
-#  define nil "(NULL)"
-# else
-#  define nil "(nil)"
-# endif
-
 
 # define MAX_NBR_LENGTH	    	30
 typedef struct		s_data
