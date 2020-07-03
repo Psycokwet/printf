@@ -114,8 +114,8 @@ CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep defaul
 
 RM			= 	rm -f
 
-OS			= $(shell uname-o)
-ifeq ($(OS), GNU/Linux)
+OS			= $(shell uname)
+ifeq ($(OS), Linux)
 	CFLAGS	+= -DLINUX
 endif
 

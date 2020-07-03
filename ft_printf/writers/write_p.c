@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:23:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:29:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 
 int    write_p(t_data *datas)
 {
-    if (datas->value_p)
-        return write_nbr_buffer(datas);
-    return write_s(datas);
+    return write_nbr_buffer(datas);
 }
 
 #else
 
 int    write_p(t_data *datas)
 {
-    return write_nbr_buffer(datas);
+    if (datas->value_p)
+        return write_nbr_buffer(datas);
+    return write_s(datas);
 }
 
 #endif

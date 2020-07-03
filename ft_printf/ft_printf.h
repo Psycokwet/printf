@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:05:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:30:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 # define EXIT_CODE_NOT_FOUND	0
 
 # ifndef LINUX
-#  define nil "(nil)"
-# else
 #  define nil "(NULL)"
+# else
+#  define nil "(nil)"
 # endif
 
 

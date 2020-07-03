@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:20:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:29:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,16 @@
 
 int write_p_in_buffer(t_data *datas)
 {
-    if(datas->value_p)
-        return (write_ui_value_in_buffer(datas, (unsigned int)datas->value_p));
-    return (EXIT_SUCCESS);
+    return (write_ui_value_in_buffer(datas, (unsigned int)datas->value_p));
 }
-
 
 #else
 
 int write_p_in_buffer(t_data *datas)
 {
-    return (write_ui_value_in_buffer(datas, (unsigned int)datas->value_p));
+    if(datas->value_p)
+        return (write_ui_value_in_buffer(datas, (unsigned int)datas->value_p));
+    return (EXIT_SUCCESS);
 }
 
 #endif
