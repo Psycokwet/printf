@@ -16,9 +16,6 @@ LIBFT_PATH			= libft/
 ## No need for a \ on the last line
 HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c						\
-								ft_commands.c					\
-								ft_prepare_flags.c				\
-								ft_nbr_management.c				\
 								ft_putstr_fd_len.c				\
 								write_str.c						\
 								write_ui_value_in_buffer.c
@@ -36,7 +33,6 @@ CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_up_x.c					\
 								convert_x.c
 WRITERS_SRC_FILES			=	write_c.c						\
-								write_d.c						\
 								write_d_in_buffer.c				\
 								write_diese_up_x.c				\
 								write_diese_x.c					\
