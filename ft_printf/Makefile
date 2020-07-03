@@ -13,6 +13,14 @@ NBR_MANAGEMENT_PATH	= nbr_management/
 COMMANDS_PATH		= commands/
 OBJ_PATH			= bin/
 LIBFT_PATH			= libft/
+
+OBJ_PATHS_INIT			=	$(addprefix $(OBJ_PATH),$(SETTERS_PATH) 		\
+													$(WRITERS_PATH) 		\
+													$(CONVERTS_PATH)		\
+													$(PREPARE_FLAGS_PATH)	\
+													$(NBR_MANAGEMENT_PATH)	\
+													$(COMMANDS_PATH))
+OBJ_PATHS_INIT			+= 	$(OBJ_PATH)
 ## No need for a \ on the last line
 HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c						\
@@ -104,26 +112,21 @@ CC			=	clang
 
 CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
-LDFLAG		=	-l$(LIBFT_AR)		
-
 RM			= 	rm -f
 
-all				:	 $(INIT_DIRECTORIES) $(MAKE_LIBFT) $(NAME)
+all					:	 $(OBJ_PATHS_INIT) $(MAKE_LIBFT) $(NAME)
 
-$(MAKE_LIBFT)	:
+$(LIBFT_PATH)  		:
+	git clone https://github.com/Psycokwet/libft.git $(LIBFT_PATH)
+
+$(MAKE_LIBFT)		: $(LIBFT_PATH)
 	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
-	
-$(INIT_DIRECTORIES)	:
-	mkdir -p $(OBJ_PATH)
-	mkdir -p $(OBJ_PATH)$(SETTERS_PATH)
-	mkdir -p $(OBJ_PATH)$(WRITERS_PATH)
-	mkdir -p $(OBJ_PATH)$(CONVERTS_PATH)
-	mkdir -p $(OBJ_PATH)$(PREPARE_FLAGS_PATH)
-	mkdir -p $(OBJ_PATH)$(NBR_MANAGEMENT_PATH)
-	mkdir -p $(OBJ_PATH)$(COMMANDS_PATH)
 
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJ_PATHS_INIT)	:
+	mkdir -p  $@  
 
 $(NAME)			: 	$(OBJ)  $(LIBFT_AR)
 	cp $(LIBFT_AR) ./$(NAME)
