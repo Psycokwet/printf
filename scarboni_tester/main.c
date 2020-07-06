@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 08:54:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 10:18:20 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
 	char	c = 'a';
 	int		d = 2147483647;
 	int		e = -2147483648;
-	int		f = 4329822;
+	int		f = 4;
 	int		g = 25;
 	int		h = 4200;
 	int		i = 8;
@@ -53,4 +53,21 @@ int main(int argc, const char * argv[])
     printf("ft_printf returns %d\n", ft_printf("%4d,%-4d,%0.4d,%-0.4d,%2.4d,%-2.4d,%4.2d,%-04.8d,%04d,%-04d,%04.2d,%-04.2d,%04.8d,%-04.8d,\n", f, f, f, f, f, f, f, f, f, f, f, f, f, f));
     printf("printf returns %d\n", printf(str, NULL, 1337, 42, 4, 2, str3, NULL, str2, 36, -2));
     printf("ft_printf returns %d\n", ft_printf(str, NULL, 1337, 42, 4, 2, str3, NULL, str2, 36, -2));
+	printf("\nprintf Return : %d\n", printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf("\nft_printf Return : %d\n", ft_printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf("\nft_printf Return : %d\n", ft_printf("%d:%d,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	/*while (a < 5) //T34-69
+	{   
+		printf("-----------------------------------\n");
+
+		printf("\nprintf Return : %d\n", printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\nft_printf Return : %d\n", ft_printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n printf Return : %d\n", printf("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n ft_printf Return : %d\n", ft_printf("%0*i, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d, %0*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n printf Return : %d\n", printf("%-*i, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n ft_printf Return : %d\n", ft_printf("%-*i, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d, %-*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n printf Return : %d\n", printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		printf("\n ft_printf Return : %d\n", ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+		a++;
+	}*/
 }
