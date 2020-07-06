@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 10:18:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 10:37:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ int main(int argc, const char * argv[])
 	printf("\nprintf Return : %d\n", printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 	printf("\nft_printf Return : %d\n", ft_printf("%*i, %*d, %*d, %*d, %*d, %*d, %*d, %*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 	printf("\nft_printf Return : %d\n", ft_printf("%d:%d,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	a = 0;
+	printf("\nprintf Return : %d\n", printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf("\nft_printf Return : %d\n", ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf("\nft_printf Return : %d\n", ft_printf("%d:%d,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+	printf("\nprintf Return : %d\n", printf("[%.*i]", 0, 0));
+	printf("\nft_printf Return : %d\n", ft_printf("[%.*i]", 0, 0));
+	printf("\nprintf Return : %d\n", printf("[%0i]", 0));
+	printf("\nft_printf Return : %d\n", ft_printf("[%0i]", 0));
+	printf("\nprintf Return : %d\n", printf("[%0.0i]", 0));
+	printf("\nft_printf Return : %d\n", ft_printf("[%0.0i]", 0));
+	printf("\nprintf Return : %d\n", printf("[%0.*i]", 0, 42));
+	printf("\nft_printf Return : %d\n", ft_printf("[%0.*i]", 0, 42));
 	/*while (a < 5) //T34-69
 	{   
 		printf("-----------------------------------\n");
