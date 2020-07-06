@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 11:21:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 17:14:01 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,15 @@ int main(int argc, const char * argv[])
 	printf("\n ft_printf Return : %d\n", ft_printf(",%0*d,",  a, -2));
 		printf("-----------------------------------\n");
 	printf("\nft_printf Return : %d\n", ft_printf("%d:%d", a, j));
+	
+	a = -2;
+	b = -2;
+	printf(" printf Return : %d\n", printf("%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
+	ft_printf(" nft_printf Return : %d\n", ft_printf("%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
+	printf(" printf Return : %d\n", printf("%-2.-2i,%-2.-2d,", i, l));
+	ft_printf(" nft_printf Return : %d\n", ft_printf("%-2.-2i,%-2.-2d,", i, l));
+	printf("\nft_printf Return : %d\n", ft_printf("%d:%d:%d,%d:%d:%d,",  a, b, i, a, b, l));
+
 
 	/*while (a < 5) //T34-69
 	{   
