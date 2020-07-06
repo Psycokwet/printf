@@ -29,7 +29,7 @@ OBJ 		= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
 CC			=	clang
 
-CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
+CFLAGS		+=	-W -Wall -Wextra -g3 #-Werror  #-pedantic 		## '+=' allow to keep default flags.
 
 LDFLAGS		=	-L$(PRINTF_PATH) -lftprintf
 

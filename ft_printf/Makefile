@@ -26,7 +26,8 @@ HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c						\
 								ft_putstr_fd_len.c				\
 								write_str.c						\
-								write_ui_value_in_buffer.c
+								write_ui_value_in_buffer.c		\
+								write_padding.c
 CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_c.c						\
 								convert_d.c						\
@@ -47,7 +48,9 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_nbr_buffer.c				\
 								write_p.c						\
 								write_p_in_buffer.c				\
-								write_padding.c					\
+								write_padding_d.c				\
+								write_padding_s.c				\
+								write_precision_d.c				\
 								write_s.c						\
 								write_u_in_buffer.c				\
 								write_up_x_in_buffer.c			\

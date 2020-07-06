@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 19:08:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/05 18:36:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
 int		write_str(int fd, char *str, size_t len);
 int		write_ui_value_in_buffer(t_data *datas, unsigned int value);
+int		write_padding(t_data *datas, const int padding_c, const int padding_max);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
@@ -172,7 +173,10 @@ int write_diese_up_x(t_data *datas);
 int write_diese_x(t_data *datas);
 int write_p(t_data *datas);
 int write_p_in_buffer(t_data *datas);
-int write_padding(t_data *datas);
+int write_padding_s(t_data *datas);
+int write_padding_d(t_data *datas);
+int write_0_d(t_data *datas);
+int write_precision_d(t_data *datas);
 int write_s(t_data *datas);
 int write_u_in_buffer(t_data *datas);
 int write_up_x_in_buffer(t_data *datas);

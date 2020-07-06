@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_value_i_sign.c                               :+:      :+:    :+:   */
+/*   write_padding_d.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 20:23:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/05 18:45:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int    write_value_i_sign(t_data *datas)
+int write_padding_d(t_data *datas)
 {
-    int sign;
-
-    if(datas->value_i < 0)
-        sign = '-';
-    else
-        sign = '+';
-    return (write(datas->fd, &sign, 1));
+    return (write_padding(datas, ' ', datas->field_width));
 }
