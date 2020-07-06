@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 10:46:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:24:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void set_width_precision_d(t_data *datas, int sign)
 {
+    //printf("DATAS  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
     if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
     {
         if (!(datas->active_flags & FT_PF_FLAG_LESS))
@@ -22,10 +23,11 @@ static void set_width_precision_d(t_data *datas, int sign)
             if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
             {
                 datas->active_flags |= FT_PF_FLAG_PRECISION;
-                datas->precision = datas->field_width;
+                datas->precision = datas->field_width -(-sign);
             }
         }
     }
+    //printf("DATAS MID  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
     datas->precision -= datas->len;
     if (datas->precision < 0)
         datas->precision = 0;
@@ -34,6 +36,7 @@ static void set_width_precision_d(t_data *datas, int sign)
     datas->field_width -= (datas->len + (-sign) + datas->precision);
     if (datas->field_width < 0)
         datas->field_width = 0;
+    //printf("DATAS END W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
 }
 
 int write_d_in_buffer(t_data *datas)

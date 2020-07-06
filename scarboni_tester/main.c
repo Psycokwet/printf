@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 10:43:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:21:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,23 @@ int main(int argc, const char * argv[])
 	printf("\n printf Return : %d\n", printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 	printf("\n ft_printf Return : %d\n", ft_printf("%.*i, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d, %.*d", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
 	printf("\nft_printf Return : %d\n", ft_printf("%d:%d,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,,%d:%d,", a, i, a, j, a, k, a, l, a, m, a, c, a, e, a, d));
+
+
+	 a = 3;
+		printf("------------%%.*d-----------------\n");
+	printf("\n printf Return : %d\n", printf(",%.*d,", a, j));
+	printf("\n ft_printf Return : %d\n", ft_printf(",%.*d,", a, j));
+		printf("------------%%.*d-----------------\n");
+	printf("\n printf Return : %d\n", printf(",%.*d,", a, -2));
+	printf("\n ft_printf Return : %d\n", ft_printf(",%.*d,", a, -2));
+		printf("------------%%0*d-----------------\n");
+	printf("\n printf Return : %d\n", printf(",%0*d,",  a, j));
+	printf("\n ft_printf Return : %d\n", ft_printf(",%0*d,",  a, j));
+		printf("------------%%0*d-----------------\n");
+	printf("\n printf Return : %d\n", printf(",%0*d,",  a, -2));
+	printf("\n ft_printf Return : %d\n", ft_printf(",%0*d,",  a, -2));
+		printf("-----------------------------------\n");
+	printf("\nft_printf Return : %d\n", ft_printf("%d:%d", a, j));
 
 	/*while (a < 5) //T34-69
 	{   
