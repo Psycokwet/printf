@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 10:38:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 10:41:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ int write_d_in_buffer(t_data *datas)
     }
     if (len <= EXIT_SUCCESS)
         return (-EXIT_FAILURE);
-    datas->len = (size_t)len;   
-    set_width_precision_d(datas, full_len);
+    datas->len = (size_t)len;
     if(datas->active_flags & FT_PF_FLAG_PRECISION && datas->value_i == 0 && datas->precision == 0)
         datas->len = 0;
-
+    set_width_precision_d(datas, full_len);
     return (EXIT_SUCCESS);
 }
