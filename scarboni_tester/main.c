@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 09:30:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 10:53:44 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,12 @@ int main(int argc, const char * argv[])
 		printf("-----------------------------------\n");
 	printf("\nft_printf Return : %d\n", ft_printf("%d:%d:%d,%d:%d:%d,",  a, b, i, a, b, l));
 
+	a = 3;
+	b = 4;
+
+	ft_printf(" printf Return : %d\n", ft_printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+
+	printf(" printf Return : %d\n", printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
 
 	/*while (a < 5) //T34-69
 	{   
