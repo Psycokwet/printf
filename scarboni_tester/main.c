@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 17:50:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 09:24:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ int main(int argc, const char * argv[])
 	b = -2;
 	printf(" aprintf Return : %d\n", printf("a%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
 	ft_printf(" anft_printf Return : %d\n", ft_printf("a%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
-		printf("-----------------------------------\n");
-	printf(" bprintf Return : %d\n", printf("b%-2.-2i,%-2.-2d,%d,%d,", i, l, 42));
+		printf("----------------different linux/mac-------------------\n");
+	printf(" bprintf Return : %d\n", printf("b%-2.-2i,%-2.-2d,%d,%d,", i, l));
 	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%-2.-2i,%-2.-2d,", i, l));
 		printf("-----------------------------------\n");
 	printf(" bprintf Return : %d\n", printf("b%2.-2i,%2.-2d,", i, l));
 	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%2.-2i,%2.-2d,", i, l));
-		printf("-----------------------------------\n");
+		printf("----------------------\\-------------\n");
 	printf(" bprintf Return : %d\n", printf("b%+-2.2i,%-2.2d,", i, l));
 	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%+-2.2i,%-2.2d,", i, l));
 		printf("-----------------------------------\n");
