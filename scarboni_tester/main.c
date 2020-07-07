@@ -156,7 +156,7 @@ int main(int argc, const char * argv[])
 	printf("\n-----------\n");
 	printf("|%.*|", 0, 0);
 	printf("\n");
-	ft_printf("|%.*", 0, 0);
+	ft_printf("|%.*|", 0, 0);
 	printf("\n-----------\n");
 	printf("|%...*|", value, value);
 	printf("\n");
@@ -440,7 +440,7 @@ int main(int argc, const char * argv[])
 	printf("\n-----------\n");
 	printf("|%.*|", 0, 0);
 	printf("\n");
-	ft_printf("|%.*", 0, 0);
+	ft_printf("|%.*|", 0, 0);
 	printf("\n-----------\n");
 	printf("|%...*|", value, value);
 	printf("\n");
