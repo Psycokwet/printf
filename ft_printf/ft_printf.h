@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 15:24:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:58:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define EXIT_CODE_NOT_FOUND	0
 
 # define MAX_NBR_LENGTH	    	30
+
+
 typedef struct		s_data
 {
 	int				fd;
@@ -57,6 +59,7 @@ typedef struct		s_data
 	unsigned int	value_ui;
 }					t_data;
 
+void set_precision(t_data *datas, int new_val, char *src);
 typedef struct		s_str
 {
 	char			*str;

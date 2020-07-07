@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 12:48:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:57:39 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ void prepare_flag_wild_card(t_data *datas)
         if (datas->active_flags & FT_PF_FLAG_ZERO)
         {
             datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
-            datas->precision = datas->field_width;
+            //datas->precision = datas->field_width;
+    set_precision(datas, datas->field_width, "prepare_flag_wild_card");
         }
         else
         {
             datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
-            datas->precision = 1;
+    set_precision(datas, 1, "prepare_flag_wild_card");
+            //datas->precision = 1;
         }
         //printf("PREPARE WILDCARD\n");
     }

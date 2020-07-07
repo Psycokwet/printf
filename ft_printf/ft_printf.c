@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 15:24:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 17:28:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ typedef struct		s_command
 {
 	int			(*command)(const char *, t_data *);
 }					t_command;
+
+void set_precision(t_data *datas, int new_val, char *src){
+    (void)src;
+    //printf("SET precision at %d, from %s\n", new_val, src);
+    datas->precision = new_val;
+}
 
 static const t_command COMMANDS[MAX_COMMAND] = {
 	(t_command){&set_undefined},
@@ -31,8 +37,8 @@ int parse_format(t_data *datas)
     int command_id = MAX_COMMAND;
     datas->active_flags = FT_PF_FLAG_WRITE;
     datas->unauthorized_flags = 0;
-    datas->field_width = 0;
-    datas->precision = 0;
+    datas->field_width = 1;
+    set_precision(datas, 1, "parse_format");
     while(--command_id >= 0){
         //printf("COMMAND :{");
         ret = COMMANDS[command_id].command(datas->format_s + datas->cursor, datas);
@@ -56,6 +62,7 @@ int ft_printf(const char *format_s, ...)
     datas.format_s = format_s;
     datas.cursor = 0;
     datas.written_count = 0;
+    datas.precision = 1;
     datas.fd = STDOUT_FILENO;
     
     va_start(datas.list, format_s);

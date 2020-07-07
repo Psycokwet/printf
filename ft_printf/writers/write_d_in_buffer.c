@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 16:42:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 17:28:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void set_width_precision_d(t_data *datas, int sign)
 {
+    int precision_tmp;
     //printf("DATAS  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
     if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
     {
@@ -23,18 +24,26 @@ static void set_width_precision_d(t_data *datas, int sign)
             if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
             {
                 datas->active_flags |= FT_PF_FLAG_PRECISION;
-                datas->precision = datas->field_width -(-sign);
+    set_precision(datas, datas->field_width -(-sign), "set_width_precision_d");
+               // datas->precision = datas->field_width -(-sign);
             }
         }
     }
     //printf("DATAS MID  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
-    datas->active_flags |= FT_PF_FLAG_PRECISION;
-    datas->precision -= datas->len;
-    if (datas->precision < 0)
-        datas->precision = 0;
-    if (datas->field_width < datas->precision)
+    precision_tmp = 0;
+    if (datas->active_flags & FT_PF_FLAG_PRECISION)
+    {
+        //printf("HEYOU\n");
+        datas->precision -= datas->len;
+        if (datas->precision < 0){
+            set_precision(datas, 0, "set_width_precision_d");
+            //datas->precision = 0;
+        }
+        precision_tmp = datas->precision;
+    }
+    if ((datas->active_flags & FT_PF_FLAG_PRECISION) && datas->field_width < precision_tmp)
         datas->field_width = 0;
-    datas->field_width -= (datas->len + (-sign) + datas->precision);
+    datas->field_width -= (datas->len + (-sign) + precision_tmp);
     if (datas->field_width < 0)
         datas->field_width = 0;
     //printf("DATAS END W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
@@ -59,12 +68,11 @@ int write_d_in_buffer(t_data *datas)
     if (len <= EXIT_SUCCESS)
         return (-EXIT_FAILURE);
     datas->len = (size_t)len;
-    if(datas->active_flags & FT_PF_FLAG_PRECISION && datas->value_i == 0 && datas->precision == 0)
+    if(datas->value_i == 0 && datas->precision == 0)
     {
         //printf("PRECISION %d\n",datas->precision);
         datas->len = 0;
     }
-        //printf("PRECISIONELSE  %d %d %d\n",datas->precision , datas->active_flags & FT_PF_FLAG_PRECISION , datas->value_i );
     set_width_precision_d(datas, sign);
     return (EXIT_SUCCESS);
 }
