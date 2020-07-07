@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 18:24:22 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/06 17:14:01 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/06 17:50:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,18 @@ int main(int argc, const char * argv[])
 	
 	a = -2;
 	b = -2;
-	printf(" printf Return : %d\n", printf("%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
-	ft_printf(" nft_printf Return : %d\n", ft_printf("%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
-	printf(" printf Return : %d\n", printf("%-2.-2i,%-2.-2d,", i, l));
-	ft_printf(" nft_printf Return : %d\n", ft_printf("%-2.-2i,%-2.-2d,", i, l));
+	printf(" aprintf Return : %d\n", printf("a%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
+	ft_printf(" anft_printf Return : %d\n", ft_printf("a%*.*i,%*.*d,", -8, -4, i, -8, -4, l));
+		printf("-----------------------------------\n");
+	printf(" bprintf Return : %d\n", printf("b%-2.-2i,%-2.-2d,%d,%d,", i, l, 42));
+	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%-2.-2i,%-2.-2d,", i, l));
+		printf("-----------------------------------\n");
+	printf(" bprintf Return : %d\n", printf("b%2.-2i,%2.-2d,", i, l));
+	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%2.-2i,%2.-2d,", i, l));
+		printf("-----------------------------------\n");
+	printf(" bprintf Return : %d\n", printf("b%+-2.2i,%-2.2d,", i, l));
+	ft_printf(" bnft_printf Return : %d\n", ft_printf("b%+-2.2i,%-2.2d,", i, l));
+		printf("-----------------------------------\n");
 	printf("\nft_printf Return : %d\n", ft_printf("%d:%d:%d,%d:%d:%d,",  a, b, i, a, b, l));
 
 
