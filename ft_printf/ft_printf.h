@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 10:45:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:24:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_data
 {
 	int				fd;
 	int				cursor;
+	int				last_percent_found;
 	int				padding_c;
     size_t			len;
 	int				written_count;

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 10:46:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:24:11 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int ft_printf(const char *format_s, ...)
             datas.written_count += i;
             datas.cursor += i + 1;
             i = -1;
+            datas.last_percent_found = datas.cursor;
             ret = parse_format(&datas);
             if(ret <= -EXIT_FAILURE){
                 printf("FAILURE %d\n", ret);
