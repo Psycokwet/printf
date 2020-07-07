@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 15:33:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:34:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int set_undefined(const char *code, t_data *datas){
     //printf("\nUNDEFINED BEHAVIOR [%s]\n", code);
     (void)code;
+    (void)datas;
     //datas->cursor++;
     return EXIT_CODE_END_FOUND;
 }
