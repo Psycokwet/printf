@@ -1673,7 +1673,7 @@ int main(int argc, const char * argv[])
 
 
 	printf("\n------end-----\n");
-	/*a = -2;
+	a = -2;
 	int at = 70;
 	while(a < 5) //T70-177
 	{
@@ -1695,13 +1695,14 @@ int main(int argc, const char * argv[])
 		}
 		a++;
 	}
-	a = 0;
+	a = -1;
 	b = -2;		
-	printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
-	ft_printf(" ft_printf Return : %d\n", ft_printf("|%0*.*d|", a, b, l));
+	printf("----------------%d--a:%d b:%d----------------\n\n\n\n\n\n", at ++, a, b);
+	printf("\n\n\n\n\n\n");
+	printf(" ft_printf Return : %d\n", ft_printf("|%0*.*d|", a, b, l));
 	printf(" printf Return : %d\n", printf("|%0*.*d|", a, b, l));
 	
-	ft_printf("\n\n|%d:%d:%d|\n", a, b, l);*/
+	ft_printf("\n\n|%d:%d:%d|\n", a, b, l);
 	/*while (a < 5) //T34-69
 	{   
 		printf("-----------------------------------\n");
