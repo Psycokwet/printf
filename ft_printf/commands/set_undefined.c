@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 15:34:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:36:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #ifndef LINUX
 
 int set_undefined(const char *code, t_data *datas){
-    //printf("\nUNDEFINED BEHAVIOR [%s]\n", code);
+    printf("\nUNDEFINED BEHAVIOR [%s][%d]\n", code, datas->cursor);
     (void)code;
     (void)datas;
     //datas->cursor++;
