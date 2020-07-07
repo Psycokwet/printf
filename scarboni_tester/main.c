@@ -14,6 +14,10 @@
 #include "../ft_printf/libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 
+
+
+
+
 #include <stdarg.h>
 
 int main(int argc, const char * argv[])
@@ -261,6 +265,11 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%4.*d|", -6, value);
 
+	printf("\n------%%4d.*  (0-----\n");
+	printf("|%4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%4.*d|", 0, value);
+
 
 
 	printf("\n------%%04d.-----\n");
@@ -282,6 +291,11 @@ int main(int argc, const char * argv[])
 	printf("|%04.*d|", -6, value);
 	printf("\n");
 	ft_printf("|%04.*d|", -6, value);
+
+	printf("\n------%%04d.*  (0-----\n");
+	printf("|%04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%04.*d|", 0, value);
 
 
 
@@ -305,6 +319,11 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%-04.*d|", -6, value);
 
+	printf("\n------%%-04d.*  (0-----\n");
+	printf("|%-04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", 0, value);
+
 	printf("\n------%%-4d.-----\n");
 	printf("|%-4.d|", value);
 	printf("\n");
@@ -324,6 +343,11 @@ int main(int argc, const char * argv[])
 	printf("|%-4.*d|", -6, value);
 	printf("\n");
 	ft_printf("|%-4.*d|", -6, value);
+
+	printf("\n------%%-4d.*  (0)-----\n");
+	printf("|%-4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", 0, value);
 
 
 
@@ -349,6 +373,16 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%4.-6d|", value);
 
+	printf("\n------%%4d.-0-----\n");
+	printf("|%4.-0d|", value);
+	printf("\n");
+	ft_printf("|%4.-0d|", value);
+
+	printf("\n------%%4d.0-----\n");
+	printf("|%4.0d|", value);
+	printf("\n");
+	ft_printf("|%4.0d|", value);
+
 
 
 	printf("\n------%%04d.-----\n");
@@ -370,6 +404,17 @@ int main(int argc, const char * argv[])
 	printf("|%04.-6d|", value);
 	printf("\n");
 	ft_printf("|%04.-6d|", value);
+
+	printf("\n------%%04d.-0-----\n");
+	printf("|%04.-0d|", value);
+	printf("\n");
+	ft_printf("|%04.-0d|", value);
+
+	printf("\n------%%04d.0-----\n");
+	printf("|%04.0d|", value);
+	printf("\n");
+	ft_printf("|%04.0d|", value);
+
 
 
 
@@ -393,6 +438,17 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%-04.-6d|", value);
 
+	printf("\n------%%-04d.-0-----\n");
+	printf("|%-04.-0d|", value);
+	printf("\n");
+	ft_printf("|%-04.-0d|", value);
+
+	printf("\n------%%-04d.0-----\n");
+	printf("|%-04.0d|", value);
+	printf("\n");
+	ft_printf("|%-04.0d|", value);
+
+
 	printf("\n------%%-4d.-----\n");
 	printf("|%-4.d|", value);
 	printf("\n");
@@ -412,6 +468,16 @@ int main(int argc, const char * argv[])
 	printf("|%-4.-6d|", value);
 	printf("\n");
 	ft_printf("|%-4.-6d|", value);
+
+	printf("\n------%%-4d.-0-----\n");
+	printf("|%-4.-0d|", value);
+	printf("\n");
+	ft_printf("|%-4.-0d|", value);
+
+	printf("\n------%%-4d.0-----\n");
+	printf("|%-4.0d|", value);
+	printf("\n");
+	ft_printf("|%-4.0d|", value);
 
 
 	printf("\n------end-----\n");
@@ -544,6 +610,11 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%4.*d|", -6, value);
 
+	printf("\n------%%4d.*  (0-----\n");
+	printf("|%4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%4.*d|", 0, value);
+
 
 
 	printf("\n------%%04d.-----\n");
@@ -565,6 +636,11 @@ int main(int argc, const char * argv[])
 	printf("|%04.*d|", -6, value);
 	printf("\n");
 	ft_printf("|%04.*d|", -6, value);
+
+	printf("\n------%%04d.*  (0-----\n");
+	printf("|%04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%04.*d|", 0, value);
 
 
 
@@ -588,6 +664,12 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%-04.*d|", -6, value);
 
+
+	printf("\n------%%-04d.*  (0-----\n");
+	printf("|%-04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", 0, value);
+
 	printf("\n------%%-4d.-----\n");
 	printf("|%-4.d|", value);
 	printf("\n");
@@ -607,6 +689,13 @@ int main(int argc, const char * argv[])
 	printf("|%-4.*d|", -6, value);
 	printf("\n");
 	ft_printf("|%-4.*d|", -6, value);
+
+	printf("\n------%%-4d.*  (0)-----\n");
+	printf("|%-4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", 0, value);
+
+
 
 
 
@@ -632,6 +721,16 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%4.-6d|", value);
 
+	printf("\n------%%4d.-0-----\n");
+	printf("|%4.-0d|", value);
+	printf("\n");
+	ft_printf("|%4.-0d|", value);
+
+	printf("\n------%%4d.0-----\n");
+	printf("|%4.0d|", value);
+	printf("\n");
+	ft_printf("|%4.0d|", value);
+
 
 
 	printf("\n------%%04d.-----\n");
@@ -653,6 +752,16 @@ int main(int argc, const char * argv[])
 	printf("|%04.-6d|", value);
 	printf("\n");
 	ft_printf("|%04.-6d|", value);
+
+	printf("\n------%%04d.-0-----\n");
+	printf("|%04.-0d|", value);
+	printf("\n");
+	ft_printf("|%04.-0d|", value);
+
+	printf("\n------%%04d.0-----\n");
+	printf("|%04.0d|", value);
+	printf("\n");
+	ft_printf("|%04.0d|", value);
 
 
 
@@ -676,6 +785,15 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%-04.-6d|", value);
 
+	printf("\n------%%-04d.-0-----\n");
+	printf("|%-04.-0d|", value);
+	printf("\n");
+	ft_printf("|%-04.-0d|", value);
+	printf("\n------%%-04d.0-----\n");
+	printf("|%-04.0d|", value);
+	printf("\n");
+	ft_printf("|%-04.0d|", value);
+
 	printf("\n------%%-4d.-----\n");
 	printf("|%-4.d|", value);
 	printf("\n");
@@ -696,31 +814,894 @@ int main(int argc, const char * argv[])
 	printf("\n");
 	ft_printf("|%-4.-6d|", value);
 
+	printf("\n------%%-4d.-0-----\n");
+	printf("|%-4.-0d|", value);
+	printf("\n");
+	ft_printf("|%-4.-0d|", value);
+
+	printf("\n------%%-4d.0-----\n");
+	printf("|%-4.0d|", value);
+	printf("\n");
+	ft_printf("|%-4.0d|", value);
+
 
 	printf("\n------end-----\n");
-	// a = -2;
-	// int at = 70;
-	// while(a < 5) //T70-177
-	// {
-	// 	b = -2;
-	// 	while (b < 5)
-	// 	{
-	// 		printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
-	// 		ft_printf(" ft_printf Return : %d\n", ft_printf("|%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
-	// 		printf(" printf Return : %d\n", printf("|%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	value = 0;
+	printf("\n-----------\n");
+	printf("|%.d|", value);
+	printf("\n");
+	ft_printf("|%.d|", value);
+	printf("\n-----------\n");
+	printf("|%.0|", value);
+	printf("\n");
+	ft_printf("|%.0|", value);
+	printf("\n-----------\n");
+	printf("|%.0000042|", value);
+	printf("\n");
+	ft_printf("|%.0000042|", value);
+	printf("\n-----------\n");
+	printf("|%.*|", -value, value);
+	printf("\n");
+	ft_printf("|%.*|", -value, value);
+	printf("\n-----------\n");
+	printf("|%.*|", 0, value);
+	printf("\n");
+	ft_printf("|%.*|", 0, value);
+	printf("\n-----------\n");
+	printf("|%.*|", 0, 0);
+	printf("\n");
+	ft_printf("|%.*|", 0, 0);
+	printf("\n-----------\n");
+	printf("|%...*|", value, value);
+	printf("\n");
+	ft_printf("|%...*|", value, value);
+
+
+	printf("\n------%%d-----\n");
+	printf("|%d|", value);
+	printf("\n");
+	ft_printf("|%d|", value);
+
+	printf("\n------on the *-----\n");
+	printf("\n------%%*d-----\n", 4);
+	printf("|%*d|", 4, value);
+	printf("\n");
+	ft_printf("|%*d|", 4, value);
+
+	printf("\n-----%%0*d------\n");
+	printf("|%0*d|", 4, value);
+	printf("\n");
+	ft_printf("|%0*d|", 4, value);
+
+	printf("\n-----%%-0*d------\n");
+	printf("|%-0*d|", 4, value);
+	printf("\n");
+	ft_printf("|%-0*d|", 4, value);
+
+	printf("\n------%%-*d-----\n");
+	printf("|%-*d|", 4, value);
+	printf("\n");
+	ft_printf("|%-*d|", 4, value);
+
+
+
+	printf("\n------on the format_s-----\n");
+
+	printf("\n------%%4d-----\n");
+	printf("|%4d|", value);
+	printf("\n");
+	ft_printf("|%4d|", value);
+
+	printf("\n-----%%04d------\n");
+	printf("|%04d|", value);
+	printf("\n");
+	ft_printf("|%04d|", value);
+
+	printf("\n-----%%-04d------\n");
+	printf("|%-04d|", value);
+	printf("\n");
+	ft_printf("|%-04d|", value);
+
+	printf("\n------%%-4d-----\n");
+	printf("|%-4d|", value);
+	printf("\n");
+	ft_printf("|%-4d|", value);
+
+
+	printf("\n------on the *-----\n");
+	printf("\n------%%*d-----\n", 4);
+	printf("|%*d|", 4, value);
+	printf("\n");
+	ft_printf("|%*d|", 4, value);
+
+	printf("\n-----%%0*d------\n");
+	printf("|%0*d|", 4, value);
+	printf("\n");
+	ft_printf("|%0*d|", 4, value);
+
+	printf("\n-----%%-0*d------\n");
+	printf("|%-0*d|", 4, value);
+	printf("\n");
+	ft_printf("|%-0*d|", 4, value);
+
+	printf("\n------%%-*d-----\n");
+	printf("|%-*d|", 4, value);
+	printf("\n");
+	ft_printf("|%-*d|", 4, value);
+
+
+
+	printf("\n------WITH PRECISION-----\n");
+	printf("\n------on the *****-----\n");
+
+
+	printf("\n------%%4d.-----\n");
+	printf("|%4.d|", value);
+	printf("\n");
+	ft_printf("|%4.d|", value);
+
+	printf("\n------%%4d.*  (3-----\n");
+	printf("|%4.*d|", 3, value);
+	printf("\n");
+	ft_printf("|%4.*d|", 3, value);
+
+	printf("\n------%%4d.*  (6-----\n");
+	printf("|%4.*d|", 6, value);
+	printf("\n");
+	ft_printf("|%4.*d|", 6, value);
+
+	printf("\n------%%4d.*  (-6-----\n");
+	printf("|%4.*d|", -6, value);
+	printf("\n");
+	ft_printf("|%4.*d|", -6, value);
+
+	printf("\n------%%4d.*  (0-----\n");
+	printf("|%4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%4.*d|", 0, value);
+
+
+
+	printf("\n------%%04d.-----\n");
+	printf("|%04.d|", value);
+	printf("\n");
+	ft_printf("|%04.d|", value);
+
+	printf("\n------%%04d.*  (3-----\n");
+	printf("|%04.*d|", 3, value);
+	printf("\n");
+	ft_printf("|%04.*d|", 3, value);
+
+	printf("\n------%%04d.*  (6-----\n");
+	printf("|%04.*d|", 6, value);
+	printf("\n");
+	ft_printf("|%04.*d|", 6, value);
+
+	printf("\n------%%04d.*  (-6-----\n");
+	printf("|%04.*d|", -6, value);
+	printf("\n");
+	ft_printf("|%04.*d|", -6, value);
+
+	printf("\n------%%04d.*  (0-----\n");
+	printf("|%04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%04.*d|", 0, value);
+
+
+
+	printf("\n------%%-04d.-----\n");
+	printf("|%-04.d|", value);
+	printf("\n");
+	ft_printf("|%-04.d|", value);
+
+	printf("\n------%%-04d.*  (3-----\n");
+	printf("|%-04.*d|", 3, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", 3, value);
+
+	printf("\n------%%-04d.*  (6-----\n");
+	printf("|%-04.*d|", 6, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", 6, value);
+
+	printf("\n------%%-04d.*  (-6-----\n");
+	printf("|%-04.*d|", -6, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", -6, value);
+
+	printf("\n------%%-04d.*  (0-----\n");
+	printf("|%-04.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-04.*d|", 0, value);
+
+	printf("\n------%%-4d.-----\n");
+	printf("|%-4.d|", value);
+	printf("\n");
+	ft_printf("|%-4.d|", value);
+
+	printf("\n------%%-4d.*  (3)-----\n");
+	printf("|%-4.*d|", 3, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", 3, value);
+
+	printf("\n------%%-4d.*  (6)-----\n");
+	printf("|%-4.*d|", 6, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", 6, value);
+
+	printf("\n------%%-4d.*  (-6)-----\n");
+	printf("|%-4.*d|", -6, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", -6, value);
+
+	printf("\n------%%-4d.*  (0)-----\n");
+	printf("|%-4.*d|", 0, value);
+	printf("\n");
+	ft_printf("|%-4.*d|", 0, value);
+
+
+
+	printf("\n------on the format_s-----\n");
+
+	printf("\n------%%4d.-----\n");
+	printf("|%4.d|", value);
+	printf("\n");
+	ft_printf("|%4.d|", value);
+
+	printf("\n------%%4d.3-----\n");
+	printf("|%4.3d|", value);
+	printf("\n");
+	ft_printf("|%4.3d|", value);
+
+	printf("\n------%%4d.6-----\n");
+	printf("|%4.6d|", value);
+	printf("\n");
+	ft_printf("|%4.6d|", value);
+
+	printf("\n------%%4d.-6-----\n");
+	printf("|%4.-6d|", value);
+	printf("\n");
+	ft_printf("|%4.-6d|", value);
+
+	printf("\n------%%4d.-0-----\n");
+	printf("|%4.-0d|", value);
+	printf("\n");
+	ft_printf("|%4.-0d|", value);
+
+	printf("\n------%%4d.0-----\n");
+	printf("|%4.0d|", value);
+	printf("\n");
+	ft_printf("|%4.0d|", value);
+
+
+
+	printf("\n------%%04d.-----\n");
+	printf("|%04.d|", value);
+	printf("\n");
+	ft_printf("|%04.d|", value);
+
+	printf("\n------%%04d.3-----\n");
+	printf("|%04.3d|", value);
+	printf("\n");
+	ft_printf("|%04.3d|", value);
+
+	printf("\n------%%04d.6-----\n");
+	printf("|%04.6d|", value);
+	printf("\n");
+	ft_printf("|%04.6d|", value);
+
+	printf("\n------%%04d.-6-----\n");
+	printf("|%04.-6d|", value);
+	printf("\n");
+	ft_printf("|%04.-6d|", value);
+
+	printf("\n------%%04d.-0-----\n");
+	printf("|%04.-0d|", value);
+	printf("\n");
+	ft_printf("|%04.-0d|", value);
+
+	printf("\n------%%04d.0-----\n");
+	printf("|%04.0d|", value);
+	printf("\n");
+	ft_printf("|%04.0d|", value);
+
+
+
+
+	printf("\n------%%-04d.-----\n");
+	printf("|%-04.d|", value);
+	printf("\n");
+	ft_printf("|%-04.d|", value);
+
+	printf("\n------%%-04d.3-----\n");
+	printf("|%-04.3d|", value);
+	printf("\n");
+	ft_printf("|%-04.3d|", value);
+
+	printf("\n------%%-04d.6-----\n");
+	printf("|%-04.6d|", value);
+	printf("\n");
+	ft_printf("|%-04.6d|", value);
+
+	printf("\n------%%-04d.-6-----\n");
+	printf("|%-04.-6d|", value);
+	printf("\n");
+	ft_printf("|%-04.-6d|", value);
+
+	printf("\n------%%-04d.-0-----\n");
+	printf("|%-04.-0d|", value);
+	printf("\n");
+	ft_printf("|%-04.-0d|", value);
+
+	printf("\n------%%-04d.0-----\n");
+	printf("|%-04.0d|", value);
+	printf("\n");
+	ft_printf("|%-04.0d|", value);
+
+
+	printf("\n------%%-4d.-----\n");
+	printf("|%-4.d|", value);
+	printf("\n");
+	ft_printf("|%-4.d|", value);
+
+	printf("\n------%%-4d.3-----\n");
+	printf("|%-4.3d|", value);
+	printf("\n");
+	ft_printf("|%-4.3d|", value);
+
+	printf("\n------%%-4d.6-----\n");
+	printf("|%-4.6d|", value);
+	printf("\n");
+	ft_printf("|%-4.6d|", value);
+
+	printf("\n------%%-4d.-6-----\n");
+	printf("|%-4.-6d|", value);
+	printf("\n");
+	ft_printf("|%-4.-6d|", value);
+
+	printf("\n------%%-4d.-0-----\n");
+	printf("|%-4.-0d|", value);
+	printf("\n");
+	ft_printf("|%-4.-0d|", value);
+
+	printf("\n------%%-4d.0-----\n");
+	printf("|%-4.0d|", value);
+	printf("\n");
+	ft_printf("|%-4.0d|", value);
+
+
+	printf("\n------end-----\n");
+
+	value = 42;
+	b = 4;
+
+	printf("\n------WITH PRECISION-----\n", b);
+	printf("\n------on the *****-----\n", b);
+
+
+	printf("\n---(%d)---%%4d.-----\n", b);
+	printf("|%*.d|", b, value);
+	printf("\n");
+	ft_printf("|%*.d|", b, value);
+
+	printf("\n---(%d)---%%4d.*  (3-----\n", b);
+	printf("|%*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%4d.*  (6-----\n", b);
+	printf("|%*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%4d.*  (-6-----\n", b);
+	printf("|%*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, -6, value);
+
+	printf("\n---(%d)---%%4d.*  (0-----\n", b);
+	printf("|%*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 0, value);
+
+
+
+	printf("\n--(%d)----%%04d.-----\n", b);
+	printf("|%0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.d|", b, value);
+
+	printf("\n---(%d)---%%04d.*  (3-----\n", b);
+	printf("|%0*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%04d.*  (6-----\n", b);
+	printf("|%0*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%04d.*  (-6-----\n", b);
+	printf("|%0*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, -6, value);
+
+	printf("\n--(%d)----%%04d.*  (0-----\n", b);
+	printf("|%0*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 0, value);
+
+
+
+	printf("\n---(%d)---%%-04d.-----\n", b);
+	printf("|%-0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.d|", b, value);
+
+	printf("\n---(%d)---%%-04d.*  (3-----\n", b);
+	printf("|%-0*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 3, value);
+
+	printf("\n----(%d)--%%-04d.*  (6-----\n", b);
+	printf("|%-0*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 6, value);
+
+	printf("\n----(%d)--%%-04d.*  (-6-----\n", b);
+	printf("|%-0*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, -6, value);
+
+
+	printf("\n----(%d)--%%-04d.*  (0-----\n", b);
+	printf("|%-0*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 0, value);
+
+	printf("\n----(%d)--%%-4d.-----\n", b);
+	printf("|%-*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.d|", b, value);
+
+	printf("\n--(%d)----%%-4d.*  (3)-----\n", b);
+	printf("|%-*.*d|",  b,3, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%-4d.*  (6)-----\n", b);
+	printf("|%-*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%-4d.*  (-6)-----\n", b);
+	printf("|%-*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, -6, value);
+
+	printf("\n--(%d)----%%-4d.*  (0)-----\n", b);
+	printf("|%-*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 0, value);
+
+
+
+
+
+	printf("\n------on the format_s-----\n");
+
+	printf("\n---(%d)---%%4d.-----\n", b);
+	printf("|%*.d|", b, value);
+	printf("\n");
+	ft_printf("|%*.d|", b, value);
+
+	printf("\n---(%d)---%%4d.3-----\n", b);
+	printf("|%*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%*.3d|", b, value);
+
+	printf("\n---(%d)---%%4d.6-----\n", b);
+	printf("|%*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%*.6d|", b, value);
+
+	printf("\n----(%d)--%%4d.-6-----\n", b);
+	printf("|%*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%*.-6d|", b, value);
+
+	printf("\n--(%d)----%%4d.-0-----\n", b);
+	printf("|%*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%*.-0d|", b, value);
+
+	printf("\n--(%d)----%%4d.0-----\n", b);
+	printf("|%*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%*.0d|", b, value);
+
+
+
+	printf("\n---(%d)---%%04d.-----\n", b);
+	printf("|%0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.d|", b, value);
+
+	printf("\n---(%d)---%%04d.3-----\n", b);
+	printf("|%0*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.3d|", b, value);
+
+	printf("\n---(%d)---%%04d.6-----\n", b);
+	printf("|%0*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.6d|", b, value);
+
+	printf("\n---(%d)---%%04d.-6-----\n", b);
+	printf("|%0*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.-6d|", b, value);
+
+	printf("\n---(%d)---%%04d.-0-----\n", b);
+	printf("|%0*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.-0d|", b, value);
+
+	printf("\n---(%d)---%%04d.0-----\n", b);
+	printf("|%0*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.0d|",  b,value);
+
+
+
+	printf("\n----(%d)--%%-04d.-----\n", b);
+	printf("|%-0*.d|", b,value);
+	printf("\n");
+	ft_printf("|%-0*.d|", b, value);
+
+	printf("\n----(%d)--%%-04d.3-----\n", b);
+	printf("|%-0*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.3d|", b, value);
+
+	printf("\n---(%d)---%%-04d.6-----\n", b);
+	printf("|%-0*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.6d|", b, value);
+
+	printf("\n----(%d)--%%-04d.-6-----\n", b);
+	printf("|%-0*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.-6d|", b, value);
+
+	printf("\n---(%d)---%%-04d.-0-----\n", b);
+	printf("|%-0*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.-0d|", b, value);
+	printf("\n---(%d)---%%-04d.0-----\n", b);
+	printf("|%-0*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.0d|", b, value);
+
+	printf("\n---(%d)---%%-4d.-----\n", b);
+	printf("|%-*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.d|", b, value);
+
+	printf("\n---(%d)---%%-*d.3-----\n", b);
+	printf("|%-*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.3d|", b, value);
+
+	printf("\n---(%d)---%%-*d.6-----\n", b);
+	printf("|%-*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.6d|", b, value);
+
+	printf("\n---(%d)---%%-*d.-6-----\n", b);
+	printf("|%-*.-6d|", value);
+	printf("\n");
+	ft_printf("|%-*.-6d|", value);
+
+	printf("\n--(%d)----%%-*d.-0-----\n", b);
+	printf("|%-*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.-0d|", b, value);
+
+	printf("\n---(%d)---%%-*d.0-----\n", b);
+	printf("|%-*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.0d|", b, value);
+
+
+	printf("\n------end-----\n");
+	value = 42;
+	b = 0;
+
+	printf("\n------WITH PRECISION-----\n", b);
+	printf("\n------on the *****-----\n", b);
+
+
+	printf("\n---(%d)---%%4d.-----\n", b);
+	printf("|%*.d|", b, value);
+	printf("\n");
+	ft_printf("|%*.d|", b, value);
+
+	printf("\n---(%d)---%%4d.*  (3-----\n", b);
+	printf("|%*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%4d.*  (6-----\n", b);
+	printf("|%*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%4d.*  (-6-----\n", b);
+	printf("|%*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, -6, value);
+
+	printf("\n---(%d)---%%4d.*  (0-----\n", b);
+	printf("|%*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%*.*d|", b, 0, value);
+
+
+
+	printf("\n--(%d)----%%04d.-----\n", b);
+	printf("|%0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.d|", b, value);
+
+	printf("\n---(%d)---%%04d.*  (3-----\n", b);
+	printf("|%0*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%04d.*  (6-----\n", b);
+	printf("|%0*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%04d.*  (-6-----\n", b);
+	printf("|%0*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, -6, value);
+
+	printf("\n--(%d)----%%04d.*  (0-----\n", b);
+	printf("|%0*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%0*.*d|", b, 0, value);
+
+
+
+	printf("\n---(%d)---%%-04d.-----\n", b);
+	printf("|%-0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.d|", b, value);
+
+	printf("\n---(%d)---%%-04d.*  (3-----\n", b);
+	printf("|%-0*.*d|", b, 3, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 3, value);
+
+	printf("\n----(%d)--%%-04d.*  (6-----\n", b);
+	printf("|%-0*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 6, value);
+
+	printf("\n----(%d)--%%-04d.*  (-6-----\n", b);
+	printf("|%-0*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, -6, value);
+
+
+	printf("\n----(%d)--%%-04d.*  (0-----\n", b);
+	printf("|%-0*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%-0*.*d|", b, 0, value);
+
+	printf("\n----(%d)--%%-4d.-----\n", b);
+	printf("|%-*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.d|", b, value);
+
+	printf("\n--(%d)----%%-4d.*  (3)-----\n", b);
+	printf("|%-*.*d|",  b,3, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 3, value);
+
+	printf("\n---(%d)---%%-4d.*  (6)-----\n", b);
+	printf("|%-*.*d|", b, 6, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 6, value);
+
+	printf("\n---(%d)---%%-4d.*  (-6)-----\n", b);
+	printf("|%-*.*d|", b, -6, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, -6, value);
+
+	printf("\n--(%d)----%%-4d.*  (0)-----\n", b);
+	printf("|%-*.*d|", b, 0, value);
+	printf("\n");
+	ft_printf("|%-*.*d|", b, 0, value);
+
+
+
+
+
+	printf("\n------on the format_s-----\n");
+
+	printf("\n---(%d)---%%4d.-----\n", b);
+	printf("|%*.d|", b, value);
+	printf("\n");
+	ft_printf("|%*.d|", b, value);
+
+	printf("\n---(%d)---%%4d.3-----\n", b);
+	printf("|%*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%*.3d|", b, value);
+
+	printf("\n---(%d)---%%4d.6-----\n", b);
+	printf("|%*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%*.6d|", b, value);
+
+	printf("\n----(%d)--%%4d.-6-----\n", b);
+	printf("|%*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%*.-6d|", b, value);
+
+	printf("\n--(%d)----%%4d.-0-----\n", b);
+	printf("|%*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%*.-0d|", b, value);
+
+	printf("\n--(%d)----%%4d.0-----\n", b);
+	printf("|%*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%*.0d|", b, value);
+
+
+
+	printf("\n---(%d)---%%04d.-----\n", b);
+	printf("|%0*.d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.d|", b, value);
+
+	printf("\n---(%d)---%%04d.3-----\n", b);
+	printf("|%0*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.3d|", b, value);
+
+	printf("\n---(%d)---%%04d.6-----\n", b);
+	printf("|%0*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.6d|", b, value);
+
+	printf("\n---(%d)---%%04d.-6-----\n", b);
+	printf("|%0*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.-6d|", b, value);
+
+	printf("\n---(%d)---%%04d.-0-----\n", b);
+	printf("|%0*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.-0d|", b, value);
+
+	printf("\n---(%d)---%%04d.0-----\n", b);
+	printf("|%0*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%0*.0d|",  b,value);
+
+
+
+	printf("\n----(%d)--%%-04d.-----\n", b);
+	printf("|%-0*.d|", b,value);
+	printf("\n");
+	ft_printf("|%-0*.d|", b, value);
+
+	printf("\n----(%d)--%%-04d.3-----\n", b);
+	printf("|%-0*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.3d|", b, value);
+
+	printf("\n---(%d)---%%-04d.6-----\n", b);
+	printf("|%-0*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.6d|", b, value);
+
+	printf("\n----(%d)--%%-04d.-6-----\n", b);
+	printf("|%-0*.-6d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.-6d|", b, value);
+
+	printf("\n---(%d)---%%-04d.-0-----\n", b);
+	printf("|%-0*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.-0d|", b, value);
+	printf("\n---(%d)---%%-04d.0-----\n", b);
+	printf("|%-0*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%-0*.0d|", b, value);
+
+	printf("\n---(%d)---%%-4d.-----\n", b);
+	printf("|%-*.d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.d|", b, value);
+
+	printf("\n---(%d)---%%-*d.3-----\n", b);
+	printf("|%-*.3d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.3d|", b, value);
+
+	printf("\n---(%d)---%%-*d.6-----\n", b);
+	printf("|%-*.6d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.6d|", b, value);
+
+	printf("\n---(%d)---%%-*d.-6-----\n", b);
+	printf("|%-*.-6d|", value);
+	printf("\n");
+	ft_printf("|%-*.-6d|", value);
+
+	printf("\n--(%d)----%%-*d.-0-----\n", b);
+	printf("|%-*.-0d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.-0d|", b, value);
+
+	printf("\n---(%d)---%%-*d.0-----\n", b);
+	printf("|%-*.0d|", b, value);
+	printf("\n");
+	ft_printf("|%-*.0d|", b, value);
+
+
+	printf("\n------end-----\n");
+	/*a = -2;
+	int at = 70;
+	while(a < 5) //T70-177
+	{
+		b = -2;
+		while (b < 5)
+		{
+			printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
+			ft_printf(" ft_printf Return : %d\n", ft_printf("|%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf(" printf Return : %d\n", printf("|%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
 			
-	// 		printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
-	// 		ft_printf(" ft_printf Return : %d\n", ft_printf("|%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
-	// 		printf(" printf Return : %d\n", printf("|%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
+			ft_printf(" ft_printf Return : %d\n", ft_printf("|%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf(" printf Return : %d\n", printf("|%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
 			
-	// 		printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
-	// 		ft_printf(" ft_printf Return : %d\n", ft_printf("|%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
-	// 		printf(" printf Return : %d\n", printf("|%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
-	// 		b++;
-	// 	}
-	// 	a++;
-	// }
+			printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
+			ft_printf(" ft_printf Return : %d\n", ft_printf("|%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			printf(" printf Return : %d\n", printf("|%0*.*i, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d, %0*.*d|", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d));
+			b++;
+		}
+		a++;
+	}
+	a = 0;
+	b = -2;		
+	printf("----------------%d--a:%d b:%d----------------\n", at ++, a, b);
+	ft_printf(" ft_printf Return : %d\n", ft_printf("|%0*.*d|", a, b, l));
+	printf(" printf Return : %d\n", printf("|%0*.*d|", a, b, l));
 	
+	ft_printf("\n\n|%d:%d:%d|\n", a, b, l);*/
 	/*while (a < 5) //T34-69
 	{   
 		printf("-----------------------------------\n");
