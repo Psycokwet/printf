@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 12:28:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:42:04 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void set_width_precision_d(t_data *datas, int sign)
         }
     }
     //printf("DATAS MID  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
+    datas->active_flags |= FT_PF_FLAG_PRECISION;
     datas->precision -= datas->len;
     if (datas->precision < 0)
         datas->precision = 0;
