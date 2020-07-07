@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 10:39:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/07 10:45:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct		s_data
        negative field width is taken as a "-" flag followed by a positive field width.  In no case does a nonexistent or small field width cause truncation of a field;
        if the result of a conversion is wider than the field width, the field is expanded to contain the conversion result.*/
 	unsigned int	active_flags;
-	unsigned int	unothorized_flags;
+	unsigned int	unauthorized_flags;
     va_list			list;
 	char			*value_s;
 	void			*value_p;
