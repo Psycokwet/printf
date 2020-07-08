@@ -158,8 +158,9 @@ int main(int argc, const char * argv[])
 	int plus;
 
 	less = zero = plus = 0;
-	w = p = d = -10;
 	
+	int max = 3;
+	int min = -3;
 	while (plus <= 1)
 	{
 		less = 0;
@@ -168,14 +169,14 @@ int main(int argc, const char * argv[])
 			zero = 0;
 			while (zero <= 1)
 			{	
-				w = -10;
-				while (w <= 10)
+				w = min;
+				while (w <= max)
 				{
-					p = -10;
-					while (p <= 10)
+					p = min;
+					while (p <= max)
 					{
-						d = -10;
-						while (d <= 10)
+						d = min;
+						while (d <= max)
 						{
 							set_flags(FLAGS, plus, less, zero);
 							if(printf_test(FLAGS, w, p, d) != 0)
