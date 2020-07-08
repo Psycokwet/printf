@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 16:58:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:54:17 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct		s_str
 # define FT_PF_FLAG_LL			(1u << 9)
 # define FT_PF_FLAG_H			(1u << 10)
 # define FT_PF_FLAG_HH			(1u << 11)
+# define FT_PF_NEG_PRECISION	(1u << 12)
 # define FT_PF_NO_FLAG			0
 
 int		ft_printf(const char *, ...);

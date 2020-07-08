@@ -168,4 +168,6 @@ int main(int argc, const char * argv[])
 		}
 		plus ++;
 	}
+	// printf("|%+0*.*d|\n",3,-1,1);
+	// ft_printf("|%+0*.*d|\n",3,-1,1);
 }
