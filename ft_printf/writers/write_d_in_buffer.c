@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 19:14:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/08 16:39:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void set_width_precision_d(t_data *datas, int sign)
             if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
             {
                 datas->active_flags |= FT_PF_FLAG_PRECISION;
-    set_precision(datas, datas->field_width -(-sign), "set_width_precision_d");
+                set_precision(datas, datas->field_width -(-sign), "set_width_precision_d");
                // datas->precision = datas->field_width -(-sign);
             }
         }
@@ -74,5 +74,11 @@ int write_d_in_buffer(t_data *datas)
         datas->len = 0;
     }
     set_width_precision_d(datas, sign);
+    if(datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
+    {
+        datas->field_width--;
+        if (datas->field_width < 0)
+            datas->field_width = 0;
+    }
     return (EXIT_SUCCESS);
 }

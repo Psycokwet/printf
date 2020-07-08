@@ -14,3 +14,4 @@ cd /tmp/ft_printf/stud
 git clone https://github.com/Mazoise/42TESTERS-PRINTF
 git clone https://github.com/charMstr/printf_lover_v2
 printfdestructor
+https://github.com/t0mm4rx/ftprintfdestructor
