@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/08 19:32:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:54:04 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void prepare_flag_wild_card(t_data *datas)
             datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
             datas->precision = 1;
         }
+        datas->active_flags |= FT_PF_NEG_PRECISION;
     }
     else
         set_precision_or_fieldwith(datas, value);
+    //printf("NEG PRECISION ? %d:%d\n", datas->active_flags & FT_PF_NEG_PRECISION, value);
 }

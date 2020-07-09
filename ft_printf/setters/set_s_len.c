@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/09 10:46:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:54:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void set_s_len(t_data *datas)
 {
     datas->len = ft_strlen(datas->value_s);
-    //printf("\nIN  W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
+   // printf("\nIN  W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
+    if(datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PRECISION)
+        datas->active_flags -= FT_PF_FLAG_PRECISION;
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
         if (datas->len > (size_t)datas->precision)
