@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/07 16:55:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/08 19:35:38 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@ static void set_precision_or_fieldwith_int(t_data *datas, const int value, const
     if (datas->active_flags & FT_PF_FLAG_PRECISION){
         if (sign >= 0 && !(datas->unauthorized_flags & FT_PF_FLAG_PRECISION)){
             //printf("set_precision_or_fieldwith_int set %d\n", value);
-    set_precision(datas, value, "set_precision_or_fieldwith_int");
-            //datas->precision = value;
+            datas->precision = value;
         }
-        //else
-          //  datas->active_flags -= FT_PF_FLAG_PRECISION;
     }
     
     else
     {
         datas->active_flags |= FT_PF_FLAG_FIELD_WIDTH;
-        datas->field_width = value;
+        set_field_width(datas, value, "set_precision_or_fieldwith_int");
+        //datas->field_width = value;
     }
 }
 
