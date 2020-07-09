@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/09 14:57:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:57:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void prepare_flag_wild_card(t_data *datas)
                 if (datas->field_width == 0)
                     datas->precision = 1;
                 else
-                {
                     datas->precision = datas->field_width;
-                }
             }
             datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
         }
