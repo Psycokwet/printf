@@ -25,9 +25,10 @@ OBJ_PATHS_INIT			+= 	$(OBJ_PATH)
 HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c						\
 								ft_putstr_fd_len.c				\
+								set_width_precision_u_x_up_x.c	\
+								write_padding.c					\
 								write_str.c						\
-								write_ui_value_in_buffer.c		\
-								write_padding.c
+								write_ui_value_in_buffer.c
 CONVERTS_SRC_FILES			=	convert.c	 					\
 								convert_c.c						\
 								convert_d.c						\

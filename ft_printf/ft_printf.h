@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 11:28:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 11:43:09 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,12 @@ typedef struct		s_str
 # define FT_PF_NO_FLAG			0
 
 int		ft_printf(const char *, ...);
-void	set_precision_or_fieldwith(t_data *datas, const int value);
-void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);int ft_printf(const char *, ...);
-void	set_precision_or_fieldwith(t_data *datas, const int value);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
+void	set_width_precision_u_x_up_x(t_data *datas);
+void	set_precision_or_fieldwith(t_data *datas, const int value);
+int		write_padding(t_data *datas, const int padding_c, const int padding_max);
 int		write_str(int fd, char *str, size_t len);
 int		write_ui_value_in_buffer(t_data *datas, unsigned int value);
-int		write_padding(t_data *datas, const int padding_c, const int padding_max);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
