@@ -183,7 +183,6 @@ int main(int argc, const char * argv[])
 	testeur('x');
 	testeur('X');
 	testeur('d');
-	testeur('s');
 	testeur('u');
 	testeur('i');
 
