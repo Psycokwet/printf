@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:42:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 09:28:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ int write_u_in_buffer(t_data *datas)
     if (len <= EXIT_SUCCESS)
         return (-EXIT_FAILURE);
     datas->len = (size_t)len;
+
+    set_width_precision_d(datas, 0);
     return (EXIT_SUCCESS);
 }

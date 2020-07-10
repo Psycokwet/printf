@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/08 19:33:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 09:28:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 static void set_width_precision_d(t_data *datas, int sign)
 {
+
+    if(datas->value_i == 0 && datas->precision == 0)
+        datas->len = 0;
+
     int precision_tmp;
     //printf("DATAS  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
     if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
@@ -49,6 +53,13 @@ static void set_width_precision_d(t_data *datas, int sign)
     if (datas->precision < 0)
         datas->precision = 0;
     //printf("DATAS END W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
+
+    if(datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
+    {
+        datas->field_width--;
+        if (datas->field_width < 0)
+            datas->field_width = 0;
+    }
 }
 
 int write_d_in_buffer(t_data *datas)
@@ -70,17 +81,6 @@ int write_d_in_buffer(t_data *datas)
     if (len <= EXIT_SUCCESS)
         return (-EXIT_FAILURE);
     datas->len = (size_t)len;
-    if(datas->value_i == 0 && datas->precision == 0)
-    {
-        //printf("PRECISION %d\n",datas->precision);
-        datas->len = 0;
-    }
     set_width_precision_d(datas, sign);
-    if(datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
-    {
-        datas->field_width--;
-        if (datas->field_width < 0)
-            datas->field_width = 0;
-    }
     return (EXIT_SUCCESS);
 }
