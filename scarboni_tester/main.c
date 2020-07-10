@@ -163,7 +163,7 @@ int main(int argc, const char * argv[])
 						while (d <= max)
 						{
 							set_flags(FLAGS, plus, less, zero);
-							if(printf_test(FLAGS, w, p, d, "u|\n", 3) != 0)
+							if(printf_test(FLAGS, w, p, d, "x|\n", 3) != 0)
 							{
 								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 							}

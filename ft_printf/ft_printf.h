@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 11:04:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 11:28:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,13 +200,6 @@ typedef struct		s_write
 # define MAX_WRITTER_C		1
 static const t_write WRITER_C[MAX_WRITTER_C] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
-};
-
-# define MAX_WRITTER_X		3
-static const t_write WRITER_X[MAX_WRITTER_X] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_x_in_buffer},
-	(t_write){FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, FT_PF_FLAG_WRITE | FT_PF_FLAG_DIESE, &write_diese_x},
 };
 
 /* ************************************************************************** */
