@@ -115,23 +115,8 @@ void set_flags(char * flags, int plus, int less, int zero)
 	flags[i++] = '\0';
 }
 
-#include <stdarg.h>
-
-#define PRINT ft_printf
-#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
-int main(int argc, const char * argv[])
+void testeur(char convert_c)
 {
-    (void)argc;
-    (void)argv;
-	// float f = 42.123456789012345678901234567890;
-	// double d = 42.123456789012345678901234567890;
-	// double d2 = f;
-	// printf("[%f]\n", f);
-	// printf("[%f]\n", d);
-	// printf("[%f]\n", d2);
-	// ft_printf("[%f]\n", f);
-	// ft_printf("[%f]\n", d);
-	// ft_printf("[%f]\n", d2);
 	static char * FLAGS[30];
 	int w;
 	int p;
@@ -145,6 +130,12 @@ int main(int argc, const char * argv[])
 	
 	int max = 3;
 	int min = -3;
+	char convert[4];
+	convert[0] = convert_c ;
+	convert[1] = '|';
+	convert[2] = '\n';
+	convert[3] = '\0';
+
 	while (plus <= 1)
 	{
 		less = 0;
@@ -163,7 +154,7 @@ int main(int argc, const char * argv[])
 						while (d <= max)
 						{
 							set_flags(FLAGS, plus, less, zero);
-							if(printf_test(FLAGS, w, p, d, "x|\n", 3) != 0)
+							if(printf_test(FLAGS, w, p, d, convert, 3) != 0)
 							{
 								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 							}
@@ -179,6 +170,32 @@ int main(int argc, const char * argv[])
 		}
 		plus ++;
 	}
+}
+
+#include <stdarg.h>
+
+#define PRINT ft_printf
+#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
+int main(int argc, const char * argv[])
+{
+    (void)argc;
+    (void)argv;
+	testeur('x');
+	testeur('X');
+	testeur('d');
+	testeur('s');
+	testeur('u');
+	testeur('i');
+
+	// float f = 42.123456789012345678901234567890;
+	// double d = 42.123456789012345678901234567890;
+	// double d2 = f;
+	// printf("[%f]\n", f);
+	// printf("[%f]\n", d);
+	// printf("[%f]\n", d2);
+	// ft_printf("[%f]\n", f);
+	// ft_printf("[%f]\n", d);
+	// ft_printf("[%f]\n", d2);
 	//printf("|%+0*.*d|\n",3,-1,1);
 	//ft_printf("|%+0*.*d|\n",3,-1,1);
 
