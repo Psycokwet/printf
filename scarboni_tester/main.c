@@ -43,7 +43,7 @@ void fill_info(char *info, char *buffer, char *str_w, int wlen, char* str_p, int
 	ft_strlcpy(info + 2 + buffer_filling + wlen + plen, str_d, 30);
 }
 
-int printf_test(char *flags, int w, int p, int d, char* convert, int convertlen)
+int printf_test_numeric(char *flags, int w, int p, int d, char* convert, int convertlen)
 {
 	static char BUFFER[30];
 	static char INFO[60];
@@ -115,7 +115,7 @@ void set_flags(char * flags, int plus, int less, int zero)
 	flags[i++] = '\0';
 }
 
-void testeur(char convert_c)
+void testeur_numeric(char convert_c)
 {
 	static char * FLAGS[30];
 	int w;
@@ -150,16 +150,128 @@ void testeur(char convert_c)
 					p = min;
 					while (p <= max)
 					{
-						d = min;
+						d = 0;
 						while (d <= max)
 						{
 							set_flags(FLAGS, plus, less, zero);
-							if(printf_test(FLAGS, w, p, d, convert, 3) != 0)
+							if(printf_test_numeric(FLAGS, w, p, d, convert, 3) != 0)
 							{
 								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 							}
 							d++;
 						}
+						p++;
+					}
+					w++;
+				}
+				zero ++;
+			}
+			less ++;
+		}
+		plus ++;
+	}
+}
+
+
+int printf_test_p(char *flags, int w, int p, void *d, char* convert, int convertlen)
+{
+	static char BUFFER[30];
+	static char INFO[60];
+	int buffer_filling = 0;
+	int flagslen = ft_strlen(flags);
+	char *str_w = ft_itoa(w);
+	char *str_p = ft_itoa(p);
+	char *str_d = ft_itoa(d);
+	int wlen = ft_strlen(str_w);
+	int plen = ft_strlen(str_p);
+
+	int error_count = 0;
+	int ret_ft = 0;
+	int ret = 0;
+	buffer_filling = fill_buffer(BUFFER, str_w, wlen, str_p, plen, flags, flagslen, convert, convertlen);
+	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+
+	ret = printf(BUFFER, d);
+	fflush(stdout);
+	ret_ft = ft_printf(BUFFER, d);
+	printf("%s\n", INFO);
+	fflush(stdout);
+	error_count = (ret == ret_ft) ? 0: 1; 
+
+	buffer_filling = fill_buffer(BUFFER, "*", 1, str_p, plen, flags, flagslen, convert, convertlen);
+	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+
+	printf(BUFFER, w, d);
+	fflush(stdout);
+	ft_printf(BUFFER, w, d);
+	printf("%s\n", INFO);
+	fflush(stdout);
+	error_count = (ret == ret_ft) ? 0: 1; 
+
+	buffer_filling = fill_buffer(BUFFER, str_w, wlen, "*", 1, flags, flagslen, convert, convertlen);
+	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+	
+	printf(BUFFER, p, d);
+	fflush(stdout);
+	ft_printf(BUFFER, p, d);
+	printf("%s\n", INFO);
+	fflush(stdout);
+	error_count = (ret == ret_ft) ? 0: 1; 
+
+	buffer_filling = fill_buffer(BUFFER, "*", 1, "*", 1, flags, flagslen, convert, convertlen);
+	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+	
+	printf(BUFFER, w, p, d);
+	fflush(stdout);
+	ft_printf(BUFFER, w, p, d);
+	printf("%s\n", INFO);
+	fflush(stdout);
+	error_count = (ret == ret_ft) ? 0: 1; 
+
+	return error_count;
+}
+
+void testeur_p(char convert_c)
+{
+	static char * FLAGS[30];
+	int w;
+	int p;
+	void *d;
+
+	int less;
+	int zero;
+	int plus;
+
+	less = zero = plus = 0;
+	
+	int max = 3;
+	int min = -3;
+	char *convert = "p|\n";
+
+	while (plus <= 1)
+	{
+		less = 0;
+		while (less <= 1)
+		{
+			zero = 0;
+			while (zero <= 1)
+			{	
+				w = min;
+				while (w <= max)
+				{
+					p = min;
+					while (p <= max)
+					{
+						d = NULL;
+						//while (d <= max)
+						//{
+							set_flags(FLAGS, plus, less, zero);
+							if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
+							{
+								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
+							}
+							//d++;
+						//}
 						p++;
 					}
 					w++;
@@ -180,23 +292,24 @@ int main(int argc, const char * argv[])
 {
     (void)argc;
     (void)argv;
-	testeur('x');
-	testeur('X');
-	testeur('d');
-	testeur('u');
-	testeur('i');
+	// testeur_numeric('x');
+	// testeur_numeric('X');
+	// testeur_numeric('d');
+	// testeur_numeric('u');
+	// testeur_numeric('i');
+	testeur_p('p');
 
-	// float f = 42.123456789012345678901234567890;
-	// double d = 42.123456789012345678901234567890;
-	// double d2 = f;
-	// printf("[%f]\n", f);
-	// printf("[%f]\n", d);
-	// printf("[%f]\n", d2);
-	// ft_printf("[%f]\n", f);
-	// ft_printf("[%f]\n", d);
-	// ft_printf("[%f]\n", d2);
-	//printf("|%+0*.*d|\n",3,-1,1);
-	//ft_printf("|%+0*.*d|\n",3,-1,1);
+	// // float f = 42.123456789012345678901234567890;
+	// // double d = 42.123456789012345678901234567890;
+	// // double d2 = f;
+	// // printf("[%f]\n", f);
+	// // printf("[%f]\n", d);
+	// // printf("[%f]\n", d2);
+	// // ft_printf("[%f]\n", f);
+	// // ft_printf("[%f]\n", d);
+	// // ft_printf("[%f]\n", d2);
+	// //printf("|%+0*.*d|\n",3,-1,1);
+	// //ft_printf("|%+0*.*d|\n",3,-1,1);
 
 
 	// 	int		a = -4;
@@ -375,13 +488,30 @@ int main(int argc, const char * argv[])
 	// while (a < 12) //
 	// {
 	// 	PRINT(" --- Return : %d\n", PRINT("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
-		
-	// printf("test nb %d\n", it++);
+	// 	printf("test nb %d\n", it++);
 	// 	PRINT(" --- Return : %d\n", PRINT("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
-		
-	// printf("test nb %d\n", it++);
+	// 	printf("test nb %d\n", it++);
 	// 	a++;
 	// }
+
+	// printf("\n\n\n\n");
+	
+	// a = 8;
+	// while (a < 12) //
+	// {
+	// 	printf(" ----- Return : %d:%d\n", ft_printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0), printf("%*p, %*x, %*p, %*x, %*p, %*x, %*p, %*x\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
+	// 	printf("\n\n\n\n");
+	// 	printf(" ----- Return : %d:%d\n", ft_printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0), printf("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x, %-*p, %-*x\n", a, (void *)209590960, a, 209590960, a, (void *)207038912, a, 207038912, a, (void *)1, a, 1, a, NULL, a, 0));
+	// 	printf("\n\n\n\n");
+	// 	a++;
+	// }
+
+
+
+
+
+
+
 	// a = f;
 	// b = g;
 	// PRINT(" --- Return : %d\n", PRINT("%-*.*i, %-*.*d, %-*.*d, %-*.*d, %-*.*d, %-*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c));
