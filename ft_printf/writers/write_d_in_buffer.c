@@ -6,16 +6,15 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 09:31:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 11:04:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
 
-void set_width_precision_d(t_data *datas, int sign)
+static void set_width_precision_d(t_data *datas, int sign)
 {
-
     if(datas->value_i == 0 && datas->precision == 0)
         datas->len = 0;
 
@@ -52,7 +51,6 @@ void set_width_precision_d(t_data *datas, int sign)
         datas->precision--;
     if (datas->precision < 0)
         datas->precision = 0;
-    //printf("DATAS END W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
 
     if(datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
     {
@@ -60,6 +58,7 @@ void set_width_precision_d(t_data *datas, int sign)
         if (datas->field_width < 0)
             datas->field_width = 0;
     }
+    //printf("DATAS END W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
 }
 
 int write_d_in_buffer(t_data *datas)

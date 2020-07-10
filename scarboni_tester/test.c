@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/08 16:06:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 11:12:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main()
 {
 	char * lines[3];
     int i = 0;
+    int error_count = 0;
 	int ret = 1;
     int fd = 0;
 
@@ -31,7 +32,7 @@ int		main()
         if(i == 2)
         {
             if(strcmp(lines[0], lines[1]))
-                printf("Error found, datas:\n%s\n%s\n%s\n", lines[0], lines[1], lines[2]);
+                printf("Error %d found, datas:\n%s\n%s\n%s\n", ++error_count, lines[0], lines[1], lines[2]);
             free(lines[0]);
             free(lines[1]);
             free(lines[2]);
@@ -40,6 +41,6 @@ int		main()
         if(i > 2)
             i = 0;
 	}
-    printf("If not text up here, no errors founds\n");
+    printf("%d errors founds\n", error_count);
 	return (0);
 }
