@@ -231,13 +231,13 @@ int printf_test_p(char *flags, int w, int p, void *d, char* convert, int convert
 	return error_count;
 }
 
-void testeur_p(char convert_c)
+void testeur_p()
 {
 	static char * FLAGS[30];
 	int w;
 	int p;
 	void *d;
-
+	int i;
 	int less;
 	int zero;
 	int plus;
@@ -263,7 +263,8 @@ void testeur_p(char convert_c)
 					while (p <= max)
 					{
 						d = min;
-						while (d <= max)
+						i = min;
+						while (i < max)
 						{
 							set_flags(FLAGS, plus, less, zero);
 							if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
@@ -271,6 +272,7 @@ void testeur_p(char convert_c)
 								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 							}
 							d++;
+							i++;
 						}
 						p++;
 					}
@@ -297,7 +299,7 @@ int main(int argc, const char * argv[])
 	// testeur_numeric('d');
 	// testeur_numeric('u');
 	// testeur_numeric('i');
-	testeur_p('p');
+	testeur_p();
 
 	// // float f = 42.123456789012345678901234567890;
 	// // double d = 42.123456789012345678901234567890;
