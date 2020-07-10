@@ -6,14 +6,14 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 09:28:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/10 09:31:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
 
-static void set_width_precision_d(t_data *datas, int sign)
+void set_width_precision_d(t_data *datas, int sign)
 {
 
     if(datas->value_i == 0 && datas->precision == 0)
