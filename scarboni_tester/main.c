@@ -262,16 +262,16 @@ void testeur_p(char convert_c)
 					p = min;
 					while (p <= max)
 					{
-						d = NULL;
-						//while (d <= max)
-						//{
+						d = min;
+						while (d <= max)
+						{
 							set_flags(FLAGS, plus, less, zero);
 							if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
 							{
 								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 							}
-							//d++;
-						//}
+							d++;
+						}
 						p++;
 					}
 					w++;
