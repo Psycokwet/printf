@@ -103,7 +103,7 @@ int printf_test_numeric(char *flags, int w, int p, int d, char* convert, int con
 
 
 
-void set_flags(char * flags, int plus, int less, int zero, int diese)
+int set_flags(char * flags, int plus, int less, int zero, int diese)
 {
 	int i = 0;
 	if(plus)
@@ -115,6 +115,7 @@ void set_flags(char * flags, int plus, int less, int zero, int diese)
 	if(zero)
 		flags[i++] = '0';
 	flags[i++] = '\0';
+	return i;
 }
 
 void testeur_numeric(char convert_c)
@@ -159,8 +160,8 @@ void testeur_numeric(char convert_c)
 							d = 0;
 							while (d <= max)
 							{
-								set_flags(FLAGS, plus, less, zero, diese);
-								if(printf_test_numeric(FLAGS, w, p, d, convert, 3) != 0)
+								int i = set_flags(FLAGS, plus, less, zero, diese);
+								if(printf_test_numeric(FLAGS, w, p, d, convert, i) != 0)
 								{
 									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 								}
@@ -278,8 +279,8 @@ void testeur_p()
 							i = min;
 							while (i < max)
 							{
-								set_flags(FLAGS, plus, less, zero, diese);
-								if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
+								int i = set_flags(FLAGS, plus, less, zero, diese);
+								if(printf_test_p(FLAGS, w, p, d, convert, i) != 0)
 								{
 									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 								}
