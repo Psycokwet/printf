@@ -294,12 +294,12 @@ int main(int argc, const char * argv[])
 {
     (void)argc;
     (void)argv;
-	// testeur_numeric('x');
-	// testeur_numeric('X');
+	 testeur_numeric('x');
+	 testeur_numeric('X');
 	// testeur_numeric('d');
 	// testeur_numeric('u');
 	// testeur_numeric('i');
-	testeur_p();
+	//testeur_p();
 
 	// // float f = 42.123456789012345678901234567890;
 	// // double d = 42.123456789012345678901234567890;
