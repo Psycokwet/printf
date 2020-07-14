@@ -103,13 +103,15 @@ int printf_test_numeric(char *flags, int w, int p, int d, char* convert, int con
 
 
 
-void set_flags(char * flags, int plus, int less, int zero)
+void set_flags(char * flags, int plus, int less, int zero, int diese)
 {
 	int i = 0;
 	if(plus)
 		flags[i++] = '+';
 	if(less)
 		flags[i++] = '-';
+	if(diese)
+		flags[i++] = '#';
 	if(zero)
 		flags[i++] = '0';
 	flags[i++] = '\0';
@@ -122,11 +124,12 @@ void testeur_numeric(char convert_c)
 	int p;
 	int d;
 
+	int diese;
 	int less;
 	int zero;
 	int plus;
 
-	less = zero = plus = 0;
+	less = zero = plus = diese = 0;
 	
 	int max = 3;
 	int min = -3;
@@ -136,39 +139,44 @@ void testeur_numeric(char convert_c)
 	convert[2] = '\n';
 	convert[3] = '\0';
 
-	while (plus <= 1)
+	while (diese <= 1)
 	{
-		less = 0;
-		while (less <= 1)
+		diese = 0;
+		while (plus <= 1)
 		{
-			zero = 0;
-			while (zero <= 1)
-			{	
-				w = min;
-				while (w <= max)
-				{
-					p = min;
-					while (p <= max)
+			less = 0;
+			while (less <= 1)
+			{
+				zero = 0;
+				while (zero <= 1)
+				{	
+					w = min;
+					while (w <= max)
 					{
-						d = 0;
-						while (d <= max)
+						p = min;
+						while (p <= max)
 						{
-							set_flags(FLAGS, plus, less, zero);
-							if(printf_test_numeric(FLAGS, w, p, d, convert, 3) != 0)
+							d = 0;
+							while (d <= max)
 							{
-								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
+								set_flags(FLAGS, plus, less, zero, diese);
+								if(printf_test_numeric(FLAGS, w, p, d, convert, 3) != 0)
+								{
+									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
+								}
+								d++;
 							}
-							d++;
+							p++;
 						}
-						p++;
+						w++;
 					}
-					w++;
+					zero ++;
 				}
-				zero ++;
+				less ++;
 			}
-			less ++;
+			plus ++;
 		}
-		plus ++;
+		diese ++;
 	}
 }
 
@@ -238,51 +246,57 @@ void testeur_p()
 	int p;
 	void *d;
 	int i;
+	int diese;
 	int less;
 	int zero;
 	int plus;
 
-	less = zero = plus = 0;
+	less = zero = plus = diese = 0;
 	
 	int max = 3;
 	int min = -3;
 	char *convert = "p|\n";
 
-	while (plus <= 1)
+	while (diese <= 1)
 	{
-		less = 0;
-		while (less <= 1)
+		diese = 0;
+		while (plus <= 1)
 		{
-			zero = 0;
-			while (zero <= 1)
-			{	
-				w = min;
-				while (w <= max)
-				{
-					p = min;
-					while (p <= max)
+			less = 0;
+			while (less <= 1)
+			{
+				zero = 0;
+				while (zero <= 1)
+				{	
+					w = min;
+					while (w <= max)
 					{
-						d = min;
-						i = min;
-						while (i < max)
+						p = min;
+						while (p <= max)
 						{
-							set_flags(FLAGS, plus, less, zero);
-							if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
+							d = min;
+							i = min;
+							while (i < max)
 							{
-								fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
+								set_flags(FLAGS, plus, less, zero, diese);
+								if(printf_test_p(FLAGS, w, p, d, convert, 3) != 0)
+								{
+									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
+								}
+								d++;
+								i++;
 							}
-							d++;
-							i++;
+							p++;
 						}
-						p++;
+						w++;
 					}
-					w++;
+					zero ++;
 				}
-				zero ++;
+				less ++;
 			}
-			less ++;
+			plus ++;
 		}
-		plus ++;
+		diese++;
 	}
 }
 
