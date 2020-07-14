@@ -309,8 +309,12 @@ int main(int argc, const char * argv[])
 {
     (void)argc;
     (void)argv;
-	 testeur_numeric('x');
-	 testeur_numeric('X');
+
+	static char * FLAGS[30];
+	int i = set_flags(FLAGS, 1, 1, 1, 1);
+	printf("%d, %s, \n", i, FLAGS );
+	// testeur_numeric('x');
+	 //testeur_numeric('X');
 	// testeur_numeric('d');
 	// testeur_numeric('u');
 	// testeur_numeric('i');
