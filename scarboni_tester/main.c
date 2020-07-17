@@ -14,292 +14,312 @@
 #include "../ft_printf/libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 
-int fill_buffer(char *buffer, char *str_w, int wlen, char* str_p, int plen, char* flags, int flagslen, char *convert, int convertlen)
+
+static const char * POSSIBLE_FLAGS = "+-#0";
+static const int NBR_FLAGS = 4;
+static const int max = 3;
+static const int min = -3;
+
+
+typedef struct		s_test_data
+{
+	int		active_flags[NBR_FLAGS];
+
+	int 	w;
+	int 	p;
+	int 	d;
+
+	void* 	p_value;
+
+	char	*str_w;
+	int		wlen;
+	char	*str_p;
+	int		plen;
+	char	*str_d;
+	int		dlen;
+
+	char	flags[30];
+	int		flagslen;
+	char	info[60];
+	int		infolen;
+	char	convert[30];
+	int		convertlen;
+	char	buffer[30];
+	int		bufferlen;
+}					t_test_data;
+
+#include<string.h>
+
+void fill_buffer(t_test_data * datas, char *str_w, int wlen, char *str_p, int plen)
 {
 	int buffer_filling = 0;
-	ft_strlcpy(buffer + buffer_filling, "|%", 30);
+	ft_strlcpy(datas->buffer + buffer_filling, "|%", 30);
 	buffer_filling = 2;
-	ft_strlcpy(buffer + buffer_filling, flags, 30);
-	buffer_filling += flagslen;
-	ft_strlcpy(buffer + buffer_filling, str_w, 30);
+	ft_strlcpy(datas->buffer + buffer_filling, datas->flags, 30);
+	buffer_filling += datas->flagslen;
+	ft_strlcpy(datas->buffer + buffer_filling, str_w, 30);
 	buffer_filling += wlen;
-	ft_strlcpy(buffer + buffer_filling, ".", 30);
+	ft_strlcpy(datas->buffer + buffer_filling, ".", 30);
 	buffer_filling += 1;
-	ft_strlcpy(buffer + buffer_filling, str_p, 30);
+	ft_strlcpy(datas->buffer + buffer_filling, str_p, 30);
 	buffer_filling += plen;
-	ft_strlcpy(buffer + buffer_filling, convert, 30);
-	buffer_filling += convertlen;
-	return buffer_filling;
+	ft_strlcpy(datas->buffer + buffer_filling, datas->convert, 30);
+	buffer_filling += datas->convertlen;
+	datas->bufferlen = buffer_filling;
 }
 
-void fill_info(char *info, char *buffer, char *str_w, int wlen, char* str_p, int plen, char* str_d, int buffer_filling)
-{
-	ft_strlcpy(info, buffer, 30);
-	buffer_filling--;
-	ft_strlcpy(info + buffer_filling, str_w, 30);
-	ft_strlcpy(info + buffer_filling + wlen, ":", 30);
-	ft_strlcpy(info + 1 + buffer_filling + wlen, str_p, 30);
-	ft_strlcpy(info + 1 + buffer_filling + wlen + plen, ":", 30);
-	ft_strlcpy(info + 2 + buffer_filling + wlen + plen, str_d, 30);
-}
-
-int printf_test_numeric(char *flags, int w, int p, int d, char* convert, int convertlen)
-{
-	static char BUFFER[30];
-	static char INFO[60];
-	int buffer_filling = 0;
-	int flagslen = ft_strlen(flags);
-	char *str_w = ft_itoa(w);
-	char *str_p = ft_itoa(p);
-	char *str_d = ft_itoa(d);
-	int wlen = ft_strlen(str_w);
-	int plen = ft_strlen(str_p);
-
-	int error_count = 0;
-	int ret_ft = 0;
-	int ret = 0;
-	buffer_filling = fill_buffer(BUFFER, str_w, wlen, str_p, plen, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
-
-	ret = printf(BUFFER, d);
-	fflush(stdout);
-	ret_ft = ft_printf(BUFFER, d);
-	printf("%s\n", INFO);
-	fflush(stdout);
-	error_count = (ret == ret_ft) ? 0: 1; 
-
-	buffer_filling = fill_buffer(BUFFER, "*", 1, str_p, plen, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
-
-	printf(BUFFER, w, d);
-	fflush(stdout);
-	ft_printf(BUFFER, w, d);
-	printf("%s\n", INFO);
-	fflush(stdout);
-	error_count = (ret == ret_ft) ? 0: 1; 
-
-	buffer_filling = fill_buffer(BUFFER, str_w, wlen, "*", 1, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
-	
-	printf(BUFFER, p, d);
-	fflush(stdout);
-	ft_printf(BUFFER, p, d);
-	printf("%s\n", INFO);
-	fflush(stdout);
-	error_count = (ret == ret_ft) ? 0: 1; 
-
-	buffer_filling = fill_buffer(BUFFER, "*", 1, "*", 1, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
-	
-	printf(BUFFER, w, p, d);
-	fflush(stdout);
-	ft_printf(BUFFER, w, p, d);
-	printf("%s\n", INFO);
-	fflush(stdout);
-	error_count = (ret == ret_ft) ? 0: 1; 
-
-	return error_count;
-}
-
-
-
-int set_flags(char * flags, int plus, int less, int zero, int diese)
+void fill_info(t_test_data * datas)
 {
 	int i = 0;
-	if(plus)
-		flags[i++] = '+';
-	if(less)
-		flags[i++] = '-';
-	if(diese)
-		flags[i++] = '#';
-	if(zero)
-		flags[i++] = '0';
-	flags[i++] = '\0';
-	return i;
+	ft_strlcpy(datas->info, datas->buffer, 30);
+	i += datas->bufferlen -2;
+	ft_strlcpy(datas->info + i, datas->str_w, 30);
+	i += datas->wlen;
+	ft_strlcpy(datas->info + i, ":", 30);
+	i += 1;
+	ft_strlcpy(datas->info + i, datas->str_p, 30);
+	i += datas->plen;
+	ft_strlcpy(datas->info + i, ":", 30);
+	i += 1;
+	ft_strlcpy(datas->info + i, datas->str_d, 30);
+	i += datas->dlen;
+	datas->infolen = i;
 }
 
-void testeur_numeric(char convert_c)
+void set_flags(t_test_data * datas)
 {
-	static char * FLAGS[30];
-	int w;
-	int p;
-	int d;
-
-	int diese;
-	int less;
-	int zero;
-	int plus;
-
-	less = zero = plus = diese = 0;
-	
-	int max = 3;
-	int min = -3;
-	char convert[4];
-	convert[0] = convert_c ;
-	convert[1] = '|';
-	convert[2] = '\n';
-	convert[3] = '\0';
-
-	while (diese <= 1)
-	{
-		diese = 0;
-		while (plus <= 1)
-		{
-			less = 0;
-			while (less <= 1)
-			{
-				zero = 0;
-				while (zero <= 1)
-				{	
-					w = min;
-					while (w <= max)
-					{
-						p = min;
-						while (p <= max)
-						{
-							d = 0;
-							while (d <= max)
-							{
-								int i = set_flags(FLAGS, plus, less, zero, diese);
-								if(printf_test_numeric(FLAGS, w, p, d, convert, i) != 0)
-								{
-									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
-								}
-								d++;
-							}
-							p++;
-						}
-						w++;
-					}
-					zero ++;
-				}
-				less ++;
-			}
-			plus ++;
-		}
-		diese ++;
-	}
+	int i = 0;
+	int index = 0;
+	while( i++ < NBR_FLAGS)
+		if (datas->active_flags[i] == 1)
+			datas->flags[index++] = POSSIBLE_FLAGS[i];
+	datas->flags[index++] = '\0';
+	datas->flagslen = index;
 }
 
 
-int printf_test_p(char *flags, int w, int p, void *d, char* convert, int convertlen)
+typedef struct		s_test_funs
 {
-	static char BUFFER[30];
-	static char INFO[60];
-	int buffer_filling = 0;
-	int flagslen = ft_strlen(flags);
-	char *str_w = ft_itoa(w);
-	char *str_p = ft_itoa(p);
-	char *str_d = ft_itoa(d);
-	int wlen = ft_strlen(str_w);
-	int plen = ft_strlen(str_p);
+	void (*init_value)(t_test_data *);
+	int (*test)(t_test_data *);
+	void (*inc_value)(t_test_data *);
+	int (*printf_w_value)(t_test_data *, int (*)(const char*, ...));
+	int (*printf_p_value)(t_test_data *, int (*)(const char*, ...));
+	int (*printf_w_p_value)(t_test_data *, int (*)(const char*, ...));
+	int (*printf_value)(t_test_data *, int (*)(const char*, ...));
+}					t_test_funs;
+
+
+void init_d(t_test_data *datas){
+	datas->d = min;
+}
+
+int printf_w_d(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->w, datas->d));
+}
+
+int printf_p_d(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->p, datas->d));
+}
+
+int printf_w_p_d(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->w, datas->p, datas->d));
+}
+
+int printf_d(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->d));
+}
+
+int test_d(t_test_data *datas){
+	return (datas->d <= max) ? 1: 0;
+}
+
+void inc_d(t_test_data *datas){
+	datas->d++;
+}
+
+
+static const t_test_funs NUMERIC_TESTS = {
+	&init_d, &test_d, &inc_d, &printf_w_d,  &printf_p_d,  &printf_w_p_d,  &printf_d
+};
+
+void init_void(t_test_data *datas){
+	datas->p_value = NULL;
+}
+
+int printf_w_void(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->w, datas->p_value));
+}
+
+int printf_p_void(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->p, datas->p_value));
+}
+
+int printf_w_p_void(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->w, datas->p, datas->p_value));
+}
+
+int printf_void(t_test_data *datas, int (*printf_variant)(const char*, ...)){
+	return (printf_variant(datas->buffer, datas->p_value));
+}
+
+int test_void(t_test_data *datas){
+	return (datas->p_value < max) ? 1: 0;
+}
+
+void inc_void(t_test_data *datas){
+	datas->p_value++;
+}
+
+
+static const t_test_funs VOID = {
+	&init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
+};
+
+int printf_test(t_test_data * datas, t_test_funs* test_funs)
+{
+	datas->flagslen = ft_strlen(datas->flags);
+	datas->str_w = ft_itoa(datas->w);
+	datas->str_p = ft_itoa(datas->p);
+	datas->str_d = ft_itoa(datas->d);
+	datas->wlen = ft_strlen(datas->str_w);
+	datas->plen = ft_strlen(datas->str_p);
 
 	int error_count = 0;
 	int ret_ft = 0;
 	int ret = 0;
-	buffer_filling = fill_buffer(BUFFER, str_w, wlen, str_p, plen, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+	fill_buffer(datas, datas->str_w, datas->wlen, datas->str_p, datas->plen);
+	fill_info(datas);
 
-	ret = printf(BUFFER, d);
+	ret = test_funs->printf_value(datas, &printf);
 	fflush(stdout);
-	ret_ft = ft_printf(BUFFER, d);
-	printf("%s\n", INFO);
-	fflush(stdout);
-	error_count = (ret == ret_ft) ? 0: 1; 
-
-	buffer_filling = fill_buffer(BUFFER, "*", 1, str_p, plen, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
-
-	printf(BUFFER, w, d);
-	fflush(stdout);
-	ft_printf(BUFFER, w, d);
-	printf("%s\n", INFO);
+	ret = test_funs->printf_value(datas, &ft_printf);
+	printf("%s\n", datas->info);
 	fflush(stdout);
 	error_count = (ret == ret_ft) ? 0: 1; 
 
-	buffer_filling = fill_buffer(BUFFER, str_w, wlen, "*", 1, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+	fill_buffer(datas, "*", 1, datas->str_p, datas->plen);
+	fill_info(datas);
+
+	ret = test_funs->printf_w_value(datas, &printf);
+	fflush(stdout);
+	ret = test_funs->printf_w_value(datas, &ft_printf);
+	printf("%s\n", datas->info);
+	fflush(stdout);
+	error_count = (ret == ret_ft) ? 0: 1; 
+
+	fill_buffer(datas, datas->str_w, datas->wlen, "*", 1);
+	fill_info(datas);
 	
-	printf(BUFFER, p, d);
+	ret = test_funs->printf_p_value(datas, &printf);
 	fflush(stdout);
-	ft_printf(BUFFER, p, d);
-	printf("%s\n", INFO);
+	ret = test_funs->printf_p_value(datas, &ft_printf);
+	printf("%s\n", datas->info);
 	fflush(stdout);
 	error_count = (ret == ret_ft) ? 0: 1; 
 
-	buffer_filling = fill_buffer(BUFFER, "*", 1, "*", 1, flags, flagslen, convert, convertlen);
-	fill_info(INFO, BUFFER, str_w, wlen, str_p, plen, str_d, buffer_filling);
+	fill_buffer(datas, "*", 1,"*", 1);
+	fill_info(datas);
 	
-	printf(BUFFER, w, p, d);
+	ret = test_funs->printf_w_p_value(datas, &printf);
 	fflush(stdout);
-	ft_printf(BUFFER, w, p, d);
-	printf("%s\n", INFO);
+	ret = test_funs->printf_w_p_value(datas, &ft_printf);
+	printf("%s\n", datas->info);
 	fflush(stdout);
 	error_count = (ret == ret_ft) ? 0: 1; 
 
+	free(datas->str_w);
+	free(datas->str_p);
+	free(datas->str_d);
 	return error_count;
 }
 
-void testeur_p()
+int d_filter(t_test_data *datas, t_test_funs* test_funs)
 {
-	static char * FLAGS[30];
-	int w;
-	int p;
-	void *d;
-	int i;
-	int diese;
-	int less;
-	int zero;
-	int plus;
-
-	less = zero = plus = diese = 0;
-	
-	int max = 3;
-	int min = -3;
-	char *convert = "p|\n";
-
-	while (diese <= 1)
-	{
-		diese = 0;
-		while (plus <= 1)
+	int ret = 0;
+	int ret_cumul = 0;
+	test_funs->init_value(datas);
+	while (test_funs->test(datas))
+	{	
+		set_flags(datas);
+		ret = printf_test(datas, test_funs);
+		if(ret != 0)
 		{
-			less = 0;
-			while (less <= 1)
-			{
-				zero = 0;
-				while (zero <= 1)
-				{	
-					w = min;
-					while (w <= max)
-					{
-						p = min;
-						while (p <= max)
-						{
-							d = min;
-							i = min;
-							while (i < max)
-							{
-								int i = set_flags(FLAGS, plus, less, zero, diese);
-								if(printf_test_p(FLAGS, w, p, d, convert, i) != 0)
-								{
-									fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
-								}
-								d++;
-								i++;
-							}
-							p++;
-						}
-						w++;
-					}
-					zero ++;
-				}
-				less ++;
-			}
-			plus ++;
+			//fprintf(stderr, "Error encountered in return values, stopping now, look test for feedback\n");
 		}
-		diese++;
+		test_funs->inc_value(datas);
+		ret_cumul += ret;
+	}
+	return ret_cumul;
+}
+
+int p_filter(t_test_data *datas, t_test_funs* test_funs)
+{
+	int ret = 0;
+	int ret_cumul = 0;
+	datas->p = min;
+	while (datas->p <= max)
+	{
+		ret = d_filter(datas, test_funs);
+		if(ret != 0)
+		{
+			//silent
+		}
+		datas->p++;
+		ret_cumul += ret;
+	}
+	return ret_cumul;
+}
+
+int w_filter(t_test_data *datas, t_test_funs* test_funs)
+{
+	int ret = 0;
+	int ret_cumul = 0;
+	datas->w = min;
+	while (datas->w <= max)
+	{		
+		if(p_filter(datas, test_funs) != 0)
+		{
+			//silent
+		}
+		datas->w++;
+		ret_cumul += ret;
+	}
+	return ret_cumul;
+}
+void fill_convert(char convert_c, t_test_data *datas)
+{
+	int len = 0;
+	datas->convert[len++] = convert_c ;
+	datas->convert[len++] = '|';
+	datas->convert[len++] = '\n';
+	datas->convert[len++] = '\0';
+	datas->convertlen = len;
+
+}
+void testeur(char convert_c, t_test_data *datas, t_test_funs* test_funs)
+{
+	fill_convert(convert_c, datas);
+
+	int top_flag = NBR_FLAGS;
+	int current_flag = 0;
+	while(top_flag > current_flag){
+		datas->active_flags[current_flag++] = 0;
+	}
+	current_flag = 0;
+	while(top_flag > current_flag){
+		datas->active_flags[current_flag] = 0;
+		if(w_filter(datas, test_funs) != 0)
+		{
+			//silent
+		}
+		datas->active_flags[current_flag++]++;
+		while(datas->active_flags[current_flag] == 1 && current_flag < NBR_FLAGS){
+			current_flag++;
+		}
 	}
 }
+
 
 #include <stdarg.h>
 
@@ -310,15 +330,27 @@ int main(int argc, const char * argv[])
     (void)argc;
     (void)argv;
 
-	static char * FLAGS[30];
-	int i = set_flags(FLAGS, 1, 1, 1, 1);
-	printf("%d, %s, \n", i, FLAGS );
-	// testeur_numeric('x');
-	 //testeur_numeric('X');
-	// testeur_numeric('d');
-	// testeur_numeric('u');
-	// testeur_numeric('i');
-	//testeur_p();
+	t_test_data datas;
+	datas.d = 0;
+	datas.p = 0;
+	datas.w = 0;
+	datas.str_d = NULL;
+	datas.str_p = NULL;
+	datas.str_w = NULL;
+	datas.dlen = 0;
+	datas.plen = 0;
+	datas.wlen = 0;
+	datas.convertlen = 0;
+	datas.infolen = 0;
+	datas.bufferlen = 0;
+
+	testeur('x', &datas, &NUMERIC_TESTS);
+	testeur('X', &datas, &NUMERIC_TESTS);
+	testeur('d', &datas, &NUMERIC_TESTS);
+	testeur('u', &datas, &NUMERIC_TESTS);
+	testeur('i', &datas, &NUMERIC_TESTS);
+
+	testeur('p', &datas, &VOID);
 
 	// // float f = 42.123456789012345678901234567890;
 	// // double d = 42.123456789012345678901234567890;
