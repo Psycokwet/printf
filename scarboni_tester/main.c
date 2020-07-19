@@ -35,8 +35,8 @@ typedef struct		s_test_data
 	int		wlen;
 	char	*str_p;
 	int		plen;
-	char	*str_d;
-	int		dlen;
+	char	*str_value;
+	int		valuelen;
 
 	char	flags[30];
 	int		flagslen;
@@ -68,6 +68,7 @@ void fill_buffer(t_test_data * datas, char *str_w, int wlen, char *str_p, int pl
 	datas->bufferlen = buffer_filling;
 }
 
+
 void fill_info(t_test_data * datas)
 {
 	int i = 0;
@@ -81,8 +82,8 @@ void fill_info(t_test_data * datas)
 	i += datas->plen;
 	ft_strlcpy(datas->info + i, ":", 30);
 	i += 1;
-	ft_strlcpy(datas->info + i, datas->str_d, 30);
-	i += datas->dlen;
+	ft_strlcpy(datas->info + i, datas->str_value, 30);
+	i += datas->valuelen;
 	datas->infolen = i;
 }
 
@@ -100,6 +101,7 @@ void set_flags(t_test_data * datas)
 
 typedef struct		s_test_funs
 {
+	void (*init_value_str)(t_test_data *);
 	void (*init_value)(t_test_data *);
 	int (*test)(t_test_data *);
 	void (*inc_value)(t_test_data *);
@@ -109,6 +111,12 @@ typedef struct		s_test_funs
 	int (*printf_value)(t_test_data *, int (*)(const char*, ...));
 }					t_test_funs;
 
+
+void init_value_str_d(t_test_data * datas)
+{
+	datas->str_value = ft_itoa(datas->d);
+	datas->valuelen = ft_strlen(datas->str_value);
+}
 
 void init_d(t_test_data *datas){
 	datas->d = min;
@@ -140,8 +148,14 @@ void inc_d(t_test_data *datas){
 
 
 static const t_test_funs NUMERIC_TESTS = {
-	&init_d, &test_d, &inc_d, &printf_w_d,  &printf_p_d,  &printf_w_p_d,  &printf_d
+	&init_value_str_d, &init_d, &test_d, &inc_d, &printf_w_d,  &printf_p_d,  &printf_w_p_d,  &printf_d
 };
+
+void init_value_str_void(t_test_data * datas)
+{
+	datas->str_value = ft_itoa(datas->p_value);
+	datas->valuelen = ft_strlen(datas->str_value);
+}
 
 void init_void(t_test_data *datas){
 	datas->p_value = NULL;
@@ -164,7 +178,7 @@ int printf_void(t_test_data *datas, int (*printf_variant)(const char*, ...)){
 }
 
 int test_void(t_test_data *datas){
-	return (datas->p_value < max) ? 1: 0;
+	return (datas->p_value <= max) ? 1: 0;
 }
 
 void inc_void(t_test_data *datas){
@@ -173,7 +187,7 @@ void inc_void(t_test_data *datas){
 
 
 static const t_test_funs VOID = {
-	&init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
+	&init_value_str_void, &init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
 };
 
 int printf_test(t_test_data * datas, t_test_funs* test_funs)
@@ -181,7 +195,7 @@ int printf_test(t_test_data * datas, t_test_funs* test_funs)
 	datas->flagslen = ft_strlen(datas->flags);
 	datas->str_w = ft_itoa(datas->w);
 	datas->str_p = ft_itoa(datas->p);
-	datas->str_d = ft_itoa(datas->d);
+	test_funs->init_value_str(datas);
 	datas->wlen = ft_strlen(datas->str_w);
 	datas->plen = ft_strlen(datas->str_p);
 
@@ -230,7 +244,7 @@ int printf_test(t_test_data * datas, t_test_funs* test_funs)
 
 	free(datas->str_w);
 	free(datas->str_p);
-	free(datas->str_d);
+	free(datas->str_value);
 	return error_count;
 }
 
@@ -334,21 +348,21 @@ int main(int argc, const char * argv[])
 	datas.d = 0;
 	datas.p = 0;
 	datas.w = 0;
-	datas.str_d = NULL;
+	datas.str_value = NULL;
 	datas.str_p = NULL;
 	datas.str_w = NULL;
-	datas.dlen = 0;
+	datas.valuelen = 0;
 	datas.plen = 0;
 	datas.wlen = 0;
 	datas.convertlen = 0;
 	datas.infolen = 0;
 	datas.bufferlen = 0;
 
-	testeur('x', &datas, &NUMERIC_TESTS);
-	testeur('X', &datas, &NUMERIC_TESTS);
-	testeur('d', &datas, &NUMERIC_TESTS);
-	testeur('u', &datas, &NUMERIC_TESTS);
-	testeur('i', &datas, &NUMERIC_TESTS);
+	// testeur('x', &datas, &NUMERIC_TESTS);
+	// testeur('X', &datas, &NUMERIC_TESTS);
+	// testeur('d', &datas, &NUMERIC_TESTS);
+	// testeur('u', &datas, &NUMERIC_TESTS);
+	// testeur('i', &datas, &NUMERIC_TESTS);
 
 	testeur('p', &datas, &VOID);
 

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 11:43:09 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/19 10:40:00 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	set_width_precision_u_x_up_x(t_data *datas);
 void	set_precision_or_fieldwith(t_data *datas, const int value);
 int		write_padding(t_data *datas, const int padding_c, const int padding_max);
 int		write_str(int fd, char *str, size_t len);
-int		write_ui_value_in_buffer(t_data *datas, unsigned int value);
+int		write_ui_value_in_buffer(t_data *datas, int base, char fauxchiffre);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */

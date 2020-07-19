@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 18:39:32 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/17 18:17:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void set_value_p(t_data *datas)
         return;
     }
     datas->value_s = "(nil)";
+    datas->value_ui = 0;
+    set_s_len(datas);
     datas->len = ft_strlen(datas->value_s);
 }
 #endif
