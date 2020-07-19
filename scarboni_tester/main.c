@@ -23,7 +23,7 @@ static const int min = -3;
 
 typedef struct		s_test_data
 {
-	int		active_flags[NBR_FLAGS];
+	unsigned long int		active_flags;
 
 	int 	w;
 	int 	p;
@@ -92,7 +92,7 @@ void set_flags(t_test_data * datas)
 	int i = 0;
 	int index = 0;
 	while(i < NBR_FLAGS){
-		if (datas->active_flags[i] == 1)
+		if (datas->active_flags >> i & 1)
 			datas->flags[index++] = POSSIBLE_FLAGS[i];
 		i++;
 	}
@@ -313,27 +313,45 @@ void fill_convert(char convert_c, t_test_data *datas)
 	datas->convertlen = len;
 
 }
+
+void print_flags(char * id, int current_flag, int top_flag, t_test_data *datas){
+	fprintf(stderr, "FLAGS::%s:\t:%d::%d::%d\t[", id, datas->flagslen, current_flag, top_flag);
+	int i = 0;
+	while(i < NBR_FLAGS)
+		fprintf(stderr,"%d, ", datas->active_flags>> i++ & 1);
+	fprintf(stderr,"]\n");
+	fflush(stderr);
+}
+
 void testeur(char convert_c, t_test_data *datas, t_test_funs* test_funs)
 {
 	fill_convert(convert_c, datas);
 
 	int top_flag = NBR_FLAGS;
 	int current_flag = 0;
-	while(top_flag > current_flag){
-		datas->active_flags[current_flag++] = 0;
-	}
+	datas->active_flags = 0;
 	current_flag = 0;
-	while(top_flag > current_flag){
-		datas->active_flags[current_flag] = 0;
+	while(datas->active_flags < 16){
+
 		if(w_filter(datas, test_funs) != 0)
 		{
-			//silent
+		 	//silent
 		}
-		datas->active_flags[current_flag++]++;
-		while(datas->active_flags[current_flag] == 1 && current_flag < NBR_FLAGS){
-			current_flag++;
-		}
+		datas->active_flags++;
 	}
+}
+
+
+void printf_unit_test(char letter, int w, int p, void * p_value, int d, t_test_funs * test_funs, t_test_data * datas, char* flags, int flagslen)
+{
+	fill_convert(letter, datas);
+	ft_strlcpy(datas->flags,flags, 30);
+	datas->flagslen = flagslen;
+	datas->w = w;
+	datas->p = p;
+	datas->p_value = p_value;
+	datas->d = d;
+	printf_test(datas, test_funs);
 }
 
 
@@ -359,6 +377,8 @@ int main(int argc, const char * argv[])
 	datas.convertlen = 0;
 	datas.infolen = 0;
 	datas.bufferlen = 0;
+	datas.flagslen = 0;
+	datas.flags[0] = '\0';
 
 	testeur('x', &datas, &NUMERIC_TESTS);
 	testeur('X', &datas, &NUMERIC_TESTS);
@@ -367,6 +387,11 @@ int main(int argc, const char * argv[])
 	testeur('i', &datas, &NUMERIC_TESTS);
 
 	testeur('p', &datas, &VOID);
+
+	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "", 1);
+	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+", 1);
+
+
 
 	// // float f = 42.123456789012345678901234567890;
 	// // double d = 42.123456789012345678901234567890;
