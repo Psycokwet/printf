@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/19 11:05:40 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/19 11:27:44 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,9 @@ void setter_undefined(t_data *datas);
 
 # define MAX_SETTER_U_X_UP_X		3
 static const t_setter SETTER_U_X_UP_X[MAX_SETTER_U_X_UP_X] = {
+	(t_setter){&set_correct_diese},
 	(t_setter){&set_value_u},
 	(t_setter){&set_padding_c},
-	(t_setter){&set_correct_diese},
 };
 
 /* ************************************************************************** */
