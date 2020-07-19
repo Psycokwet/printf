@@ -360,9 +360,9 @@ int main(int argc, const char * argv[])
 
 	testeur('x', &datas, &NUMERIC_TESTS);
 	testeur('X', &datas, &NUMERIC_TESTS);
-	// testeur('d', &datas, &NUMERIC_TESTS);
-	// testeur('u', &datas, &NUMERIC_TESTS);
-	// testeur('i', &datas, &NUMERIC_TESTS);
+	testeur('d', &datas, &NUMERIC_TESTS);
+	testeur('u', &datas, &NUMERIC_TESTS);
+	testeur('i', &datas, &NUMERIC_TESTS);
 
 	testeur('p', &datas, &VOID);
 
