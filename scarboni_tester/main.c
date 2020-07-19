@@ -91,9 +91,11 @@ void set_flags(t_test_data * datas)
 {
 	int i = 0;
 	int index = 0;
-	while( i++ < NBR_FLAGS)
+	while(i < NBR_FLAGS){
 		if (datas->active_flags[i] == 1)
 			datas->flags[index++] = POSSIBLE_FLAGS[i];
+		i++;
+	}
 	datas->flags[index++] = '\0';
 	datas->flagslen = index;
 }
