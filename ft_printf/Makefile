@@ -26,6 +26,7 @@ HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c						\
 								ft_putstr_fd_len.c				\
 								set_width_precision_u_x_up_x.c	\
+								write_diese_x_up_X				\
 								write_padding.c					\
 								write_str.c						\
 								write_ui_value_in_buffer.c
@@ -58,7 +59,8 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_value_i_sign.c			\
 								write_x_in_buffer.c				\
 								writer_undefined.c
-SETTERS_SRC_FILES			=	set_padding_c.c					\
+SETTERS_SRC_FILES			=	set_correct_diese				\
+								set_padding_c.c					\
 								set_s_len.c						\
 								set_value_c.c					\
 								set_value_d.c					\

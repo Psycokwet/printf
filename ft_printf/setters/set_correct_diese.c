@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_diese_up_x.c                                 :+:      :+:    :+:   */
+/*   set_correct_diese.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/19 10:55:59 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/19 10:59:43 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int write_diese_up_x(t_data *datas)
+void set_correct_diese(t_data *datas)
 {
-    return (write_diese_x_up_X(datas, "0X"));
+    if(datas->value_ui == 0 && datas->active_flags & FT_PF_FLAG_DIESE)
+        datas->active_flags -= FT_PF_FLAG_DIESE;
 }
