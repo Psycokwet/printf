@@ -380,14 +380,15 @@ int main(int argc, const char * argv[])
 	datas.flagslen = 0;
 	datas.flags[0] = '\0';
 
-	testeur('x', &datas, &NUMERIC_TESTS);
-	testeur('X', &datas, &NUMERIC_TESTS);
-	testeur('d', &datas, &NUMERIC_TESTS);
-	testeur('u', &datas, &NUMERIC_TESTS);
-	testeur('i', &datas, &NUMERIC_TESTS);
+	//testeur('x', &datas, &NUMERIC_TESTS);
+	//testeur('X', &datas, &NUMERIC_TESTS);
+	//testeur('d', &datas, &NUMERIC_TESTS);
+	//testeur('u', &datas, &NUMERIC_TESTS);
+	//testeur('i', &datas, &NUMERIC_TESTS);
 
-	testeur('p', &datas, &VOID);
+	//testeur('p', &datas, &VOID);
 
+	printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+#0", 1);
 	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "", 1);
 	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+", 1);
 
