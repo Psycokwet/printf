@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/19 10:39:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/21 21:22:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int write_x_in_buffer(t_data *datas)
 {
-    return (write_ui_value_in_buffer(datas, 16, 'a'));
+    return (write_uix_value_in_buffer(datas, 16, 'a'));
 }

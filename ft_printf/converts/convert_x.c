@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 11:34:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/21 21:17:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ static const t_write WRITER_X[MAX_WRITTER_X] = {
 
 int convert_x(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_U_X_UP_X, SETTER_U_X_UP_X, MAX_WRITTER_X, WRITER_X);
+    return convert(datas, MAX_SETTER_X_UP_X, SETTER_X_UP_X, MAX_WRITTER_X, WRITER_X);
 }

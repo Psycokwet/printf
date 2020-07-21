@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/19 11:27:44 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/21 21:25:44 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,14 @@ typedef struct		s_str
 
 int		ft_printf(const char *, ...);
 void	ft_putstr_fd_len(const char *s, int fd, ssize_t len);
-void	set_width_precision_u_x_up_x(t_data *datas);
+void	set_width_precision_u(t_data *datas);
+void	set_width_precision_x_up_x(t_data *datas);
 void	set_precision_or_fieldwith(t_data *datas, const int value);
 int		write_diese_x_up_x(t_data *datas, char *diese);
 int		write_padding(t_data *datas, const int padding_c, const int padding_max);
 int		write_str(int fd, char *str, size_t len);
-int		write_ui_value_in_buffer(t_data *datas, int base, char fauxchiffre);
+int		write_ui_value_in_buffer(t_data *datas);
+int		write_uix_value_in_buffer(t_data *datas, int base, char fauxchiffre);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
@@ -163,8 +165,8 @@ void set_value_u(t_data *datas);
 
 void setter_undefined(t_data *datas);
 
-# define MAX_SETTER_U_X_UP_X		3
-static const t_setter SETTER_U_X_UP_X[MAX_SETTER_U_X_UP_X] = {
+# define MAX_SETTER_X_UP_X		3
+static const t_setter SETTER_X_UP_X[MAX_SETTER_X_UP_X] = {
 	(t_setter){&set_correct_diese},
 	(t_setter){&set_value_u},
 	(t_setter){&set_padding_c},
