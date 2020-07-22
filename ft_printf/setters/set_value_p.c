@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 18:12:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:13:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void set_value_p(t_data *datas)
 {
     datas->active_flags |= FT_PF_FLAG_DIESE;
     datas->value_p  = va_arg(datas->list, void*);
-    printf("set_value_p!\n");
+    printf("set_value_p%d!\n", datas->active_flags &FT_PF_FLAG_DIESE ?1:0);
 }
 
 #else
@@ -28,7 +28,7 @@ void set_value_p(t_data *datas)
     datas->value_p  = va_arg(datas->list, char*);
     if (datas->value_p){
         datas->active_flags |= FT_PF_FLAG_DIESE;
-    printf("set_value_p!\n");
+        printf("set_value_p%d!\n", datas->active_flags &FT_PF_FLAG_DIESE ?1:0);
         return;
     }
     datas->value_s = "(nil)";
