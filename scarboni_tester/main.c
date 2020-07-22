@@ -19,6 +19,8 @@ static const char * POSSIBLE_FLAGS = "+-#0";
 static const int NBR_FLAGS = 4;
 static const int max = 6;
 static const int min = -max;
+static const char max_c = 126;
+static const char min_c = -max -1;
 
 
 typedef struct		s_test_data
@@ -380,13 +382,13 @@ int main(int argc, const char * argv[])
 	datas.flagslen = 0;
 	datas.flags[0] = '\0';
 
-	testeur('x', &datas, &NUMERIC_TESTS);
-	testeur('X', &datas, &NUMERIC_TESTS);
-	testeur('d', &datas, &NUMERIC_TESTS);
-	testeur('u', &datas, &NUMERIC_TESTS);
-	testeur('i', &datas, &NUMERIC_TESTS);
+	// testeur('x', &datas, &NUMERIC_TESTS);
+	// testeur('X', &datas, &NUMERIC_TESTS);
+	// testeur('d', &datas, &NUMERIC_TESTS);
+	// testeur('u', &datas, &NUMERIC_TESTS);
+	// testeur('i', &datas, &NUMERIC_TESTS);
 	testeur('c', &datas, &NUMERIC_TESTS);
-	testeur('p', &datas, &VOID);
+	// testeur('p', &datas, &VOID);
 
 	//|%#-6.*x|-6:-2:1
 	// printf_unit_test('x', -6, -2, 1, 1, &NUMERIC_TESTS, &datas, "#", 1);
