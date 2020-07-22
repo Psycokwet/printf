@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 18:12:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:14:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void set_diese_cost(t_data *datas)
 {
-    printf("set_diese_cost!\n");
     // printf("DIESE %d::unDIESE %d\n", datas->active_flags & FT_PF_FLAG_DIESE? 1:0,  !(datas->unauthorized_flags & FT_PF_FLAG_DIESE)? 1:0);
     if(datas->active_flags & FT_PF_FLAG_DIESE && !(datas->unauthorized_flags & FT_PF_FLAG_DIESE))
     {
