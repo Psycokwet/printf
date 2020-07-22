@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 08:44:42 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 08:47:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@ void set_correct_diese(t_data *datas)
         datas->field_width -= 2;
         if(datas->field_width < 0)
             datas->field_width = 0;
+        datas->precision -= datas->field_width;
+        if(datas->precision < 0)
+            datas->precision = 0;
     }
 }
