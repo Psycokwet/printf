@@ -17,8 +17,8 @@
 
 static const char * POSSIBLE_FLAGS = "+-#0";
 static const int NBR_FLAGS = 4;
-static const int max = 5;
-static const int min = -5;
+static const int max = 6;
+static const int min = -max;
 
 
 typedef struct		s_test_data
