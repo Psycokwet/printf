@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/19 11:28:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 08:44:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,10 @@ void set_correct_diese(t_data *datas)
 {
     if(datas->value_ui == 0 && datas->active_flags & FT_PF_FLAG_DIESE)
         datas->active_flags -= FT_PF_FLAG_DIESE;
+    if(datas->active_flags & FT_PF_FLAG_DIESE)
+    {
+        datas->field_width -= 2;
+        if(datas->field_width < 0)
+            datas->field_width = 0;
+    }
 }
