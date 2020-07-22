@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 17:44:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:54:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static const t_write WRITER_P[MAX_WRITTER_P] = {
 
 # define MAX_SETTER_P		2
 static const t_setter SETTER_P[MAX_SETTER_P] = {
-	(t_setter){&set_value_p},
 	(t_setter){&set_diese_cost},
+	(t_setter){&set_value_p},
 };
 
 int convert_p(t_data *datas)
