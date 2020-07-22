@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 12:13:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:18:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void set_precision_or_fieldwith_int(t_data *datas, const int value, const
     {
         datas->active_flags |= FT_PF_FLAG_FIELD_WIDTH;
         set_field_width(datas, value, "set_precision_or_fieldwith_int");
+        if(sign < 0)
+            datas->active_flags |= FT_PF_NEG_FIELD_WIDTH;
         //datas->field_width = value;
     }
 }
