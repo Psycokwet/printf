@@ -385,6 +385,7 @@ int main(int argc, const char * argv[])
 	testeur('d', &datas, &NUMERIC_TESTS);
 	testeur('u', &datas, &NUMERIC_TESTS);
 	testeur('i', &datas, &NUMERIC_TESTS);
+	testeur('c', &datas, &NUMERIC_TESTS);
 	testeur('p', &datas, &VOID);
 
 	//|%#-6.*x|-6:-2:1
