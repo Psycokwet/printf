@@ -386,9 +386,11 @@ int main(int argc, const char * argv[])
 	//testeur('u', &datas, &NUMERIC_TESTS);
 	//testeur('i', &datas, &NUMERIC_TESTS);
 
+
 	testeur('p', &datas, &VOID);
 
-	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+#0", 1);
+	//|%#-6.*x|-6:-2:1
+	// printf_unit_test('x', -6, -2, 1, 1, &NUMERIC_TESTS, &datas, "#", 1);
 	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "", 1);
 	// printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+", 1);
 

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 10:10:12 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:09:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,27 @@ void set_s_len(t_data *datas)
             datas->len = datas->precision;
         else
         {
-            datas->field_width -= datas->len;
+            // datas->field_width -= datas->len;
+            set_field_width(datas, datas->field_width - datas->len, "set_s_len1");
             set_precision(datas, 0, "set_s_len");
             // datas->precision = 0;
         }
         if (datas->field_width > datas->precision)
-            datas->field_width -= datas->precision;
+            set_field_width(datas, datas->field_width - datas->precision, "set_s_len2");
+            // datas->field_width -= datas->precision;
         else
         {
             //datas->field_width = 0;
-            set_field_width(datas, 0, "set_s_len");
+            set_field_width(datas, 0, "set_s_len3");
         }
     }
     else
     {
-        datas->field_width -= datas->len;
+        set_field_width(datas, datas->field_width - datas->len, "set_s_len3");
+        // datas->field_width -= datas->len;
     }
     if (datas->field_width < 0)
-        datas->field_width = 0;
+        set_field_width(datas, 0, "set_s_len4");
+        // datas->field_width = 0;
     //printf("OUT W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
 }
