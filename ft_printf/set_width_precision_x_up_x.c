@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 11:44:25 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 14:24:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:30:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void set_width_precision_x_up_x(t_data *datas)
         //datas->precision = 0;
     set_field_width(datas, datas->field_width - (datas->len + datas->precision), "set_width_precision_x_up_x");
     // datas->field_width -= datas->len + datas->precision;
-    printf("THE FUCK ? %d\n", datas->active_flags & FT_PF_NEG_FIELD_WIDTH ? 1: 0);
-    fflush(stdout);
+    
     if(datas->active_flags & FT_PF_NEG_PRECISION 
         && datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
         && datas->active_flags & FT_PF_NEG_FIELD_WIDTH 
@@ -36,7 +35,6 @@ void set_width_precision_x_up_x(t_data *datas)
         && !(datas->active_flags & FT_PF_FLAG_LESS)
         )
     {
-    printf("IN IT ? %d\n", datas->active_flags & FT_PF_NEG_FIELD_WIDTH ? 1: 0);
         datas->precision = datas->field_width;
         datas->active_flags -= FT_PF_FLAG_FIELD_WIDTH;
         datas->active_flags |= FT_PF_FLAG_PRECISION;
