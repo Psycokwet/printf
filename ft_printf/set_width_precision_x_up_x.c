@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 11:44:25 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 14:36:19 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:39:00 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void set_width_precision_x_up_x(t_data *datas)
 {
-    // printf("prevW:%d::P:%d::L:%zu\n", datas->field_width, datas->precision, datas->len);
+    printf("prevW:%d::P:%d::L:%zu::V\n", datas->field_width, datas->precision, datas->len, datas->value_ui);
     if(datas->value_ui == 0 && datas->precision <= 0)
         datas->len = 0;
     if((size_t)datas->precision > datas->len)
