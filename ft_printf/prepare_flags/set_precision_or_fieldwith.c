@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/08 19:35:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 10:02:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static void set_precision_or_fieldwith_int(t_data *datas, const int value, const
 
 void set_precision_or_fieldwith(t_data *datas, const int value)
 {
-    //printf("STATE : W%d L%zu  P%d V%d\n",datas->field_width, datas->len, datas->precision, value);
+    printf("STATE : W%d L%zu  P%d V%d\n",datas->field_width, datas->len, datas->precision, value);
     if(value < 0){
         set_precision_or_fieldwith_int(datas, -value, -1);
         prepare_flag_less(datas);
     }
     else
         set_precision_or_fieldwith_int(datas, value, 0);
-    //printf("STATE OUT : W%d L%zu  P%d V%d\n",datas->field_width, datas->len, datas->precision, value);
+    printf("STATE OUT : W%d L%zu  P%d V%d\n",datas->field_width, datas->len, datas->precision, value);
 }
