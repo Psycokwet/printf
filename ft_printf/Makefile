@@ -61,6 +61,7 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_x_in_buffer.c				\
 								writer_undefined.c
 SETTERS_SRC_FILES			=	set_correct_diese.c				\
+								set_diese_cost.c				\
 								set_padding_c.c					\
 								set_s_len.c						\
 								set_value_c.c					\

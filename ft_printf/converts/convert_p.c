@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/21 21:49:47 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:40:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static const t_write WRITER_P[MAX_WRITTER_P] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_d},
 };
 
-# define MAX_SETTER_P		1
+# define MAX_SETTER_P		2
 static const t_setter SETTER_P[MAX_SETTER_P] = {
 	(t_setter){&set_value_p},
+	(t_setter){&set_diese_cost},
 };
 
 int convert_p(t_data *datas)

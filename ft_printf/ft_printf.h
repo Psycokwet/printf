@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 14:16:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:38:39 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ typedef struct		s_setter
 }					t_setter;
 
 void set_correct_diese(t_data *datas);
+void set_diese_cost(t_data *datas);
 void set_padding_c(t_data *datas);
 void set_s_len(t_data *datas);
 void set_value_c(t_data *datas);
