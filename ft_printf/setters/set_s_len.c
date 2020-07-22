@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/09 14:54:05 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 10:10:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void set_s_len(t_data *datas)
         else
         {
             datas->field_width -= datas->len;
-            datas->precision = 0;
+            set_precision(datas, 0, "set_s_len");
+            // datas->precision = 0;
         }
         if (datas->field_width > datas->precision)
             datas->field_width -= datas->precision;

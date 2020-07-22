@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/17 18:16:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 10:06:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void set_field_width(t_data *datas, int new_val, char *src){
     (void)src;
     //printf("SET field_width at %d, from %s\n", new_val, src);
     datas->field_width = new_val;
+}
+void set_precision(t_data *datas, int new_val, char *src){
+    (void)src;
+    printf("SET precision at %d, from %s\n", new_val, src);
+    datas->precision = new_val;
 }
 
 static const t_command COMMANDS[MAX_COMMAND] = {
@@ -39,7 +44,8 @@ int parse_format(t_data *datas)
     datas->unauthorized_flags = 0;
     set_field_width(datas, 1, "parse_format");
     //datas->field_width = 1;
-    datas->precision = 1;
+    //datas->precision = 1;
+    set_precision(datas, 1, "parse_format");
     datas->padding_c = ' ';
     while(--command_id >= 0){
         //printf("COMMAND :{");

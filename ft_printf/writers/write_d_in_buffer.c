@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/10 11:04:19 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/22 10:10:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void set_width_precision_d(t_data *datas, int sign)
             if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
             {
                 datas->active_flags |= FT_PF_FLAG_PRECISION;
-                datas->precision = datas->field_width -(-sign);
+                set_precision(datas, datas->field_width -(-sign), "set_width_precision_d1");
+                // datas->precision = datas->field_width -(-sign);
             }
         }
     }
@@ -38,7 +39,8 @@ static void set_width_precision_d(t_data *datas, int sign)
         //printf("HEYOU\n");
         datas->precision -= datas->len;
         if (datas->precision < 0){
-            datas->precision = 0;
+            set_precision(datas, 0, "set_width_precision_d2");
+            // datas->precision = 0;
         }
         precision_tmp = datas->precision;
     }
@@ -50,7 +52,8 @@ static void set_width_precision_d(t_data *datas, int sign)
     if(datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PLUS)
         datas->precision--;
     if (datas->precision < 0)
-        datas->precision = 0;
+        set_precision(datas, 0, "set_width_precision_d3");
+        //datas->precision = 0;
 
     if(datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
     {
