@@ -6,14 +6,15 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 06:07:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:50:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
-				ssize_t ret_read)
+				size_t ret_read)
 {
 	char *tmp;
 
@@ -21,8 +22,7 @@ int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
 	if (!fd_wip->line_wip)
 	{
 		fd_wip->size = ret_read;
-		fd_wip->line_wip = ft_strdup(buffer);
-		if (!fd_wip->line_wip)
+		if (ft_gnl_strdup(&fd_wip->line_wip, buffer, fd_wip->size) != fd_wip->size || !fd_wip->line_wip)
 			return (-EXIT_FAILURE);
 	}
 	else
@@ -31,8 +31,10 @@ int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
 		(unsigned long)(fd_wip->size + ret_read + 1));
 		if (!tmp)
 			return (-EXIT_FAILURE);
-		ft_strlcpy(tmp, fd_wip->line_wip, (size_t)(fd_wip->size + 1));
-		ft_strlcpy(tmp + fd_wip->size, buffer, (unsigned long)ret_read + 1);
+		if(!(ft_gnl_strlcpy(tmp, fd_wip->line_wip, (size_t)(fd_wip->size)) == fd_wip->size
+		&& ft_gnl_strlcpy(tmp + fd_wip->size - 1, buffer, (unsigned long)ret_read) == ret_read)){
+			return (-EXIT_FAILURE);
+		}
 		free(fd_wip->line_wip);
 		fd_wip->line_wip = tmp;
 		fd_wip->size += ret_read;
@@ -99,6 +101,7 @@ int				get_next_line(int fd, char **line)
 	if (current_wip.line_wip)
 	{
 		cut_line_n_ret = cut_line_n(line, &current_wip);
+		fflush(stdout);
 		if (cut_line_n_ret != LINE_NOT_COMPLETE)
 			return (cut_line_n_ret);
 	}

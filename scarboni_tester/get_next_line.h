@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:14:23 by scarboni          #+#    #+#             */
-/*   Updated: 2020/06/23 22:27:17 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 07:35:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_fd_read_wip
 {
 	int			fd;
 	ssize_t		last_ret_read;
-	ssize_t		size;
+	size_t		size;
 	char		*line_wip;
 }				t_fd_read_wip;
 
@@ -37,13 +37,12 @@ typedef struct	s_fd_read_wip
 # define ENDL_FOUND			1
 # define ENDL_NOT_FOUND		0
 
-int				ft_strchr(const char *s, int c, ssize_t *indice);
-char			*ft_strdup(const char *src);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t			ft_strlen(const char *s);
+int				ft_gnl_strchr(const char *s, int c, ssize_t *indice, size_t len);
+size_t			ft_gnl_strdup(char **dst, const char *src, size_t len);
+size_t			ft_gnl_strlcpy(char *dst, const char *src, size_t dstsize);
 int				cut_line_n(char **line, t_fd_read_wip *fd_wip);
 int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
-ssize_t ret_read);
+size_t ret_read);
 int				read_full_line(t_fd_read_wip *fd_wip, char **line,
 				char *buffer);
 void			set_current_wip(t_fd_read_wip *current_wip, int fd);
