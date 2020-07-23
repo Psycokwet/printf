@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 21:20:12 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 21:22:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,14 @@ int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
 	tmp = NULL;
 	if (!fd_wip->line_wip)
 	{
+		printf("buffer[%s]", buffer);
+		fflush(stdout);
 		fd_wip->size = ret_read;
 		if (ft_gnl_strdup(&fd_wip->line_wip, buffer, fd_wip->size) != fd_wip->size || !fd_wip->line_wip)
 			return (-EXIT_FAILURE);
+
+	printf("fd_wip->line_wip[%s]", fd_wip->line_wip);
+	fflush(stdout);
 	}
 	else
 	{
@@ -81,8 +86,6 @@ static void		gnl_cleaning(int const return_value,
 		free(current_wip->line_wip);
 		current_wip->line_wip = NULL;
 	}
-	printf("buffer[%s]", buffer);
-	fflush(stdout);
 	if (buffer)
 		free(buffer);
 }
@@ -110,7 +113,5 @@ int				get_next_line(int fd, char **line)
 	if ((buffer = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return_value = read_full_line(&current_wip, line, buffer);
 	gnl_cleaning(return_value, &current_wip, buffer);
-	printf("line[%s]", *line);
-	fflush(stdout);
 	return (return_value);
 }
