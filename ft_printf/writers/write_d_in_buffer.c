@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 22:38:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 22:52:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ static void set_width_precision_d(t_data *datas, int sign)
 
     int precision_tmp;
     //printf("DATAS  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
-    if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
-    {
-        if (!(datas->active_flags & FT_PF_FLAG_LESS))
-        {
-            if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
-            {
-                datas->active_flags |= FT_PF_FLAG_PRECISION;
-                set_precision(datas, datas->field_width -(-sign), "set_width_precision_d0");
-                // datas->precision = datas->field_width -(-sign);
-            }
-        }
-    }
+    // if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
+    // {
+    //     if (!(datas->active_flags & FT_PF_FLAG_LESS))
+    //     {
+    //         if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
+    //         {
+    //             datas->active_flags |= FT_PF_FLAG_PRECISION;
+    //             set_precision(datas, datas->field_width -(-sign), "set_width_precision_d0");
+    //             // datas->precision = datas->field_width -(-sign);
+    //         }
+    //     }
+    // }
     //printf("DATAS MID  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);
     precision_tmp = 0;
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
