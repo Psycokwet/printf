@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 17:38:39 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:23:09 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,11 +203,6 @@ typedef struct		s_write
 	unsigned int 	flags_awaited;
 	int				(*write)(t_data *);
 }					t_write;
-
-# define MAX_WRITTER_C		1
-static const t_write WRITER_C[MAX_WRITTER_C] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
-};
 
 /* ************************************************************************** */
 /* 									COMMANDS                                  */
