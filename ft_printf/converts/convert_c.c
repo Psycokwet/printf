@@ -6,15 +6,16 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 20:42:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 20:44:20 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_SETTER_C			1
+# define MAX_SETTER_C			2
 static const t_setter SETTER_C[MAX_SETTER_C] = {
 	(t_setter){&set_value_c},
+	(t_setter){&set_padding_c},
 };
 
 # define MAX_WRITTER_C		3
