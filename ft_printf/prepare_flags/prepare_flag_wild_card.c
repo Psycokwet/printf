@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/22 18:58:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 22:35:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void prepare_flag_wild_card(t_data *datas)
                 if (datas->field_width == 0)
                     set_precision(datas, 1, "prepare_flag_wild_card2");
                     //datas->precision = 1;
-                else// if(!(datas->active_flags & FT_PF_FLAG_DIESE))
+                else
                     set_precision(datas, datas->field_width, "prepare_flag_wild_card3");
                     // datas->precision = datas->field_width;
             }
