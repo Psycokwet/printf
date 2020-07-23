@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 21:22:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/23 21:39:06 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,9 @@ int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
 	tmp = NULL;
 	if (!fd_wip->line_wip)
 	{
-		printf("buffer[%s]", buffer);
-		fflush(stdout);
 		fd_wip->size = ret_read;
 		if (ft_gnl_strdup(&fd_wip->line_wip, buffer, fd_wip->size) != fd_wip->size || !fd_wip->line_wip)
 			return (-EXIT_FAILURE);
-
-	printf("fd_wip->line_wip[%s]", fd_wip->line_wip);
-	fflush(stdout);
 	}
 	else
 	{
@@ -37,7 +32,7 @@ int				append_buffer(t_fd_read_wip *fd_wip, char *buffer,
 		if (!tmp)
 			return (-EXIT_FAILURE);
 		if(!(ft_gnl_strlcpy(tmp, fd_wip->line_wip, (size_t)(fd_wip->size)) == fd_wip->size
-		&& ft_gnl_strlcpy(tmp + fd_wip->size - 1, buffer, (unsigned long)ret_read) == ret_read)){
+		&& ft_gnl_strlcpy(tmp + fd_wip->size, buffer, (unsigned long)ret_read) == ret_read)){
 			return (-EXIT_FAILURE);
 		}
 		free(fd_wip->line_wip);
