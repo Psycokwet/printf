@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:10:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:11:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ typedef struct		s_command
 
 void set_field_width(t_data *datas, int new_val, char *src){
     (void)src;
-    // printf("SET field_width at %d, from %s\n", new_val, src);
+    printf("SET field_width at %d, from %s\n", new_val, src);
     datas->field_width = new_val;
 }
 void set_precision(t_data *datas, int new_val, char *src){
     (void)src;
-    // printf("SET precision at %d, from %s\n", new_val, src);
+    printf("SET precision at %d, from %s\n", new_val, src);
     datas->precision = new_val;
 }
 
