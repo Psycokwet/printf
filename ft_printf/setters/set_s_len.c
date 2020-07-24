@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:13:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:32:17 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void set_s_len(t_data *datas)
         datas->active_flags -= FT_PF_FLAG_PRECISION;
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
-        if (datas->len > (size_t)datas->precision)
+        if (datas->len > (size_t)datas->precision){
+            printf("HERE %d\n",datas->precision );
             datas->len = datas->precision;
+        }
         else
         {
             // datas->field_width -= datas->len;
