@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:07:44 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:09:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void set_s_len(t_data *datas)
     }
     else
     {
-        if (datas->active_flags & FT_PF_NEG_PRECISION && datas->unauthorized_flags & FT_PF_FLAG_PRECISION)
+        if (datas->active_flags & FT_PF_NEG_PRECISION && datas->unauthorized_flags & FT_PF_FLAG_PRECISION){
             datas->len = 0;
+        }
+        printf("bool : %d::%d", datas->active_flags & FT_PF_NEG_PRECISION ? 1:0, datas->unauthorized_flags & FT_PF_FLAG_PRECISION ? 1:0);
         set_field_width(datas, datas->field_width - datas->len, "set_s_len3");
         // datas->field_width -= datas->len;
     }
