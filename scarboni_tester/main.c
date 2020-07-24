@@ -116,8 +116,17 @@ typedef struct		s_test_funs
 	int (*printf_p_value)(t_test_data *, int (*)(const char*, ...));
 	int (*printf_w_p_value)(t_test_data *, int (*)(const char*, ...));
 	int (*printf_value)(t_test_data *, int (*)(const char*, ...));
+	void (*free_str_value)(t_test_data *);
 }					t_test_funs;
 
+
+void free_str_value(t_test_data *datas){
+	free(datas->str_value);
+}
+
+void do_not_free_str_value(t_test_data *datas){
+	(void)datas;
+}
 
 void init_value_str_d(t_test_data * datas)
 {
@@ -155,7 +164,7 @@ void inc_d(t_test_data *datas){
 
 
 static const t_test_funs NUMERIC_TESTS = {
-	&init_value_str_d, &init_d, &test_d, &inc_d, &printf_w_d,  &printf_p_d,  &printf_w_p_d,  &printf_d
+	&init_value_str_d, &init_d, &test_d, &inc_d, &printf_w_d,  &printf_p_d,  &printf_w_p_d,  &printf_d, &free_str_value
 };
 
 void init_value_str_void(t_test_data * datas)
@@ -195,7 +204,7 @@ void inc_void(t_test_data *datas){
 
 
 static const t_test_funs VOID = {
-	&init_value_str_void, &init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
+	&init_value_str_void, &init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void, &free_str_value
 };
 
 
@@ -219,7 +228,7 @@ void inc_string(t_test_data *datas){
 }
 
 static const t_test_funs STRINGS = {
-	&init_value_str_strings, &init_void, &test_string, &inc_string, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
+	&init_value_str_strings, &init_void, &test_string, &inc_string, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void, &do_not_free_str_value
 };
 
 int printf_test(t_test_data * datas, t_test_funs* test_funs)
@@ -336,9 +345,10 @@ int printf_test(t_test_data * datas, t_test_funs* test_funs)
 
 	free(datas->str_w);
 	free(datas->str_p);
-	free(datas->str_value);
+	test_funs->free_str_value(datas);
 	return error_count;
 }
+
 
 int d_filter(t_test_data *datas, t_test_funs* test_funs)
 {
@@ -470,13 +480,13 @@ int main(int argc, const char * argv[])
 	datas.flagslen = 0;
 	datas.flags[0] = '\0';
 
-	testeur('x', &datas, &NUMERIC_TESTS);
-	testeur('X', &datas, &NUMERIC_TESTS);
-	testeur('d', &datas, &NUMERIC_TESTS);
-	testeur('u', &datas, &NUMERIC_TESTS);
-	testeur('i', &datas, &NUMERIC_TESTS);
-	testeur('c', &datas, &NUMERIC_TESTS);
-	testeur('p', &datas, &VOID);
+	// testeur('x', &datas, &NUMERIC_TESTS);
+	// testeur('X', &datas, &NUMERIC_TESTS);
+	// testeur('d', &datas, &NUMERIC_TESTS);
+	// testeur('u', &datas, &NUMERIC_TESTS);
+	// testeur('i', &datas, &NUMERIC_TESTS);
+	// testeur('c', &datas, &NUMERIC_TESTS);
+	// testeur('p', &datas, &VOID);
 	testeur('s', &datas, &STRINGS);
 
 	// //|%#-6.*x|-6:-2:1
