@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:32:17 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:33:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void set_s_len(t_data *datas)
         datas->active_flags -= FT_PF_FLAG_PRECISION;
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
-        if (datas->len > (size_t)datas->precision){
-            printf("HERE %d\n",datas->precision );
+        if (datas->len > (size_t)datas->precision)
             datas->len = datas->precision;
-        }
         else
         {
             // datas->field_width -= datas->len;
@@ -45,6 +43,8 @@ void set_s_len(t_data *datas)
         printf("bool : %ld,%d::%d", datas->len, datas->active_flags & FT_PF_NEG_PRECISION ? 1:0, datas->unauthorized_flags & FT_PF_FLAG_PRECISION ? 1:0);
 
         if (datas->active_flags & FT_PF_NEG_PRECISION && datas->unauthorized_flags & FT_PF_FLAG_PRECISION){
+            printf("fucking in\n");
+
             datas->len = 0;
         }
         printf("bool : %ld,%d::%d", datas->len, datas->active_flags & FT_PF_NEG_PRECISION ? 1:0, datas->unauthorized_flags & FT_PF_FLAG_PRECISION ? 1:0);
