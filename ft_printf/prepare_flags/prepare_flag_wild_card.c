@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:39:09 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:39:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void prepare_flag_wild_card(t_data *datas)
             set_precision(datas, 1, "prepare_flag_wild_card4");
             //datas->precision = 1;
         }
-        pintf("Hello there\n");
+        printf("Hello there\n");
         datas->active_flags |= FT_PF_NEG_PRECISION;
     }
     else
