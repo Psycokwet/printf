@@ -445,12 +445,12 @@ int main(int argc, const char * argv[])
 	datas.flags[0] = '\0';
 
 	testeur('x', &datas, &NUMERIC_TESTS);
-	// testeur('X', &datas, &NUMERIC_TESTS);
-	// testeur('d', &datas, &NUMERIC_TESTS);
-	// testeur('u', &datas, &NUMERIC_TESTS);
-	// testeur('i', &datas, &NUMERIC_TESTS);
-	// testeur('c', &datas, &NUMERIC_TESTS);
-	// testeur('p', &datas, &VOID);
+	testeur('X', &datas, &NUMERIC_TESTS);
+	testeur('d', &datas, &NUMERIC_TESTS);
+	testeur('u', &datas, &NUMERIC_TESTS);
+	testeur('i', &datas, &NUMERIC_TESTS);
+	testeur('c', &datas, &NUMERIC_TESTS);
+	testeur('p', &datas, &VOID);
 
 
 	// //|%#-6.*x|-6:-2:1
