@@ -17,6 +17,7 @@
 
 static const char * POSSIBLE_FLAGS = "+-#0";
 static const int NBR_FLAGS = 4;
+static const char* TEST_STRING = "Hello !";
 static const int max = 6;
 static const int min = -max;
 static const char max_c = 126;
@@ -163,6 +164,7 @@ void init_value_str_void(t_test_data * datas)
 	datas->valuelen = ft_strlen(datas->str_value);
 }
 
+
 void init_void(t_test_data *datas){
 	datas->p_value = NULL;
 }
@@ -194,6 +196,30 @@ void inc_void(t_test_data *datas){
 
 static const t_test_funs VOID = {
 	&init_value_str_void, &init_void, &test_void, &inc_void, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
+};
+
+
+void init_value_str_strings(t_test_data * datas)
+{
+	if(datas->p_value == NULL)
+		datas->str_value = "NULL";
+	else
+		datas->str_value = (char*) datas->p_value;
+	datas->valuelen = ft_strlen(datas->str_value);
+}
+int test_string(t_test_data *datas){
+	return (datas->p_value == NULL || datas->p_value == TEST_STRING) ? 1: 0;
+}
+
+void inc_string(t_test_data *datas){
+	if(datas->p_value == NULL)
+		datas->p_value = TEST_STRING;
+	else
+		datas->p_value++;
+}
+
+static const t_test_funs STRINGS = {
+	&init_value_str_strings, &init_void, &test_string, &inc_string, &printf_w_void,  &printf_p_void,  &printf_w_p_void,  &printf_void
 };
 
 int printf_test(t_test_data * datas, t_test_funs* test_funs)
@@ -451,6 +477,7 @@ int main(int argc, const char * argv[])
 	testeur('i', &datas, &NUMERIC_TESTS);
 	testeur('c', &datas, &NUMERIC_TESTS);
 	testeur('p', &datas, &VOID);
+	testeur('s', &datas, &STRINGS);
 
 	// //|%#-6.*x|-6:-2:1
 	// // printf_unit_test('x', -6, -2, 1, 1, &NUMERIC_TESTS, &datas, "#", 1);
