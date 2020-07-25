@@ -480,17 +480,41 @@ int main(int argc, const char * argv[])
 	datas.flagslen = 0;
 	datas.flags[0] = '\0';
 
-	// testeur('x', &datas, &NUMERIC_TESTS);
-	// testeur('X', &datas, &NUMERIC_TESTS);
-	// testeur('d', &datas, &NUMERIC_TESTS);
-	// testeur('u', &datas, &NUMERIC_TESTS);
-	// testeur('i', &datas, &NUMERIC_TESTS);
-	// testeur('c', &datas, &NUMERIC_TESTS);
-	// testeur('p', &datas, &VOID);
+	testeur('x', &datas, &NUMERIC_TESTS);
+	testeur('X', &datas, &NUMERIC_TESTS);
+	testeur('d', &datas, &NUMERIC_TESTS);
+	testeur('u', &datas, &NUMERIC_TESTS);
+	testeur('i', &datas, &NUMERIC_TESTS);
+	testeur('c', &datas, &NUMERIC_TESTS);
+	testeur('p', &datas, &VOID);
 	testeur('s', &datas, &STRINGS);
 
+	// Printf("-->|%-16.15s|<--\n", s);
+	// Printf("-->|%-16.16s|<--\n", s);
+	// Printf("-->|%-16s|<--\n", s);
+	// Printf("-->|%-16.p|<--\n", p);
+	// Printf("-->|%-16p|<--\n", p);
+
+	// printf("-->|%-16.p|<--\n", p);
+	// Printf("-->|%-16p|<--\n", p);
+	// Printf("-->|%-16.p|<--\n", p);
+	// Printf("-->|%-16p|<--\n", p);
+	// Printf("-->|%-15.p|<--\n", p);
+
+
 	// //|%#-6.*x|-6:-2:1
-	// // printf_unit_test('x', -6, -2, 1, 1, &NUMERIC_TESTS, &datas, "#", 1);
+	printf_unit_test('s', -16, 15, "test", 0, &STRINGS, &datas, "-", 1);
+	printf_unit_test('s', -16, 16, "test", 0, &STRINGS, &datas, "-", 1);
+	printf("-->|%-16s|<--\n", "test");
+	ft_printf("-->|%-16s|<--\n", "test");
+	printf("-->|%-16.p|<--\n", "test");
+	ft_printf("-->|%-16.p|<--\n", "test");
+	printf("-->|%-16p|<--\n", "test");
+	ft_printf("-->|%-16p|<--\n", "test");
+	printf("-->|%-16p|<--\n", "test");
+	ft_printf("-->|%-16p|<--\n", "test");
+	printf("-->|%-15.p|<--\n", "test");
+	ft_printf("-->|%-15.p|<--\n", "test");
 	// // printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "", 1);
 	// // printf_unit_test('p', 3, 0, 0, 0, &VOID, &datas, "+", 1);
 
