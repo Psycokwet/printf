@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_d.c                                          :+:      :+:    :+:   */
+/*   write_nbr_buffer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 09:00:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:14:43 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int    write_nbr_buffer(t_data *datas)
 {
+    printf("write_nbr_buffer %d\n", datas->field_width);
+    fflush(stdout);
     return (write(datas->fd, datas->nbr_buffer, datas->len));
 }
