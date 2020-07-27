@@ -17,7 +17,7 @@
 
 static const char * POSSIBLE_FLAGS = "+-#   0";
 static const int NBR_FLAGS = 8;
-static const int FLAGS_MAX_BITS = (1u >> NBR_FLAGS) -1;
+static const int FLAGS_MAX_BITS = (1u << NBR_FLAGS) - 1;
 static const char* TEST_STRING = "Hello !";
 static const int max = 6;
 static const int min = -max;
@@ -481,9 +481,10 @@ int main(int argc, const char * argv[])
 	datas.flagslen = 0;
 	datas.flags[0] = '\0';
 
+
 	//testeur('x', &datas, &NUMERIC_TESTS);
 	//testeur('X', &datas, &NUMERIC_TESTS);
-	testeur('d', &datas, &NUMERIC_TESTS);
+	  testeur('d', &datas, &NUMERIC_TESTS);
 	// testeur('u', &datas, &NUMERIC_TESTS);
 	// testeur('i', &datas, &NUMERIC_TESTS);
 	// testeur('c', &datas, &NUMERIC_TESTS);
