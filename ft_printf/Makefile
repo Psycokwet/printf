@@ -49,6 +49,7 @@ WRITERS_SRC_FILES			=	write_c.c						\
 								write_diese_up_x.c				\
 								write_diese_x.c					\
 								write_nbr_buffer.c				\
+								write_one_space.c				\
 								write_p.c						\
 								write_p_in_buffer.c				\
 								write_padding_d.c				\

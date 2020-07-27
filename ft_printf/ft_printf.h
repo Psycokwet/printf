@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/24 14:43:01 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 19:44:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ static const t_setter SETTER_X_UP_X[MAX_SETTER_X_UP_X] = {
 
 int write_c(t_data *datas);
 int write_nbr_buffer(t_data *datas);
+int	write_one_space(t_data *datas);
 int write_d_in_buffer(t_data *datas);
 int write_diese_up_x(t_data *datas);
 int write_diese_x(t_data *datas);
