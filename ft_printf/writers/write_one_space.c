@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 20:03:55 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 20:06:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int write_one_space_int(t_data *datas)
 
 int write_one_space(t_data *datas)
 {
-    if(datas->value_i > 0)
+    if(datas->value_i >= 0)
         return write_one_space_int(datas);
     return EXIT_SUCCESS;
 }
