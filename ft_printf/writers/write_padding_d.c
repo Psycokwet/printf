@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 14:14:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:22:05 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int write_padding_d(t_data *datas)
 {
-    printf("PADDING %d\n", datas->field_width);
-    fflush(stdout);
     return (write_padding(datas, ' ', datas->field_width));
 }

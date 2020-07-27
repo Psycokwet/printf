@@ -15,7 +15,7 @@
 #include "../ft_printf/ft_printf.h"
 
 
-static const char * POSSIBLE_FLAGS = "+-# 0";
+static const char * POSSIBLE_FLAGS = "+-#   0";
 static const int NBR_FLAGS = 4;
 static const char* TEST_STRING = "Hello !";
 static const int max = 6;
@@ -484,7 +484,7 @@ int main(int argc, const char * argv[])
 	//testeur('X', &datas, &NUMERIC_TESTS);
 	testeur('d', &datas, &NUMERIC_TESTS);
 	// testeur('u', &datas, &NUMERIC_TESTS);
-	testeur('i', &datas, &NUMERIC_TESTS);
+	// testeur('i', &datas, &NUMERIC_TESTS);
 	// testeur('c', &datas, &NUMERIC_TESTS);
 	// testeur('p', &datas, &VOID);
 	// testeur('s', &datas, &STRINGS);
