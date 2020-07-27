@@ -15,8 +15,8 @@
 #include "../ft_printf/ft_printf.h"
 
 
-static const char * POSSIBLE_FLAGS = "+-#   0";
-static const int NBR_FLAGS = 8;
+static const char * POSSIBLE_FLAGS = "+-#  0";
+static const int NBR_FLAGS = 7;
 static const int FLAGS_MAX_BITS = (1u << NBR_FLAGS) - 1;
 static const char* TEST_STRING = "Hello !";
 static const int max = 6;
