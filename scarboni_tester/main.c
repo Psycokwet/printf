@@ -15,8 +15,9 @@
 #include "../ft_printf/ft_printf.h"
 
 
-static const char * POSSIBLE_FLAGS = "+-      #   0";
-static const int NBR_FLAGS = 14;
+static const char * POSSIBLE_FLAGS = "+-#   0";
+static const int NBR_FLAGS = 8;
+static const int FLAGS_MAX_BITS = (1u >> NBR_FLAGS) -1;
 static const char* TEST_STRING = "Hello !";
 static const int max = 6;
 static const int min = -max;
@@ -431,7 +432,7 @@ void testeur(char convert_c, t_test_data *datas, t_test_funs* test_funs)
 	int current_flag = 0;
 	datas->active_flags = 0;
 	current_flag = 0;
-	while(datas->active_flags < 16){
+	while(datas->active_flags < FLAGS_MAX_BITS){
 
 		if(w_filter(datas, test_funs) != 0)
 		{
