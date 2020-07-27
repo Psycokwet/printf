@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 09:21:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 09:22:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 static void set_width_precision_d(t_data *datas, int sign)
 {
     if(datas->value_i == 0 && datas->precision == 0)
-        {
-            printf("LEN 0 SET set_width_precision_d\n");
-            datas->len = 0;
-        }
+        datas->len = 0;
 
     int precision_tmp;
     //printf("DATAS  W:%d L:%zu P:%d\n", datas->field_width, datas->len, datas->precision);

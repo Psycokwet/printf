@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 11:44:25 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 09:20:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 09:22:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 void set_width_precision_u(t_data *datas)
 {
     if(datas->value_ui == 0 && datas->precision == 0)
-    {
-        printf("LEN 0 SET set_width_precision_u\n");
         datas->len = 0;
-    }
     if((size_t)datas->precision > datas->len)
         set_precision(datas, datas->precision - datas->len, "set_width_precision_u1");
         // datas->precision -= datas->len;
