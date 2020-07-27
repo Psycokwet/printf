@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 14:15:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:24:04 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ static void set_width_precision_d(t_data *datas, int sign)
 
 int write_d_in_buffer(t_data *datas)
 {
-    printf("write_d_in_buffer %d\n", datas->field_width);
-    fflush(stdout);
     int sign;
     int len;
     
