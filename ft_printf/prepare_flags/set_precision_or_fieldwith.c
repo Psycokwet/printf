@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:26:48 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/28 16:46:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/28 16:47:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void set_precision_or_fieldwith_int(t_data *datas, const int value, const
     }
 }
 
- grep -B 10 "|% 02\.\*d|2:-6:10" test
+// grep -B 10 "|% 02\.\*d|2:-6:10" test
 void set_precision_or_fieldwith(t_data *datas, const int value)
 {
     // printf("STATE : W%d L%zu  P%d V%d\n",datas->field_width, datas->len, datas->precision, value);
