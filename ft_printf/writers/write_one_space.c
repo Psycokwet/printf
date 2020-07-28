@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/28 09:26:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/28 11:12:33 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ int write_one_space_int(t_data *datas)
     static char c;
 
     c = ' ';
-    if(!(datas->active_flags & FT_PF_FLAG_PRECISION) || (datas->active_flags & FT_PF_FLAG_PRECISION && datas->precision >= 0))
+    if(     
+            (!(datas->active_flags & FT_PF_FLAG_PRECISION) 
+            || (datas->active_flags & FT_PF_FLAG_PRECISION 
+            && datas->precision >= 0))
+        ||
+            (datas->active_flags & FT_PF_FLAG_ZERO
+            && datas->active_flags & FT_PF_NEG_PRECISION)
+        )
         set_field_width(datas, datas->field_width - 1, "write_one_space");
     return (write(datas->fd, &c, 1));
 }
