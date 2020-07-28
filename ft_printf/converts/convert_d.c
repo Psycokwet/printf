@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 20:11:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/28 09:30:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static const t_write WRITER_D[MAX_WRITTER_D] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_d},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
 	(t_write){FT_PF_FLAG_PRECISION, FT_PF_FLAG_PRECISION, &write_precision_d},
-	(t_write){FT_PF_FLAG_SPACE | FT_PF_FLAG_PLUS, FT_PF_FLAG_SPACE, &write_one_space},
 	(t_write){FT_PF_FLAG_WRITE | FT_PF_FLAG_PLUS, FT_PF_FLAG_WRITE | FT_PF_FLAG_PLUS, &write_value_i_sign},
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_d},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_d_in_buffer},
+	(t_write){FT_PF_FLAG_SPACE | FT_PF_FLAG_PLUS, FT_PF_FLAG_SPACE, &write_one_space},
 };
 # define MAX_SETTER_D		2
 static const t_setter SETTER_D[MAX_SETTER_D] = {
