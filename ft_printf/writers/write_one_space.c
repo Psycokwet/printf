@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/28 11:12:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/07/28 11:23:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int write_one_space_int(t_data *datas)
     static char c;
 
     c = ' ';
+    printf(" %d:%d\n", datas->active_flags & FT_PF_FLAG_ZERO ?1:0,datas->active_flags & FT_PF_NEG_PRECISION?1:0);
     if(     
             (!(datas->active_flags & FT_PF_FLAG_PRECISION) 
             || (datas->active_flags & FT_PF_FLAG_PRECISION 
