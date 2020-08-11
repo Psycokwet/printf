@@ -1,5 +1,5 @@
-BONUS		=	bonus
-NAME		=	libftprintf.a	
+NAME		=	libftprintf.a
+BONUS		=	bonus	
 MAKE_LIBFT	=	makelibft
 LIBFT		=	libft
 LIBFT_AR	=	libft/libft.a
@@ -95,8 +95,6 @@ COMMANDS_SRC_FILES			=	set_convert.c					\
 								set_undefined.c					\
 								set_value.c
 
-SRCBONUS_FILES	=	ft_bonus.c
-
 SRC_FILES	+=	$(addprefix $(CONVERTS_PATH), 		$(CONVERTS_SRC_FILES))
 SRC_FILES	+=	$(addprefix $(SETTERS_PATH), 		$(SETTERS_SRC_FILES))
 SRC_FILES	+=	$(addprefix $(WRITERS_PATH), 		$(WRITERS_SRC_FILES))
@@ -105,17 +103,10 @@ SRC_FILES	+=	$(addprefix $(NBR_MANAGEMENT_PATH), $(NBR_MANAGEMENT_SRC_FILES))
 SRC_FILES	+=	$(addprefix $(COMMANDS_PATH), 		$(COMMANDS_SRC_FILES))
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
-OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 
 
-ifdef WITH_BONUS
-OBJ_FILES = $(OBJREGULAR_FILES) $(OBJBONUS_FILES)
-else
 OBJ_FILES = $(OBJREGULAR_FILES)
-endif
 
 SRC 		= $(addprefix $(SRC_PATH), $(SRC_FILES))
-SRCBONUS 	= $(addprefix $(SRC_PATH), $(SRCBONUS_FILES))
-OBJBONUS 	= $(addprefix $(OBJ_PATH), $(OBJBONUS_FILES))
 OBJ 		= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
 CC			=	clang
@@ -135,7 +126,7 @@ $(LIBFT_PATH)  		:
 	git clone https://github.com/Psycokwet/libft.git $(LIBFT_PATH)
 
 $(MAKE_LIBFT)		: $(LIBFT_PATH)
-	$(MAKE) -C $(LIBFT_PATH) $(BONUS)
+	$(MAKE) -C $(LIBFT_PATH)
 
 $(OBJ_PATH)%.o	:	$(SRC_PATH)%.c $(HEADERS_FILES)
 	$(CC) -o $@ -c $< $(CFLAGS)
@@ -147,8 +138,7 @@ $(NAME)			: 	$(OBJ)  $(LIBFT_AR)
 	cp $(LIBFT_AR) ./$(NAME)
 	ar -src $(NAME) $(OBJ) 
 
-$(BONUS)		:
-	$(MAKE) WITH_BONUS=1 all
+$(BONUS)		: all
 		
 clean_local		:									## delete all .o
 	$(RM) $(OBJ) $(OBJBONUS)
