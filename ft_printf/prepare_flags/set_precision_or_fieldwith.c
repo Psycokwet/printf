@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void set_precision_or_fieldwith_int(t_data *datas, const int value, const int sign)
+static void	set_precision_or_fieldwith_int(t_data *datas, const int value, const int sign)
 {
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
@@ -28,7 +28,7 @@ static void set_precision_or_fieldwith_int(t_data *datas, const int value, const
     }
 }
 
-void set_precision_or_fieldwith(t_data *datas, const int value)
+void		set_precision_or_fieldwith(t_data *datas, const int value)
 {
     if(value < 0){
         set_precision_or_fieldwith_int(datas, -value, -1);
