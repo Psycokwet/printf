@@ -15,14 +15,12 @@
 
 int set_flag(const char *code, t_data *datas){
     int i = MAX_FLAG_OPT;
-    //printf("SET_FLAG\n");
 
-    //printf("SET_FLAG [%s]\n", code);
-    while (--i >= 0){
-        if (ft_strncmp(FLAGS[i].code.str, code, FLAGS[i].code.size) == 0){
-            //printf("Found flag namely :%s[%ld][%d]\n", FLAGS[i].code.str, FLAGS[i].code.size, datas->cursor);
+    while (--i >= 0)
+	{
+        if (ft_strncmp(FLAGS[i].code.str, code, FLAGS[i].code.size) == 0)
+		{
             datas->cursor += FLAGS[i].code.size;
-            //printf("Found flag namely :%s[%ld][%d]\n", FLAGS[i].code.str, FLAGS[i].code.size, datas->cursor);
             FLAGS[i].prepare_flag(datas);
             return (EXIT_CODE_FOUND);
         }

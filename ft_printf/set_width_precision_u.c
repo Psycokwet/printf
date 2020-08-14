@@ -18,12 +18,11 @@ void set_width_precision_u(t_data *datas)
     if(datas->value_ui == 0 && datas->precision == 0)
         datas->len = 0;
     if((size_t)datas->precision > datas->len)
-        set_precision(datas, datas->precision - datas->len, "set_width_precision_u1");
-        // datas->precision -= datas->len;
+        datas->precision -= datas->len;
     else
-        set_precision(datas, 0, "set_width_precision_u2");
-        //datas->precision = 0;
-    set_field_width(datas, datas->field_width - (datas->len + datas->precision), "set_width_precision_u");
+        datas->precision = 0;
+
+    datas->field_width -= datas->len + datas->precision;
     if(datas->active_flags & FT_PF_FLAG_ZERO 
     && datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
     && !(datas->active_flags & FT_PF_FLAG_PRECISION)
@@ -31,7 +30,6 @@ void set_width_precision_u(t_data *datas)
     {
         datas->active_flags -= FT_PF_FLAG_FIELD_WIDTH;
         datas->active_flags |= FT_PF_FLAG_PRECISION;
-        set_precision(datas, datas->field_width, "set_width_precision_u3");
+        datas->precision = datas->field_width;
     }
-    // datas->field_width -= datas->len + datas->precision;
 }

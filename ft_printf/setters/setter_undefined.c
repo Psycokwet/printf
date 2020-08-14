@@ -15,5 +15,4 @@
 void setter_undefined(t_data *datas)
 {
     (void)datas;
-    printf("UNDEFINED BEHAVIOR from setter_undefined\n");
 }

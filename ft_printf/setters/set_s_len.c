@@ -15,8 +15,7 @@
 void set_s_len(t_data *datas)
 {
     datas->len = ft_strlen(datas->value_s);
-   // printf("\nIN  W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
-    if(datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PRECISION)
+    if (datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PRECISION)
         datas->active_flags -= FT_PF_FLAG_PRECISION;
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {
@@ -24,19 +23,13 @@ void set_s_len(t_data *datas)
             datas->len = datas->precision;
         else
         {
-            // datas->field_width -= datas->len;
-            set_field_width(datas, datas->field_width - datas->len, "set_s_len1");
-            set_precision(datas, 0, "set_s_len");
-            // datas->precision = 0;
+            datas->field_width -= datas->len;
+            datas->precision = 0;
         }
         if (datas->field_width > datas->precision)
-            set_field_width(datas, datas->field_width - datas->precision, "set_s_len2");
-            // datas->field_width -= datas->precision;
+            datas->field_width -= datas->precision;
         else
-        {
-            //datas->field_width = 0;
-            set_field_width(datas, 0, "set_s_len3");
-        }
+            datas->field_width = 0;
     }
     else
     {
@@ -44,11 +37,8 @@ void set_s_len(t_data *datas)
         && datas->unauthorized_flags & FT_PF_FLAG_PRECISION
         && !(datas->active_flags & FT_PF_WC_PRECISION))
             datas->len = 0;
-        set_field_width(datas, datas->field_width - datas->len, "set_s_len3");
-        // datas->field_width -= datas->len;
+        datas->field_width -= datas->len;
     }
     if (datas->field_width < 0)
-        set_field_width(datas, 0, "set_s_len4");
-        // datas->field_width = 0;
-    //printf("OUT W :[%d] P:[%d] L: [%ld]\n",  datas->field_width, datas->precision, datas->len);
+        datas->field_width = 0;
 }

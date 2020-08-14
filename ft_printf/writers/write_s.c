@@ -14,8 +14,5 @@
 
 int write_s(t_data *datas)
 {
-    int i =0;
-    i = write_str(datas->fd, datas->value_s, datas->len);
-    //printf("Write_s %d\n", i);
-    return (i);
+    return (write_str(datas->fd, datas->value_s, datas->len));
 }

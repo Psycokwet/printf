@@ -15,6 +15,5 @@
 int writer_undefined(t_data *datas)
 {
     (void)datas;
-    printf("UNDEFINED BEHAVIOR from writer_undefined\n");
     return (-EXIT_FAILURE);
 }

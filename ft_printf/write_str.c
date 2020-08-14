@@ -15,7 +15,6 @@
 int write_str(int fd, char *str, size_t len)
 {
     int ret_read;
-    //printf("WRITE\n");
     ret_read = write(fd, str, len);
     if (ret_read < 0 || (size_t)ret_read != len)
         return (-EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/27 19:44:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/06 15:43:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ typedef struct		s_data
 	int				value_i;
 	unsigned int	value_ui;
 }					t_data;
-
-void set_field_width(t_data *datas, int new_val, char *src);
-void set_precision(t_data *datas, int new_val, char *src);
 typedef struct		s_str
 {
 	char			*str;

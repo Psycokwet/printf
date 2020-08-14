@@ -33,6 +33,5 @@ int convert(t_data *datas, int max_setter, const t_setter *setter, int max_write
                 return (-EXIT_FAILURE);
             datas->written_count += ret_writer;
         }
-    //datas->written_count += ret_read + padding;
     return (EXIT_CODE_END_FOUND);
 }

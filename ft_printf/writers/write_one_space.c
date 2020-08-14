@@ -17,15 +17,13 @@ int write_one_space_int(t_data *datas)
     static char c;
 
     c = ' ';
-    // printf("BEFORE %d\n", datas->field_width);
     if(
                 datas->active_flags & FT_PF_FLAG_PRECISION
             && 
                 ((!(datas->active_flags & FT_PF_FLAG_PRECISION) 
                 || (datas->active_flags & FT_PF_FLAG_PRECISION 
                 && datas->precision >= 0))))
-        set_field_width(datas, datas->field_width - 1, "write_one_space");
-    // printf("AFTER %d\n", datas->field_width);
+		datas->field_width--;
     return (write(datas->fd, &c, 1));
 }
 

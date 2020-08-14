@@ -15,26 +15,20 @@
 
 void set_width_precision_x_up_x(t_data *datas)
 {
-    //printf("prev:P:%d::L:%zu::V%d::NEG%d\n", datas->precision, datas->len, datas->value_ui, (datas->active_flags & FT_PF_NEG_PRECISION)?1:0);
-    if(datas->value_ui == 0 && datas->precision <= 0)
+    if (datas->value_ui == 0 && datas->precision <= 0)
         datas->len = 0;
-
-    if((size_t)datas->precision > datas->len)
-        set_precision(datas, datas->precision - datas->len, "set_width_precision_x_up_x1");
-        // datas->precision -= datas->len;
+    if ((size_t)datas->precision > datas->len)
+        datas->precision -= datas->len;
     else
-        set_precision(datas, 0, "set_width_precision_x_up_x2");
-        //datas->precision = 0;
-    if(datas->active_flags & FT_PF_FLAG_DIESE && datas->active_flags & FT_PF_NEG_PRECISION)
-        set_precision(datas, 0, "set_width_precision_x_up_x3");
-    set_field_width(datas, datas->field_width - (datas->len + datas->precision), "set_width_precision_x_up_x");
-    // datas->field_width -= datas->len + datas->precision;
+        datas->precision = 0;
+    if (datas->active_flags & FT_PF_FLAG_DIESE && datas->active_flags & FT_PF_NEG_PRECISION)
+        datas->precision = 0;
+    datas->field_width -= datas->len + datas->precision;
     
-    if((datas->active_flags & FT_PF_NEG_PRECISION 
+    if ((datas->active_flags & FT_PF_NEG_PRECISION 
             && datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
             && datas->active_flags & FT_PF_NEG_FIELD_WIDTH 
             && datas->active_flags & FT_PF_FLAG_ZERO 
-            //&& !(datas->active_flags & FT_PF_FLAG_DIESE) 
             && !(datas->active_flags & FT_PF_FLAG_LESS)
         ) || (
             datas->active_flags & FT_PF_NEG_PRECISION 
@@ -53,15 +47,8 @@ void set_width_precision_x_up_x(t_data *datas)
             && !(datas->active_flags & FT_PF_FLAG_PRECISION)
             && !(datas->active_flags & FT_PF_FLAG_LESS))
     ){
-        set_precision(datas, datas->field_width, "set_width_precision_x_up_x3");
-        //datas->precision = datas->field_width;
+        datas->precision = datas->field_width;
         datas->active_flags -= FT_PF_FLAG_FIELD_WIDTH;
         datas->active_flags |= FT_PF_FLAG_PRECISION;
     }
-    // printf("after NEGP:%d::NEGW:%d::LESS:%d::DIESE:%d::ZERO:%d::\n", 
-    //         datas->active_flags & FT_PF_NEG_PRECISION? 1:0,
-    //         !(datas->active_flags & FT_PF_NEG_FIELD_WIDTH )?1:0,
-    //          !(datas->active_flags & FT_PF_FLAG_LESS)?1:0,
-    //          datas->active_flags & FT_PF_FLAG_DIESE?1:0,
-    //          datas->active_flags & FT_PF_FLAG_ZERO ? 1:0);
 }
