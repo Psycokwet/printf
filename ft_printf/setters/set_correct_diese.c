@@ -14,7 +14,7 @@
 
 void set_correct_diese(t_data *datas)
 {
-    if(datas->value_ui == 0 && datas->active_flags & FT_PF_FLAG_DIESE)
+    if (datas->value_ui == 0 && datas->active_flags & FT_PF_FLAG_DIESE)
         datas->unauthorized_flags |= FT_PF_FLAG_DIESE;
     set_diese_cost(datas);
 }

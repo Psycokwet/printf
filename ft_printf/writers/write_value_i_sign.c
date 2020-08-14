@@ -16,7 +16,7 @@ int    write_value_i_sign(t_data *datas)
 {
     int sign;
 
-    if(datas->value_i < 0)
+    if (datas->value_i < 0)
         sign = '-';
     else
         sign = '+';

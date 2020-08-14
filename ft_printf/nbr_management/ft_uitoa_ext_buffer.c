@@ -16,7 +16,7 @@ int ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiff
 {
 	if (!buffer)
     	return (-EXIT_FAILURE);
-    if(base <= 10)
+    if (base <= 10)
         return (ft_uitoa_ext_buffer_sub_10(nbr, buffer, base));
     return (ft_uitoa_ext_buffer_up_10(nbr, buffer, base, faux_chiffre));
 }

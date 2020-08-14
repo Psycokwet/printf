@@ -16,7 +16,7 @@
 
 int    write_p(t_data *datas)
 {
-    return write_nbr_buffer(datas);
+    return (write_nbr_buffer(datas));
 }
 
 #else
@@ -24,8 +24,8 @@ int    write_p(t_data *datas)
 int    write_p(t_data *datas)
 {
     if (datas->value_p)
-        return write_nbr_buffer(datas);
-    return write_s(datas);
+        return (write_nbr_buffer(datas));
+    return (write_s(datas));
 }
 
 #endif

@@ -17,7 +17,7 @@ int write_one_space_int(t_data *datas)
     static char c;
 
     c = ' ';
-    if(
+    if (
                 datas->active_flags & FT_PF_FLAG_PRECISION
             && 
                 ((!(datas->active_flags & FT_PF_FLAG_PRECISION) 
@@ -29,7 +29,7 @@ int write_one_space_int(t_data *datas)
 
 int write_one_space(t_data *datas)
 {
-    if(datas->value_i >= 0)
-        return write_one_space_int(datas);
-    return EXIT_SUCCESS;
+    if (datas->value_i >= 0)
+        return (write_one_space_int(datas));
+    return (EXIT_SUCCESS);
 }

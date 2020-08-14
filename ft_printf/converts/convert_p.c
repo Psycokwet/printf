@@ -30,5 +30,5 @@ static const t_setter SETTER_P[MAX_SETTER_P] = {
 
 int convert_p(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_P, SETTER_P, MAX_WRITTER_P, WRITER_P);
+    return (convert(datas, MAX_SETTER_P, SETTER_P, MAX_WRITTER_P, WRITER_P));
 }

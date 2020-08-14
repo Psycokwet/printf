@@ -34,11 +34,11 @@ int     parse_format(t_data *datas)
 	datas->field_width = 1;
 	datas->precision = 1;
     datas->padding_c = ' ';
-    while(--command_id >= 0){
+    while (--command_id >= 0){
         ret = COMMANDS[command_id].command(datas->format_s + datas->cursor, datas);
-        if(ret == EXIT_CODE_END_FOUND || ret <= -EXIT_FAILURE)
-            return ret;
-        else if(ret == EXIT_CODE_FOUND)
+        if (ret == EXIT_CODE_END_FOUND || ret <= -EXIT_FAILURE)
+            return (ret);
+        else if (ret == EXIT_CODE_FOUND)
             command_id = MAX_COMMAND;
     }
     return (-EXIT_FAILURE);

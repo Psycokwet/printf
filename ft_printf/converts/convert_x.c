@@ -24,5 +24,5 @@ static const t_write WRITER_X[MAX_WRITTER_X] = {
 
 int convert_x(t_data *datas)
 {
-    return convert(datas, MAX_SETTER_X_UP_X, SETTER_X_UP_X, MAX_WRITTER_X, WRITER_X);
+    return (convert(datas, MAX_SETTER_X_UP_X, SETTER_X_UP_X, MAX_WRITTER_X, WRITER_X));
 }

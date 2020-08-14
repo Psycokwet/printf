@@ -18,12 +18,12 @@ int convert(t_data *datas, int max_setter, const t_setter *setter, int max_write
     int i ;
     
     i = max_setter;
-    if(setter)
+    if (setter)
         while (i--)
             setter[i].setter(datas);
 
     i = max_writer;
-    if(writer)
+    if (writer)
         while (i--)
         { 
             if (!((datas->active_flags & writer[i].flags_concerned) == writer[i].flags_awaited))

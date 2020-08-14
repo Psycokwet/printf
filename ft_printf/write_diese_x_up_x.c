@@ -14,7 +14,7 @@
 
 int write_diese_x_up_x(t_data *datas, char *diese)
 {
-    if(!(datas->unauthorized_flags & FT_PF_FLAG_DIESE))
+    if (!(datas->unauthorized_flags & FT_PF_FLAG_DIESE))
         return (write_str(datas->fd, diese, 2));
     return (EXIT_SUCCESS);
 }

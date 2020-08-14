@@ -44,7 +44,7 @@ static void set_width_precision_d(t_data *datas, int sign)
     }
     if ((datas->active_flags & FT_PF_FLAG_PRECISION) && datas->field_width < precision_tmp)
         datas->field_width = 0;
-	datas->field_width = datas->field_width - (datas->len + (-sign) + precision_tmp);
+    datas->field_width = datas->field_width - (datas->len + (-sign) + precision_tmp);
     if (datas->field_width < 0)
         datas->field_width = 0;
     if (datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PLUS)

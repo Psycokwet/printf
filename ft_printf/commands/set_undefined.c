@@ -18,7 +18,7 @@
 int set_undefined(const char *code, t_data *datas){
     (void)code;
     (void)datas;
-    return EXIT_CODE_END_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 #else
@@ -29,7 +29,7 @@ int set_undefined(const char *code, t_data *datas){
     if (ret < EXIT_SUCCESS)
         return (-EXIT_FAILURE);
     datas->cursor = datas->last_percent_found;
-    return EXIT_CODE_END_FOUND;
+    return (EXIT_CODE_END_FOUND);
 }
 
 #endif

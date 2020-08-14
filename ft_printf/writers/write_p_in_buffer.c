@@ -25,7 +25,7 @@ int write_p_in_buffer(t_data *datas)
 int write_p_in_buffer(t_data *datas)
 {
     datas->value_ui = (unsigned int)datas->value_p;
-    if(datas->value_p)
+    if (datas->value_p)
         return (write_x_in_buffer(datas));
     return (EXIT_SUCCESS);
 }
