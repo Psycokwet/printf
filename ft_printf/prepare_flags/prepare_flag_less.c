@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-void    prepare_flag_less(t_data *datas)
+void	prepare_flag_less(t_data *datas)
 {
     if (datas->active_flags & FT_PF_FLAG_PRECISION)
     {

@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-void    prepare_flag_diese(t_data *datas)
+void	prepare_flag_diese(t_data *datas)
 {
     datas->active_flags |= FT_PF_FLAG_DIESE;
 }
