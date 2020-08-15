@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:24:35 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:26:26 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static const t_setter g_setter_c[MAX_SETTER_C] = {
 	(t_setter){&set_padding_c},
 };
 
-#define MAX_WRITTER_C		3
+#define MAX_WRITER_C		3
 
-static const t_write g_writer_c[MAX_WRITTER_C] = {
+static const t_write g_writer_c[MAX_WRITER_C] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
 		FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
@@ -31,6 +31,7 @@ static const t_write g_writer_c[MAX_WRITTER_C] = {
 
 int	convert_c(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_C, g_setter_c, MAX_WRITTER_C,
-		g_writer_c));
+	datas->current_max_setter = MAX_SETTER_C;
+	datas->current_max_writer = MAX_WRITER_C;
+	return (convert(datas, g_setter_c, g_writer_c));
 }

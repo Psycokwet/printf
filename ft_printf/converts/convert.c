@@ -6,23 +6,22 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:18:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:24:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	convert(t_data *datas, int max_setter, const t_setter *setter,
-	int max_writer, const t_write *writer)
+int	convert(t_data *datas, const t_setter *setter, const t_write *writer)
 {
 	int ret_writer;
 	int i;
 
-	i = max_setter;
+	i = datas->current_max_setter;
 	if (setter)
 		while (i--)
 			setter[i].setter(datas);
-	i = max_writer;
+	i = datas->current_max_writer;
 	if (writer)
 		while (i--)
 		{

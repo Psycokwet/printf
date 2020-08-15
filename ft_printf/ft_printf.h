@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:16:14 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:24:45 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct		s_data
 	void			*value_p;
 	int				value_i;
 	unsigned int	value_ui;
+	int				current_max_setter;
+	int				current_max_writer;
 }					t_data;
 typedef struct		s_str
 {
@@ -155,14 +157,14 @@ void			setter_undefined(t_data *datas);
 
 # define MAX_SETTER_X_UP_X		3
 
-static const t_setter g_setter_u_up_x[MAX_SETTER_X_UP_X] = {
+static const t_setter g_setter_x_up_x[MAX_SETTER_X_UP_X] = {
 	(t_setter){&set_correct_diese},
 	(t_setter){&set_value_u},
 	(t_setter){&set_padding_c},
 };
 
 /* ************************************************************************** */
-/* 									WRITTERS                                   */
+/* 									WRITERS                                   */
 /* ************************************************************************** */
 
 int				write_c(t_data *datas);
@@ -204,8 +206,8 @@ int				set_flag(const char *str_start, t_data *datas);
 /* 									CONVERTS                                 */
 /* ************************************************************************** */
 
-int				convert(t_data *datas, int max_setter, const t_setter *setter,
-				int max_writer, const t_write *writer);
+int				convert(t_data *datas, const t_setter *setter
+					,const t_write *writer);
 int				convert_c(t_data *datas);
 int				convert_s(t_data *datas);
 int				convert_p(t_data *datas);

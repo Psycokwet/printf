@@ -6,15 +6,15 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:27:19 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:26:26 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-#define MAX_WRITTER_P		6
+#define MAX_WRITER_P		6
 
-static const t_write g_writer_p[MAX_WRITTER_P] = {
+static const t_write g_writer_p[MAX_WRITER_P] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
 		FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_d},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_p},
@@ -35,6 +35,7 @@ static const t_setter g_setter_p[MAX_SETTER_P] = {
 
 int	convert_p(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_P, g_setter_p, MAX_WRITTER_P,
-		g_writer_p));
+	datas->current_max_setter = MAX_SETTER_P;
+	datas->current_max_writer = MAX_WRITER_P;
+	return (convert(datas, g_setter_p, g_writer_p));
 }
