@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:15:27 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:18:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	convert(t_data *datas, int max_setter, const t_setter *setter,
 	int max_writer, const t_write *writer)
 {
 	int ret_writer;
-	int i ;
+	int i;
 
 	i = max_setter;
 	if (setter)
@@ -25,8 +25,9 @@ int	convert(t_data *datas, int max_setter, const t_setter *setter,
 	i = max_writer;
 	if (writer)
 		while (i--)
-		{ 
-			if (!((datas->active_flags & writer[i].flags_concerned) == writer[i].flags_awaited))
+		{
+			if (!((datas->active_flags & writer[i].flags_concerned)
+				== writer[i].flags_awaited))
 				continue;
 			ret_writer = writer[i].write(datas);
 			if (ret_writer < EXIT_SUCCESS)

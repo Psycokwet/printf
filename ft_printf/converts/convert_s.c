@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:12:29 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:25:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # define MAX_WRITTER_S		3
 
 static const t_write g_writer_s[MAX_WRITTER_S] = {
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
+		FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_s},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
+		FT_PF_FLAG_FIELD_WIDTH, &write_padding_s},
 };
 
 #ifndef LINUX
@@ -42,5 +44,6 @@ static const t_setter g_setter_s[MAX_SETTER_S] = {
 #endif
 int	convert_s(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_S, g_setter_s, MAX_WRITTER_S, g_writer_s));
+	return (convert(datas, MAX_SETTER_S, g_setter_s, MAX_WRITTER_S,
+		g_writer_s));
 }

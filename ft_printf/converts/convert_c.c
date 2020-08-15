@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:15:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:24:35 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ static const t_setter g_setter_c[MAX_SETTER_C] = {
 #define MAX_WRITTER_C		3
 
 static const t_write g_writer_c[MAX_WRITTER_C] = {
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
+		FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
-	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_s},
+	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH,
+		&write_padding_s},
 };
 
 int	convert_c(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_C, g_setter_c, MAX_WRITTER_C, g_writer_c));
+	return (convert(datas, MAX_SETTER_C, g_setter_c, MAX_WRITTER_C,
+		g_writer_c));
 }
