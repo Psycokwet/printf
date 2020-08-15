@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:35:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:35:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int				write_ui_value_in_buffer(t_data *datas);
 int				write_uix_value_in_buffer(t_data *datas, int base,
 					char fauxchiffre);
 
-/* ************************************************************************** *
-** 									PREPARE_FLAGS                             *
+/* ************************************************************************** 
+** 									PREPARE_FLAGS                             
 ** ************************************************************************** */
 
 void			prepare_flag_less(t_data *datas);
