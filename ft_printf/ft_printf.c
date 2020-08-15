@@ -6,19 +6,20 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:54:28 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:28:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 #define MAX_COMMAND		4
+
 typedef struct		s_command
 {
 	int			(*command)(const char *, t_data *);
 }					t_command;
 
-static const t_command COMMANDS[MAX_COMMAND] = {
+static const t_command g_commands[MAX_COMMAND] = {
 	(t_command){&set_undefined},
 	(t_command){&set_convert},
 	(t_command){&set_value},
@@ -37,8 +38,9 @@ int		parse_format(t_data *datas)
 	datas->field_width = 1;
 	datas->precision = 1;
 	datas->padding_c = ' ';
-	while (--command_id >= 0){
-		ret = COMMANDS[command_id].command(datas->format_s + datas->cursor, datas);
+	while (--command_id >= 0)
+	{
+		ret = g_commands[command_id].command(datas->format_s + datas->cursor, datas);
 		if (ret == EXIT_CODE_END_FOUND || ret <= -EXIT_FAILURE)
 			return (ret);
 		else if (ret == EXIT_CODE_FOUND)
@@ -75,7 +77,8 @@ int		ft_printf(const char *format_s, ...)
 		}
 		i++;
 	}
-	if (format_s[datas.cursor + i] == '\0'){
+	if (format_s[datas.cursor + i] == '\0')
+	{
 		ft_putstr_fd_len(format_s + datas.cursor, STDOUT_FILENO, i);
 		datas.written_count += i;
 		datas.cursor = i + 1;
