@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:28:12 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:44:25 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		parse_format(t_data *datas)
 int		ft_printf(const char *format_s, ...)
 {
 	int i;
+	int r_write;
 	t_data datas;
 
 	datas.format_s = format_s;
@@ -66,7 +67,9 @@ int		ft_printf(const char *format_s, ...)
 	{
 		if (format_s[datas.cursor + i] == '%')
 		{
-			ft_putstr_fd_len(format_s + datas.cursor, STDOUT_FILENO, i);
+			r_write = write(STDOUT_FILENO, format_s + datas.cursor, i);
+			if(r_write != i)
+				return (-EXIT_FAILURE);
 			datas.written_count += i;
 			datas.cursor += i + 1;
 			i = -1;
@@ -79,7 +82,9 @@ int		ft_printf(const char *format_s, ...)
 	}
 	if (format_s[datas.cursor + i] == '\0')
 	{
-		ft_putstr_fd_len(format_s + datas.cursor, STDOUT_FILENO, i);
+		r_write = write(STDOUT_FILENO, format_s + datas.cursor, i);
+		if(r_write != i)
+			return (-EXIT_FAILURE);
 		datas.written_count += i;
 		datas.cursor = i + 1;
 	}

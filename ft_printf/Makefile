@@ -24,7 +24,6 @@ OBJ_PATHS_INIT			+= 	$(OBJ_PATH)
 ## No need for a \ on the last line
 HEADERS_FILES				=	ft_printf.h
 SRC_FILES					=	ft_printf.c	 					\
-								ft_putstr_fd_len.c	 			\
 								set_width_precision_u.c			\
 								set_width_precision_x_up_x.c	\
 								write_diese_x_up_x.c	 		\
