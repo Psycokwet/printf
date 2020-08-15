@@ -15,9 +15,10 @@
 void	prepare_flag_wild_card(t_data *datas)
 {
 	const int value;
-	
+
 	value = va_arg(datas->list, int);
-	if (datas->active_flags & FT_PF_FLAG_PRECISION && value < 0){
+	if (datas->active_flags & FT_PF_FLAG_PRECISION && value < 0)
+	{
 		if (datas->active_flags & FT_PF_FLAG_ZERO)
 		{
 			if (datas->active_flags & FT_PF_FLAG_LESS)
@@ -37,7 +38,7 @@ void	prepare_flag_wild_card(t_data *datas)
 		{
 			datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
 			datas->precision = 1;
- 		}
+		}
 		datas->active_flags |= FT_PF_NEG_PRECISION;
 		datas->active_flags |= FT_PF_WC_PRECISION;
 	}
