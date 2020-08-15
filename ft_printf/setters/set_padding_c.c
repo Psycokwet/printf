@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:46:21 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:04:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	set_padding_c(t_data *datas)
 {
-	if (datas->active_flags & FT_PF_FLAG_ZERO && !(datas->active_flags & FT_PF_FLAG_LESS))
+	if (datas->active_flags & FT_PF_FLAG_ZERO
+		&& !(datas->active_flags & FT_PF_FLAG_LESS))
 		datas->padding_c = '0';
 	else
 		datas->padding_c = ' ';

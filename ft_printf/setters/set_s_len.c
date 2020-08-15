@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:47:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:05:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	set_s_len(t_data *datas)
 {
 	datas->len = ft_strlen(datas->value_s);
-	if (datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PRECISION)
+	if (datas->active_flags & FT_PF_NEG_PRECISION
+		&& datas->active_flags & FT_PF_FLAG_PRECISION)
 		datas->active_flags -= FT_PF_FLAG_PRECISION;
 	if (datas->active_flags & FT_PF_FLAG_PRECISION)
 	{

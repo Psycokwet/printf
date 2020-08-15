@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:47:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:03:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	set_value_d(t_data *datas)
 {
-	datas->value_i  = va_arg(datas->list, int);
+	datas->value_i = va_arg(datas->list, int);
 }
