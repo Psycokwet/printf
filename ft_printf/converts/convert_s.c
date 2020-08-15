@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:25:41 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:27:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_WRITTER_S		3
+#define MAX_WRITTER_S		3
 
 static const t_write g_writer_s[MAX_WRITTER_S] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS,
@@ -42,6 +42,7 @@ static const t_setter g_setter_s[MAX_SETTER_S] = {
 };
 
 #endif
+
 int	convert_s(t_data *datas)
 {
 	return (convert(datas, MAX_SETTER_S, g_setter_s, MAX_WRITTER_S,
