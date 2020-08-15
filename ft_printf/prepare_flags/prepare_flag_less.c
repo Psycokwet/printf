@@ -14,12 +14,12 @@
 
 void	prepare_flag_less(t_data *datas)
 {
-    if (datas->active_flags & FT_PF_FLAG_PRECISION)
-    {
-        datas->active_flags -= FT_PF_FLAG_PRECISION;
-        datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
-        datas->active_flags |= FT_PF_NEG_PRECISION;
-        datas->precision = 0;
-    }
-    datas->active_flags |= FT_PF_FLAG_LESS;
+	if (datas->active_flags & FT_PF_FLAG_PRECISION)
+	{
+		datas->active_flags -= FT_PF_FLAG_PRECISION;
+		datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
+		datas->active_flags |= FT_PF_NEG_PRECISION;
+		datas->precision = 0;
+	}
+	datas->active_flags |= FT_PF_FLAG_LESS;
 }

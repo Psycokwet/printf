@@ -30,7 +30,6 @@ static void set_width_precision_d(t_data *datas, int sign)
                 	datas->precision = datas->field_width - 1;
                 else
                 	datas->precision = datas->field_width;
-
             }
         }
     }
