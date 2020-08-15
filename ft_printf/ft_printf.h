@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:24:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:29:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define EXIT_CODE_NOT_FOUND	0
 
 # define MAX_NBR_LENGTH	    	30
-
 
 typedef struct		s_data
 {
@@ -48,6 +47,7 @@ typedef struct		s_data
 	int				current_max_setter;
 	int				current_max_writer;
 }					t_data;
+
 typedef struct		s_str
 {
 	char			*str;
