@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/21 21:22:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 10:20:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int write_up_x_in_buffer(t_data *datas)
+int	write_up_x_in_buffer(t_data *datas)
 {
-    return (write_uix_value_in_buffer(datas, 16, 'A'));
+	return (write_uix_value_in_buffer(datas, 16, 'A'));
 }

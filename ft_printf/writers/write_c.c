@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 18:12:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 10:15:07 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int    write_c(t_data *datas)
+int	write_c(t_data *datas)
 {
-    return (write(datas->fd, &(datas->value_i), 1));
+	return (write(datas->fd, &(datas->value_i), 1));
 }
