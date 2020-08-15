@@ -6,12 +6,12 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:29:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:31:01 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 # include <stdarg.h>
@@ -36,7 +36,7 @@ typedef struct		s_data
 	const char		*format_s;
 	char			nbr_buffer[MAX_NBR_LENGTH];
 	int				precision;
-	int				field_width; 
+	int				field_width;
 	unsigned int	active_flags;
 	unsigned int	unauthorized_flags;
 	va_list			list;
