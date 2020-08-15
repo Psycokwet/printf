@@ -23,12 +23,7 @@ void	prepare_flag_wild_card(t_data *datas)
 			if (datas->active_flags & FT_PF_FLAG_LESS)
 				datas->precision = 1;
 			else
-			{
-				if (datas->field_width == 0)
-					datas->precision = 1;
-				else
-					datas->precision = datas->field_width;
-			}
+				datas->precision = (datas->field_width == 0)? 1: datas->field_width;
 			datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
 		}
 		else
@@ -36,7 +31,8 @@ void	prepare_flag_wild_card(t_data *datas)
 			datas->unauthorized_flags |= FT_PF_FLAG_PRECISION;
 			datas->precision = 1;
 		}
-		datas->active_flags |= FT_PF_NEG_PRECISION | FT_PF_WC_PRECISION;
+		datas->active_flags |= FT_PF_NEG_PRECISION;
+		datas->active_flags |= FT_PF_WC_PRECISION;
 	}
 	else
 		set_precision_or_fieldwith(datas, value);
