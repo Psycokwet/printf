@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 20:02:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:49:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ size_t	strlen_from_int(int value)
 	size_t result;
 
 	result = 0;
-    if (value < 0){
-        value = -value;
+	if (value < 0){
+		value = -value;
 		result++;
-    }
+	}
 	else if (value == 0)
 		return (1);
 	while (value != 0)

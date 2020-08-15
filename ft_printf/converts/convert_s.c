@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/08 22:05:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:51:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static const t_setter SETTER_S[MAX_SETTER_S] = {
 };
 
 #endif
-int convert_s(t_data *datas)
+int	convert_s(t_data *datas)
 {
-    return (convert(datas, MAX_SETTER_S, SETTER_S, MAX_WRITTER_S, WRITER_S));
+	return (convert(datas, MAX_SETTER_S, SETTER_S, MAX_WRITTER_S, WRITER_S));
 }

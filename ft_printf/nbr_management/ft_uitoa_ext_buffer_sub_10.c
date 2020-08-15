@@ -6,21 +6,21 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 19:49:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:49:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base)
+int	ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base)
 {
 	unsigned int	i;
 	unsigned int	len;
 
-    if (base > 10 || !buffer)
+	if (base > 10 || !buffer)
 		return (-EXIT_FAILURE);
 	len = uitoa_len(nbr, base);
-    i = len;
+	i = len;
 	buffer[i--] = '\0';
 	if (!nbr)
 		buffer[i--] = '0';

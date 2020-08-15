@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/02 19:48:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:49:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-unsigned int		uitoa_len(unsigned int nb, int base)
+unsigned int	uitoa_len(unsigned int nb, int base)
 {
 	unsigned int	p;
 

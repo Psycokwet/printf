@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 19:23:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:51:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static const t_setter SETTER_PERCENT[MAX_SETTER_PERCENT] = {
 static const t_write WRITER_PERCENT[MAX_WRITTER_PERCENT] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_c},
 };
-int convert_percent(t_data *datas)
+int	convert_percent(t_data *datas)
 {
-    return (convert(datas, MAX_SETTER_PERCENT, SETTER_PERCENT, MAX_WRITTER_PERCENT, WRITER_PERCENT));
+	return (convert(datas, MAX_SETTER_PERCENT, SETTER_PERCENT, MAX_WRITTER_PERCENT, WRITER_PERCENT));
 }

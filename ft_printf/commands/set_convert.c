@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/03 07:26:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:52:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
 };
 
 int set_convert(const char *code, t_data *datas){
-    int i;
-	
+	int i;
+
 	i = MAX_CONVERT_OPT;
-    while (--i >= 0)
+	while (--i >= 0)
 	{
-        if (ft_strncmp(CONVERTS[i].code.str, code, CONVERTS[i].code.size) == 0)
+		if (ft_strncmp(CONVERTS[i].code.str, code, CONVERTS[i].code.size) == 0)
 		{
-            datas->cursor += CONVERTS[i].code.size;
-            return (CONVERTS[i].print(datas));
-        }
-    }
-    return (EXIT_CODE_NOT_FOUND);
+			datas->cursor += CONVERTS[i].code.size;
+			return (CONVERTS[i].print(datas));
+		}
+	}
+	return (EXIT_CODE_NOT_FOUND);
 }

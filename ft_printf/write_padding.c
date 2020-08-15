@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/09 10:26:45 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:00:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int write_padding(t_data *datas, const int padding_c, const int padding_max)
 {
-    int ret_read;
-    int padding_count;
+	int ret_read;
+	int padding_count;
 
-    padding_count = 0;
-    while (padding_count < padding_max)
-    {
-        ret_read = write(datas->fd, &(padding_c), 1);
-        padding_count += ret_read;
-        if (ret_read < 0 )
-            return (-EXIT_FAILURE);
-    }
-    return (padding_count);
+	padding_count = 0;
+	while (padding_count < padding_max)
+	{
+		ret_read = write(datas->fd, &(padding_c), 1);
+		padding_count += ret_read;
+		if (ret_read < 0 )
+			return (-EXIT_FAILURE);
+	}
+	return (padding_count);
 }

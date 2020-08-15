@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/07/23 20:49:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:50:41 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static const t_write WRITER_C[MAX_WRITTER_C] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_s},
 };
 
-int convert_c(t_data *datas)
+int	convert_c(t_data *datas)
 {
-    return (convert(datas, MAX_SETTER_C, SETTER_C, MAX_WRITTER_C, WRITER_C));
+	return (convert(datas, MAX_SETTER_C, SETTER_C, MAX_WRITTER_C, WRITER_C));
 }
