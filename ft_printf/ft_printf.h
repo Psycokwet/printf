@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:42:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:45:45 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,14 @@ static const t_flag g_flags[MAX_FLAG_OPT] = {
 
 size_t			strlen_from_int(int value);
 unsigned int	uitoa_len(unsigned int nb, int base);
-int				ft_itoa_ext_buffer(int nbr, char *buffer, int base, int faux_chiffre);
-int				ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base, int faux_chiffre);
-int				ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base, int faux_chiffre);
-int				ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer, int base);
+int				ft_itoa_ext_buffer(int nbr, char *buffer, int base,
+					int faux_chiffre);
+int				ft_uitoa_ext_buffer(unsigned int nbr, char *buffer, int base,
+					int faux_chiffre);
+int				ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer,
+					int base, int faux_chiffre);
+int				ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer,
+					int base);
 
 /*
 ** ************************************************************************** **
@@ -198,8 +202,8 @@ int				writer_undefined(t_data *datas);
 
 typedef struct		s_write
 {
-	unsigned int 	flags_concerned;
-	unsigned int 	flags_awaited;
+	unsigned int	flags_concerned;
+	unsigned int	flags_awaited;
 	int				(*write)(t_data *);
 }					t_write;
 
@@ -220,8 +224,8 @@ int				set_flag(const char *str_start, t_data *datas);
 ** ************************************************************************** **
 */
 
-int				convert(t_data *datas, const t_setter *setter
-					,const t_write *writer);
+int				convert(t_data *datas, const t_setter *setter,
+					const t_write *writer);
 int				convert_c(t_data *datas);
 int				convert_s(t_data *datas);
 int				convert_p(t_data *datas);
