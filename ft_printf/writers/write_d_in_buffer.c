@@ -6,12 +6,11 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 10:17:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:00:32 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
 
 static void	set_width_precision_d(t_data *datas, int sign)
 {
