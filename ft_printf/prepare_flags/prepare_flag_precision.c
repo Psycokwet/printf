@@ -14,6 +14,6 @@
 
 void	prepare_flag_precision(t_data *datas)
 {
-    datas->active_flags |= FT_PF_FLAG_PRECISION;
-    datas->precision = 0;
+	datas->active_flags |= FT_PF_FLAG_PRECISION;
+	datas->precision = 0;
 }

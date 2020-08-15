@@ -14,5 +14,5 @@
 
 void	prepare_flag_hh(t_data *datas)
 {
-    datas->active_flags |= FT_PF_FLAG_HH;
+	datas->active_flags |= FT_PF_FLAG_HH;
 }
