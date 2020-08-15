@@ -6,18 +6,20 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:50:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:03:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-# define MAX_WRITTER_G		1
+#define MAX_WRITTER_G		1
+
 static const t_write WRITER_G[MAX_WRITTER_G] = {
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &writer_undefined},
 };
 
-# define MAX_SETTER_G		1
+#define MAX_SETTER_G		1
+
 static const t_setter SETTER_G[MAX_SETTER_G] = {
 	(t_setter){&set_padding_c},
 };
