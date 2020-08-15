@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:31:01 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:32:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,18 @@ typedef struct		s_str
 # define FT_PF_WC_PRECISION		(1u << 14)
 # define FT_PF_NO_FLAG			0
 
-int				ft_printf(const char *, ...);
+int				ft_printf(const char *format_s, ...);
 void			ft_putstr_fd_len(const char *s, int fd, ssize_t len);
 void			set_width_precision_u(t_data *datas);
 void			set_width_precision_x_up_x(t_data *datas);
 void			set_precision_or_fieldwith(t_data *datas, const int value);
 int				write_diese_x_up_x(t_data *datas, char *diese);
-int				write_padding(t_data *datas, const int padding_c, const int padding_max);
+int				write_padding(t_data *datas, const int padding_c,
+					const int padding_max);
 int				write_str(int fd, char *str, size_t len);
 int				write_ui_value_in_buffer(t_data *datas);
-int				write_uix_value_in_buffer(t_data *datas, int base, char fauxchiffre);
+int				write_uix_value_in_buffer(t_data *datas, int base,
+					char fauxchiffre);
 
 /* ************************************************************************** */
 /* 									PREPARE_FLAGS                             */
