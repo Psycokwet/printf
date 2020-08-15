@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:40:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:42:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,12 @@ void			prepare_flag_hh(t_data *datas);
 
 typedef struct		s_flag
 {
-	t_str 			code;
+	t_str			code;
 	unsigned int	override_flags;
 	void			(*prepare_flag)(t_data *);
 }					t_flag;
 
-static const t_flag FLAGS[MAX_FLAG_OPT] = {
+static const t_flag g_flags[MAX_FLAG_OPT] = {
 	(t_flag){(t_str){"-", 1u}, FT_PF_FLAG_ZERO, &prepare_flag_less},
 	(t_flag){(t_str){"0", 1u}, FT_PF_NO_FLAG, &prepare_flag_0},
 	(t_flag){(t_str){".", 1u}, FT_PF_NO_FLAG, &prepare_flag_precision},
