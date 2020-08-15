@@ -6,13 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:13:22 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:16:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int flatten_value(int value)
+static int	flatten_value(int value)
 {
 	if(value < 0)
 		return (0);
@@ -27,14 +27,15 @@ static void	set_width_precision_d(t_data *datas, int sign)
 	if (datas->value_i == 0 && datas->precision == 0)
 		datas->len = 0;
 	if (
-			(datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
+			(datas->active_flags & FT_PF_FLAG_FIELD_WIDTH
 			&& datas->active_flags & FT_PF_FLAG_ZERO)
 		&& datas->precision < datas->field_width
 		&& (!(datas->active_flags & FT_PF_FLAG_LESS))
 		&& (!(datas->active_flags & FT_PF_FLAG_PRECISION)))
 	{
 		datas->active_flags |= FT_PF_FLAG_PRECISION;
-		datas->precision = datas->field_width - ((datas->active_flags & FT_PF_FLAG_PLUS || sign < 0) ? 1 : 0);
+		datas->precision = datas->field_width -
+		((datas->active_flags & FT_PF_FLAG_PLUS || sign < 0) ? 1 : 0);
 	}
 	precision_tmp = 0;
 	if (datas->active_flags & FT_PF_FLAG_PRECISION)
@@ -42,10 +43,13 @@ static void	set_width_precision_d(t_data *datas, int sign)
 		datas->precision = flatten_value(datas->precision - datas->len);
 		precision_tmp = datas->precision;
 	}
-	if ((datas->active_flags & FT_PF_FLAG_PRECISION) && datas->field_width < precision_tmp)
+	if ((datas->active_flags & FT_PF_FLAG_PRECISION)
+		&& datas->field_width < precision_tmp)
 		datas->field_width = 0;
-	datas->field_width = flatten_value(datas->field_width - (datas->len + (-sign) + precision_tmp));
-	if (datas->active_flags & FT_PF_NEG_PRECISION && datas->active_flags & FT_PF_FLAG_PLUS)
+	datas->field_width =
+	flatten_value(datas->field_width - (datas->len + (-sign) + precision_tmp));
+	if (datas->active_flags & FT_PF_NEG_PRECISION
+		&& datas->active_flags & FT_PF_FLAG_PLUS)
 		datas->precision = flatten_value(datas->precision - 1);
 	if (datas->active_flags & FT_PF_FLAG_PLUS && sign == 0)
 		datas->field_width = flatten_value(datas->field_width - 1);
