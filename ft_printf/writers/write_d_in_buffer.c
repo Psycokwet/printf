@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:00:32 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 14:05:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,16 @@ static void	set_width_precision_d(t_data *datas, int sign)
 
 	if (datas->value_i == 0 && datas->precision == 0)
 		datas->len = 0;
-	if ((datas->active_flags & FT_PF_FLAG_FIELD_WIDTH && datas->active_flags & FT_PF_FLAG_ZERO) && datas->precision < datas->field_width)
+	if (
+			(datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
+			&& datas->active_flags & FT_PF_FLAG_ZERO)
+		&& datas->precision < datas->field_width
+		&& (!(datas->active_flags & FT_PF_FLAG_LESS))
+		&& (!(datas->active_flags & FT_PF_FLAG_PRECISION))
+	)
 	{
-		if (!(datas->active_flags & FT_PF_FLAG_LESS))
-		{
-			if (!(datas->active_flags & FT_PF_FLAG_PRECISION))
-			{
-				datas->active_flags |= FT_PF_FLAG_PRECISION;
-				if (datas->active_flags & FT_PF_FLAG_PLUS || sign < 0)
-					datas->precision = datas->field_width - 1;
-				else
-					datas->precision = datas->field_width;
-			}
-		}
+		datas->active_flags |= FT_PF_FLAG_PRECISION;
+		datas->precision = datas->field_width - ((datas->active_flags & FT_PF_FLAG_PLUS || sign < 0) ? 1 : 0);
 	}
 	precision_tmp = 0;
 	if (datas->active_flags & FT_PF_FLAG_PRECISION)
