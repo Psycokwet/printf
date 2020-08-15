@@ -6,17 +6,17 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:43:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:13:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../ft_printf.h"
 
-int set_flag(const char *code, t_data *datas)
+int	set_flag(const char *code, t_data *datas)
 {
-	int i = MAX_FLAG_OPT;
+	int i;
 
+	i = MAX_FLAG_OPT;
 	while (--i >= 0)
 	{
 		if (ft_strncmp(g_flags[i].code.str, code, g_flags[i].code.size) == 0)

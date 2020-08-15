@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:52:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:14:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # define MAX_CONVERT_OPT		13
 typedef struct		s_convert
 {
-	t_str 			code;
+	t_str			code;
 	int				(*print)(t_data *);
 }					t_convert;
 
-static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
+static const t_convert g_converts[MAX_CONVERT_OPT] = {
 	(t_convert){(t_str){"c", 1u}, &convert_c},
 	(t_convert){(t_str){"s", 1u}, &convert_s},
 	(t_convert){(t_str){"p", 1u}, &convert_p},
@@ -35,16 +35,17 @@ static const t_convert CONVERTS[MAX_CONVERT_OPT] = {
 	(t_convert){(t_str){"e", 1u}, &convert_e},
 };
 
-int set_convert(const char *code, t_data *datas){
+int	set_convert(const char *code, t_data *datas)
+{
 	int i;
 
 	i = MAX_CONVERT_OPT;
 	while (--i >= 0)
 	{
-		if (ft_strncmp(CONVERTS[i].code.str, code, CONVERTS[i].code.size) == 0)
+		if (ft_strncmp(g_converts[i].code.str, code, g_converts[i].code.size) == 0)
 		{
-			datas->cursor += CONVERTS[i].code.size;
-			return (CONVERTS[i].print(datas));
+			datas->cursor += g_converts[i].code.size;
+			return (g_converts[i].print(datas));
 		}
 	}
 	return (EXIT_CODE_NOT_FOUND);
