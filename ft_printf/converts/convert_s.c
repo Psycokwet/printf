@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:04:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:12:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define MAX_WRITTER_S		3
 
-static const t_write WRITER_S[MAX_WRITTER_S] = {
+static const t_write g_writer_s[MAX_WRITTER_S] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_s},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_s},
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH, &write_padding_s},
@@ -24,7 +24,7 @@ static const t_write WRITER_S[MAX_WRITTER_S] = {
 
 # define MAX_SETTER_S		3
 
-static const t_setter SETTER_S[MAX_SETTER_S] = {
+static const t_setter g_setter_s[MAX_SETTER_S] = {
 	(t_setter){&set_s_len},
 	(t_setter){&set_value_s},
 	(t_setter){&set_padding_c},
@@ -34,7 +34,7 @@ static const t_setter SETTER_S[MAX_SETTER_S] = {
 
 # define MAX_SETTER_S		2
 
-static const t_setter SETTER_S[MAX_SETTER_S] = {
+static const t_setter g_setter_s[MAX_SETTER_S] = {
 	(t_setter){&set_s_len},
 	(t_setter){&set_value_s},
 };
@@ -42,5 +42,5 @@ static const t_setter SETTER_S[MAX_SETTER_S] = {
 #endif
 int	convert_s(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_S, SETTER_S, MAX_WRITTER_S, WRITER_S));
+	return (convert(datas, MAX_SETTER_S, g_setter_s, MAX_WRITTER_S, g_writer_s));
 }

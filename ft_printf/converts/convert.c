@@ -6,13 +6,14 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:50:30 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:15:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	convert(t_data *datas, int max_setter, const t_setter *setter, int max_writer, const t_write *writer)
+int	convert(t_data *datas, int max_setter, const t_setter *setter,
+	int max_writer, const t_write *writer)
 {
 	int ret_writer;
 	int i ;

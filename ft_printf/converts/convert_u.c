@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 15:04:39 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:11:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define MAX_WRITTER_U		5
 
-static const t_write WRITER_U[MAX_WRITTER_U] = {
+static const t_write g_writer_u[MAX_WRITTER_U] = {
 	(t_write){FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, FT_PF_FLAG_FIELD_WIDTH | FT_PF_FLAG_LESS, &write_padding_d},
 	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &write_nbr_buffer},
 	(t_write){FT_PF_FLAG_PRECISION, FT_PF_FLAG_PRECISION, &write_precision_d},
@@ -24,12 +24,12 @@ static const t_write WRITER_U[MAX_WRITTER_U] = {
 
 #define MAX_SETTER_U		2
 
-static const t_setter SETTER_U[MAX_SETTER_U] = {
+static const t_setter g_setter_u[MAX_SETTER_U] = {
 	(t_setter){&set_value_u},
 	(t_setter){&set_padding_c},
 };
 
 int	convert_u(t_data *datas)
 {
-	return (convert(datas, MAX_SETTER_U, SETTER_U, MAX_WRITTER_U, WRITER_U));
+	return (convert(datas, MAX_SETTER_U, g_setter_u, MAX_WRITTER_U, g_writer_u));
 }
