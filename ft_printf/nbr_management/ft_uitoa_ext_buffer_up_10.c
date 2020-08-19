@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/19 16:33:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:44:18 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer, int base,
 	while (nbr)
 	{
 		tmp = nbr % base;
-		buffer[i--] = (tmp < 10 ) ? ('0' + tmp) : faux_chiffre + (tmp - 10);
+		buffer[i--] = (tmp < 10) ? ('0' + tmp) : faux_chiffre + (tmp - 10);
 		nbr /= base;
 	}
 	return (len);

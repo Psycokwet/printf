@@ -6,18 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/19 16:34:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:45:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 #define MAX_COMMAND		4
-
-typedef struct		s_command
-{
-	int			(*command)(const char *, t_data *);
-}					t_command;
 
 static const t_command g_commands[MAX_COMMAND] = {
 	(t_command){&set_undefined},
