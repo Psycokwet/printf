@@ -6,10 +6,9 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 11:44:25 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:59:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:42:02 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -21,10 +20,9 @@ void	set_width_precision_u(t_data *datas)
 		datas->precision -= datas->len;
 	else
 		datas->precision = 0;
-
 	datas->field_width -= datas->len + datas->precision;
-	if (datas->active_flags & FT_PF_FLAG_ZERO 
-		&& datas->active_flags & FT_PF_FLAG_FIELD_WIDTH 
+	if (datas->active_flags & FT_PF_FLAG_ZERO
+		&& datas->active_flags & FT_PF_FLAG_FIELD_WIDTH
 		&& !(datas->active_flags & FT_PF_FLAG_PRECISION)
 		&& !(datas->active_flags & FT_PF_FLAG_LESS))
 	{

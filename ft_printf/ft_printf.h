@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:45:00 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:37:04 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,12 @@ typedef struct		s_write
 ** 									COMMANDS                                  **
 ** ************************************************************************** **
 */
+
+typedef struct		s_convert
+{
+	t_str			code;
+	int				(*print)(t_data *);
+}					t_convert;
 
 int				set_undefined(const char *str_start, t_data *datas);
 int				set_convert(const char *str_start, t_data *datas);

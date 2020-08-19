@@ -6,19 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:15:44 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:36:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
 #define MAX_CONVERT_OPT		13
-
-typedef struct		s_convert
-{
-	t_str			code;
-	int				(*print)(t_data *);
-}					t_convert;
 
 static const t_convert g_converts[MAX_CONVERT_OPT] = {
 	(t_convert){(t_str){"c", 1u}, &convert_c},

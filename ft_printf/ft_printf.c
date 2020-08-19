@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:44:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:34:16 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_printf(const char *format_s, ...)
 	int i;
 	int r_write;
 	t_data datas;
+	int ret;
 
 	datas.format_s = format_s;
 	datas.cursor = 0;
@@ -61,14 +62,14 @@ int		ft_printf(const char *format_s, ...)
 	datas.precision = 1;
 	datas.fd = STDOUT_FILENO;
 	va_start(datas.list, format_s);
-	int ret = -EXIT_FAILURE;
+	ret = -EXIT_FAILURE;
 	i = 0;
 	while (format_s[datas.cursor + i] != '\0')
 	{
 		if (format_s[datas.cursor + i] == '%')
 		{
 			r_write = write(STDOUT_FILENO, format_s + datas.cursor, i);
-			if(r_write != i)
+			if (r_write != i)
 				return (-EXIT_FAILURE);
 			datas.written_count += i;
 			datas.cursor += i + 1;
@@ -83,7 +84,7 @@ int		ft_printf(const char *format_s, ...)
 	if (format_s[datas.cursor + i] == '\0')
 	{
 		r_write = write(STDOUT_FILENO, format_s + datas.cursor, i);
-		if(r_write != i)
+		if (r_write != i)
 			return (-EXIT_FAILURE);
 		datas.written_count += i;
 		datas.cursor = i + 1;

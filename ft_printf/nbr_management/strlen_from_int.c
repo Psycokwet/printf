@@ -6,10 +6,9 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 11:39:30 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 14:49:41 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:32:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../ft_printf.h"
 
@@ -18,7 +17,8 @@ size_t	strlen_from_int(int value)
 	size_t result;
 
 	result = 0;
-	if (value < 0){
+	if (value < 0)
+	{
 		value = -value;
 		result++;
 	}
