@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/19 16:45:42 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:07:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ typedef struct		s_str
 	size_t			size;
 }					t_str;
 
+# define FT_PF_FLAG_WRITE		0
+# define FT_PF_FLAG_ZERO		1u
+# define FT_PF_FLAG_LESS		2u
+# define FT_PF_FLAG_FIELD_WIDTH	4u
+# define FT_PF_FLAG_PRECISION	8u
+# define FT_PF_FLAG_DIESE		16u
+# define FT_PF_FLAG_SPACE		32u
+# define FT_PF_FLAG_PLUS		64u
+# define FT_PF_FLAG_L			128u
+# define FT_PF_FLAG_LL			256u
+# define FT_PF_FLAG_H			514u
+# define FT_PF_FLAG_HH			1024u
+# define FT_PF_NEG_PRECISION	2048u
+# define FT_PF_NEG_FIELD_WIDTH	4096u
+# define FT_PF_WC_PRECISION		8192u
+# define FT_PF_NO_FLAG			0
+
+/*
 # define FT_PF_FLAG_WRITE		(1u << 0)
 # define FT_PF_FLAG_ZERO		(1u << 1)
 # define FT_PF_FLAG_LESS		(1u << 2)
@@ -70,6 +88,7 @@ typedef struct		s_str
 # define FT_PF_NEG_FIELD_WIDTH	(1u << 13)
 # define FT_PF_WC_PRECISION		(1u << 14)
 # define FT_PF_NO_FLAG			0
+*/
 
 typedef struct		s_command
 {
