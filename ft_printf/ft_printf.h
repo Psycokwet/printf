@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/21 14:44:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:45:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,41 @@ typedef struct		s_str
 # define FT_PF_NEG_FIELD_WIDTH	4096u
 # define FT_PF_WC_PRECISION		8192u
 # define FT_PF_NO_FLAG			0
+
+/*
+** # define FT_PF_FLAG_WRITE		(1u << 0)
+** # define FT_PF_FLAG_ZERO			(1u << 1)
+** # define FT_PF_FLAG_LESS			(1u << 2)
+** # define FT_PF_FLAG_FIELD_WIDTH	(1u << 3)
+** # define FT_PF_FLAG_PRECISION	(1u << 4)
+** # define FT_PF_FLAG_DIESE		(1u << 5)
+** # define FT_PF_FLAG_SPACE		(1u << 6)
+** # define FT_PF_FLAG_PLUS			(1u << 7)
+** # define FT_PF_FLAG_L			(1u << 8)
+** # define FT_PF_FLAG_LL			(1u << 9)
+** # define FT_PF_FLAG_H			(1u << 10)
+** # define FT_PF_FLAG_HH			(1u << 11)
+** # define FT_PF_NEG_PRECISION		(1u << 12)
+** # define FT_PF_NEG_FIELD_WIDTH	(1u << 13)
+** # define FT_PF_WC_PRECISION		(1u << 14)
+** # define FT_PF_NO_FLAG			0
+*/
+
+typedef struct		s_command
+{
+	int				(*command)(const char *, t_data *);
+}					t_command;
+
+int				ft_printf(const char *format_s, ...);
+void			set_width_precision_u(t_data *datas);
+void			set_width_precision_x_up_x(t_data *datas);
+void			set_precision_or_fieldwith(t_data *datas, const int value);
+int				write_diese_x_up_x(t_data *datas, char *diese);
+int				write_padding(t_data *datas, const int padding_c,
+					const int padding_max);
+int				write_str(int fd, char *str, size_t len);
+int				write_ui_value_in_buffer(t_data *datas);
+int				write_uix_value_in_buffer(t_data *datas, int base,
+					char fauxchiffre);
+
+#endif
