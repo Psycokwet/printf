@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/21 11:51:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/21 13:56:52 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		ft_printf_int(t_data *datas)
 {
 	int		i;
 	int		ret;
+
 	i = 0;
 	while (datas->format_s[datas->cursor + i] != '\0')
 		if (datas->format_s[datas->cursor + i] == '%')
@@ -72,6 +73,7 @@ int		ft_printf_int(t_data *datas)
 	datas->written_count += i;
 	return (EXIT_SUCCESS);
 }
+
 int		ft_printf(const char *format_s, ...)
 {
 	t_data	datas;
