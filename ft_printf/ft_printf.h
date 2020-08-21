@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/21 14:47:19 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:47:52 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,4 @@ typedef struct		s_command
 }					t_command;
 
 int				ft_printf(const char *format_s, ...);
-void			set_width_precision_u(t_data *datas);
-void			set_width_precision_x_up_x(t_data *datas);
-void			set_precision_or_fieldwith(t_data *datas, const int value);
-int				write_diese_x_up_x(t_data *datas, char *diese);
 #endif
