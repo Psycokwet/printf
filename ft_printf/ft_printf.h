@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/21 14:47:52 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:48:12 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,4 @@ typedef struct		s_command
 	int				(*command)(const char *, t_data *);
 }					t_command;
 
-int				ft_printf(const char *format_s, ...);
 #endif
