@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/21 14:51:17 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/24 16:33:24 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ typedef struct		s_data
 	char			nbr_buffer[MAX_NBR_LENGTH];
 	int				precision;
 	int				field_width;
-	unsigned int	active_flags;
-	unsigned int	unauthorized_flags;
+	unsigned long	active_flags;
+	unsigned long	unauthorized_flags;
 	va_list			list;
 	char			*value_s;
-	void			*value_p;
+	void			*value_p; //Long long int
 	int				value_i;
-	unsigned int	value_ui;
+	unsigned long	value_ui;
 	int				current_max_setter;
 	int				current_max_writer;
 }					t_data;
@@ -130,7 +130,7 @@ void				prepare_flag_hh(t_data *datas);
 typedef struct		s_flag
 {
 	t_str			code;
-	unsigned int	override_flags;
+	unsigned long	override_flags;
 	void			(*prepare_flag)(t_data *);
 }					t_flag;
 
@@ -155,14 +155,14 @@ static const t_flag g_flags[MAX_FLAG_OPT] = {
 */
 
 size_t				strlen_from_int(int value);
-unsigned int		uitoa_len(unsigned int nb, int base);
+unsigned long		uitoa_len(unsigned long nb, int base);
 int					ft_itoa_ext_buffer(int nbr, char *buffer, int base,
 						int faux_chiffre);
-int					ft_uitoa_ext_buffer(unsigned int nbr, char *buffer,
+int					ft_uitoa_ext_buffer(unsigned long nbr, char *buffer,
 						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_up_10(unsigned int nbr, char *buffer,
+int					ft_uitoa_ext_buffer_up_10(unsigned long nbr, char *buffer,
 						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_sub_10(unsigned int nbr, char *buffer,
+int					ft_uitoa_ext_buffer_sub_10(unsigned long nbr, char *buffer,
 						int base);
 
 /*
@@ -225,8 +225,8 @@ int					writer_undefined(t_data *datas);
 
 typedef struct		s_write
 {
-	unsigned int	flags_concerned;
-	unsigned int	flags_awaited;
+	unsigned long	flags_concerned;
+	unsigned long	flags_awaited;
 	int				(*write)(t_data *);
 }					t_write;
 
