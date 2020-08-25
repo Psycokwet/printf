@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 16:15:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:18:29 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,18 @@ typedef struct		s_command
 	int				(*command)(const char *, t_data *);
 }					t_command;
 
-int					ft_printf(const char *format_s, ...);
-void				set_width_precision_u(t_data *datas);
-void				set_width_precision_x_up_x(t_data *datas);
-void				set_precision_or_fieldwith(t_data *datas, const int value);
-int					write_diese_x_up_x(t_data *datas, char *diese);
-int					write_padding(t_data *datas, const int padding_c,
-						const int padding_max);
-int					write_str(int fd, char *str, size_t len);
-int					write_ui_value_in_buffer(t_data *datas);
-int					write_uix_value_in_buffer(t_data *datas, int base,
-						char fauxchiffre);
+int						ft_printf(const char *format_s, ...);
+void					set_width_precision_u(t_data *datas);
+void					set_width_precision_x_up_x(t_data *datas);
+void					set_precision_or_fieldwith(t_data *datas,
+							const int value);
+int						write_diese_x_up_x(t_data *datas, char *diese);
+int						write_padding(t_data *datas, const int padding_c,
+							const int padding_max);
+int						write_str(int fd, char *str, size_t len);
+int						write_ui_value_in_buffer(t_data *datas);
+int						write_uix_value_in_buffer(t_data *datas, int base,
+							char fauxchiffre);
 
 /*
 ** ************************************************************************** **
@@ -113,17 +114,17 @@ int					write_uix_value_in_buffer(t_data *datas, int base,
 ** ************************************************************************** **
 */
 
-void				prepare_flag_less(t_data *datas);
-void				prepare_flag_0(t_data *datas);
-void				prepare_flag_precision(t_data *datas);
-void				prepare_flag_wild_card(t_data *datas);
-void				prepare_flag_diese(t_data *datas);
-void				prepare_flag_space(t_data *datas);
-void				prepare_flag_plus(t_data *datas);
-void				prepare_flag_l(t_data *datas);
-void				prepare_flag_ll(t_data *datas);
-void				prepare_flag_h(t_data *datas);
-void				prepare_flag_hh(t_data *datas);
+void					prepare_flag_less(t_data *datas);
+void					prepare_flag_0(t_data *datas);
+void					prepare_flag_precision(t_data *datas);
+void					prepare_flag_wild_card(t_data *datas);
+void					prepare_flag_diese(t_data *datas);
+void					prepare_flag_space(t_data *datas);
+void					prepare_flag_plus(t_data *datas);
+void					prepare_flag_l(t_data *datas);
+void					prepare_flag_ll(t_data *datas);
+void					prepare_flag_h(t_data *datas);
+void					prepare_flag_hh(t_data *datas);
 
 # define MAX_FLAG_OPT	    	11
 
@@ -154,16 +155,16 @@ static const t_flag g_flags[MAX_FLAG_OPT] = {
 ** ************************************************************************** **
 */
 
-size_t				strlen_from_int(int value);
-unsigned long		uitoa_len(unsigned long long int nb, int base);
-int					ft_itoa_ext_buffer(int nbr, char *buffer, int base,
-						int faux_chiffre);
-int					ft_uitoa_ext_buffer(unsigned long long int nbr, char *buffer,
-						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_up_10(unsigned long long int nbr, char *buffer,
-						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr, char *buffer,
-						int base);
+size_t					strlen_from_int(int value);
+unsigned long			uitoa_len(unsigned long long int nb, int base);
+int						ft_itoa_ext_buffer(int nbr, char *buffer, int base,
+							int faux_chiffre);
+int						ft_uitoa_ext_buffer(unsigned long long int nbr,
+							char *buffer, int base, int faux_chiffre);
+int						ft_uitoa_ext_buffer_up_10(unsigned long long int nbr,
+							char *buffer, int base, int faux_chiffre);
+int						ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr,
+							char *buffer, int base);
 
 /*
 ** ************************************************************************** **
@@ -176,20 +177,20 @@ typedef struct			s_setter
 	void				(*setter)(t_data *);
 }						t_setter;
 
-void				set_correct_diese(t_data *datas);
-void				set_diese_cost(t_data *datas);
-void				set_padding_c(t_data *datas);
-void				set_s_len(t_data *datas);
-void				set_value_c(t_data *datas);
-void				set_value_d(t_data *datas);
-void				set_value_p(t_data *datas);
-void				set_value_percent(t_data *datas);
-void				set_padding_c(t_data *datas);
-void				set_s_len(t_data *datas);
-void				set_value_s(t_data *datas);
-void				set_value_ui(t_data *datas);
-void				setter_outer_int_n(t_data *datas);
-void				setter_undefined(t_data *datas);
+void					set_correct_diese(t_data *datas);
+void					set_diese_cost(t_data *datas);
+void					set_padding_c(t_data *datas);
+void					set_s_len(t_data *datas);
+void					set_value_c(t_data *datas);
+void					set_value_d(t_data *datas);
+void					set_value_p(t_data *datas);
+void					set_value_percent(t_data *datas);
+void					set_padding_c(t_data *datas);
+void					set_s_len(t_data *datas);
+void					set_value_s(t_data *datas);
+void					set_value_ui(t_data *datas);
+void					setter_outer_int_n(t_data *datas);
+void					setter_undefined(t_data *datas);
 
 # define MAX_SETTER_X_UP_X		3
 
@@ -205,25 +206,25 @@ static const t_setter g_setter_x_up_x[MAX_SETTER_X_UP_X] = {
 ** ************************************************************************** **
 */
 
-int					write_c(t_data *datas);
-int					write_nbr_buffer(t_data *datas);
-int					write_one_space(t_data *datas);
-int					write_d_in_buffer(t_data *datas);
-int					write_diese_up_x(t_data *datas);
-int					write_diese_x(t_data *datas);
-int					write_p(t_data *datas);
-int					write_p_in_buffer(t_data *datas);
-int					write_padding_s(t_data *datas);
-int					write_padding_d(t_data *datas);
-int					write_0_d(t_data *datas);
-int					write_precision_d(t_data *datas);
-int					write_s(t_data *datas);
-int					write_u_in_buffer(t_data *datas);
-int					write_up_x_in_buffer(t_data *datas);
-int					write_value_i_sign(t_data *datas);
-int					write_x_in_buffer(t_data *datas);
-int					writer_no_writer(t_data *datas);
-int					writer_undefined(t_data *datas);
+int						write_c(t_data *datas);
+int						write_nbr_buffer(t_data *datas);
+int						write_one_space(t_data *datas);
+int						write_d_in_buffer(t_data *datas);
+int						write_diese_up_x(t_data *datas);
+int						write_diese_x(t_data *datas);
+int						write_p(t_data *datas);
+int						write_p_in_buffer(t_data *datas);
+int						write_padding_s(t_data *datas);
+int						write_padding_d(t_data *datas);
+int						write_0_d(t_data *datas);
+int						write_precision_d(t_data *datas);
+int						write_s(t_data *datas);
+int						write_u_in_buffer(t_data *datas);
+int						write_up_x_in_buffer(t_data *datas);
+int						write_value_i_sign(t_data *datas);
+int						write_x_in_buffer(t_data *datas);
+int						writer_no_writer(t_data *datas);
+int						writer_undefined(t_data *datas);
 
 typedef struct			s_write
 {
@@ -244,10 +245,10 @@ typedef struct			s_convert
 	int					(*print)(t_data *);
 }						t_convert;
 
-int					set_undefined(const char *str_start, t_data *datas);
-int					set_convert(const char *str_start, t_data *datas);
-int					set_value(const char *str_start, t_data *datas);
-int					set_flag(const char *str_start, t_data *datas);
+int						set_undefined(const char *str_start, t_data *datas);
+int						set_convert(const char *str_start, t_data *datas);
+int						set_value(const char *str_start, t_data *datas);
+int						set_flag(const char *str_start, t_data *datas);
 
 /*
 ** ************************************************************************** **
@@ -255,19 +256,19 @@ int					set_flag(const char *str_start, t_data *datas);
 ** ************************************************************************** **
 */
 
-int					convert(t_data *datas, const t_setter *setter,
-						const t_write *writer);
-int					convert_c(t_data *datas);
-int					convert_s(t_data *datas);
-int					convert_p(t_data *datas);
-int					convert_d(t_data *datas);
-int					convert_u(t_data *datas);
-int					convert_x(t_data *datas);
-int					convert_up_x(t_data *datas);
-int					convert_percent(t_data *datas);
-int					convert_n(t_data *datas);
-int					convert_f(t_data *datas);
-int					convert_g(t_data *datas);
-int					convert_e(t_data *datas);
+int						convert(t_data *datas, const t_setter *setter,
+							const t_write *writer);
+int						convert_c(t_data *datas);
+int						convert_s(t_data *datas);
+int						convert_p(t_data *datas);
+int						convert_d(t_data *datas);
+int						convert_u(t_data *datas);
+int						convert_x(t_data *datas);
+int						convert_up_x(t_data *datas);
+int						convert_percent(t_data *datas);
+int						convert_n(t_data *datas);
+int						convert_f(t_data *datas);
+int						convert_g(t_data *datas);
+int						convert_e(t_data *datas);
 
 #endif
