@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 16:09:08 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:15:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,34 @@
 
 # define MAX_NBR_LENGTH	    	30
 
-typedef struct		s_data
+typedef struct			s_data
 {
-	int				fd;
-	int				cursor;
-	int				last_percent_found;
-	int				padding_c;
-	size_t			len;
-	int				written_count;
-	const char		*format_s;
-	char			nbr_buffer[MAX_NBR_LENGTH];
-	int				precision;
-	int				field_width;
-	unsigned long	active_flags;
-	unsigned long	unauthorized_flags;
-	va_list			list;
-	char			*value_s;
-	void			*value_p;
-	long long int	value_i;
+	int					fd;
+	int					cursor;
+	int					last_percent_found;
+	int					padding_c;
+	size_t				len;
+	int					written_count;
+	const char			*format_s;
+	char				nbr_buffer[MAX_NBR_LENGTH];
+	int					precision;
+	int					field_width;
+	unsigned long		active_flags;
+	unsigned long		unauthorized_flags;
+	va_list				list;
+	char				*value_s;
+	void				*value_p;
+	long long int		value_i;
 	unsigned long long	value_u;
-	int				current_max_setter;
-	int				current_max_writer;
-}					t_data;
+	int					current_max_setter;
+	int					current_max_writer;
+}						t_data;
 
-typedef struct		s_str
+typedef struct			s_str
 {
-	char			*str;
-	size_t			size;
-}					t_str;
+	char				*str;
+	size_t				size;
+}						t_str;
 
 # define FT_PF_FLAG_WRITE		0
 # define FT_PF_FLAG_ZERO		1u
@@ -127,12 +127,12 @@ void				prepare_flag_hh(t_data *datas);
 
 # define MAX_FLAG_OPT	    	11
 
-typedef struct		s_flag
+typedef struct			s_flag
 {
-	t_str			code;
-	unsigned long	override_flags;
-	void			(*prepare_flag)(t_data *);
-}					t_flag;
+	t_str				code;
+	unsigned long		override_flags;
+	void				(*prepare_flag)(t_data *);
+}						t_flag;
 
 static const t_flag g_flags[MAX_FLAG_OPT] = {
 	(t_flag){(t_str){"-", 1u}, FT_PF_FLAG_ZERO, &prepare_flag_less},
@@ -171,10 +171,10 @@ int					ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr, char *buffer,
 ** ************************************************************************** **
 */
 
-typedef struct		s_setter
+typedef struct			s_setter
 {
-	void			(*setter)(t_data *);
-}					t_setter;
+	void				(*setter)(t_data *);
+}						t_setter;
 
 void				set_correct_diese(t_data *datas);
 void				set_diese_cost(t_data *datas);
@@ -225,12 +225,12 @@ int					write_x_in_buffer(t_data *datas);
 int					writer_no_writer(t_data *datas);
 int					writer_undefined(t_data *datas);
 
-typedef struct		s_write
+typedef struct			s_write
 {
-	unsigned long	flags_concerned;
-	unsigned long	flags_awaited;
-	int				(*write)(t_data *);
-}					t_write;
+	unsigned long		flags_concerned;
+	unsigned long		flags_awaited;
+	int					(*write)(t_data *);
+}						t_write;
 
 /*
 ** ************************************************************************** **
@@ -238,11 +238,11 @@ typedef struct		s_write
 ** ************************************************************************** **
 */
 
-typedef struct		s_convert
+typedef struct			s_convert
 {
-	t_str			code;
-	int				(*print)(t_data *);
-}					t_convert;
+	t_str				code;
+	int					(*print)(t_data *);
+}						t_convert;
 
 int					set_undefined(const char *str_start, t_data *datas);
 int					set_convert(const char *str_start, t_data *datas);
