@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 10:12:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 15:17:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct		s_data
 	unsigned long	unauthorized_flags;
 	va_list			list;
 	char			*value_s;
-	void			*value_p; //Long long int
+	void			*value_p;
 	int				value_i;
 	unsigned long	value_u;
 	int				current_max_setter;
