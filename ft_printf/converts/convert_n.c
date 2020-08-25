@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 16:26:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 15:36:19 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #define MAX_WRITER_N		1
 
 static const t_write g_writer_n[MAX_WRITER_N] = {
-	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &writer_undefined},
+	(t_write){FT_PF_FLAG_WRITE, FT_PF_FLAG_WRITE, &writer_no_writer},
 };
 
 #define MAX_SETTER_N		1
 
 static const t_setter g_setter_n[MAX_SETTER_N] = {
-	(t_setter){&setter_undefined},
+	(t_setter){&setter_outer_int_n},
 };
 
 int	convert_n(t_data *datas)

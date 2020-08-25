@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 15:17:47 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:09:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct		s_data
 	va_list			list;
 	char			*value_s;
 	void			*value_p;
-	int				value_i;
-	unsigned long	value_u;
+	long long int	value_i;
+	unsigned long long	value_u;
 	int				current_max_setter;
 	int				current_max_writer;
 }					t_data;
@@ -155,14 +155,14 @@ static const t_flag g_flags[MAX_FLAG_OPT] = {
 */
 
 size_t				strlen_from_int(int value);
-unsigned long		uitoa_len(unsigned long nb, int base);
+unsigned long		uitoa_len(unsigned long long int nb, int base);
 int					ft_itoa_ext_buffer(int nbr, char *buffer, int base,
 						int faux_chiffre);
-int					ft_uitoa_ext_buffer(unsigned long nbr, char *buffer,
+int					ft_uitoa_ext_buffer(unsigned long long int nbr, char *buffer,
 						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_up_10(unsigned long nbr, char *buffer,
+int					ft_uitoa_ext_buffer_up_10(unsigned long long int nbr, char *buffer,
 						int base, int faux_chiffre);
-int					ft_uitoa_ext_buffer_sub_10(unsigned long nbr, char *buffer,
+int					ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr, char *buffer,
 						int base);
 
 /*
@@ -188,6 +188,7 @@ void				set_padding_c(t_data *datas);
 void				set_s_len(t_data *datas);
 void				set_value_s(t_data *datas);
 void				set_value_ui(t_data *datas);
+void				setter_outer_int_n(t_data *datas);
 void				setter_undefined(t_data *datas);
 
 # define MAX_SETTER_X_UP_X		3
@@ -221,6 +222,7 @@ int					write_u_in_buffer(t_data *datas);
 int					write_up_x_in_buffer(t_data *datas);
 int					write_value_i_sign(t_data *datas);
 int					write_x_in_buffer(t_data *datas);
+int					writer_no_writer(t_data *datas);
 int					writer_undefined(t_data *datas);
 
 typedef struct		s_write

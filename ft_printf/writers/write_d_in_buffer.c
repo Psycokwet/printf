@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 15:13:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:11:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			write_d_in_buffer(t_data *datas)
 	if (datas->value_i < 0)
 	{
 		datas->active_flags |= FT_PF_FLAG_PLUS;
-		len = (ft_uitoa_ext_buffer((unsigned int)-datas->value_i,
+		len = (ft_uitoa_ext_buffer((unsigned long long int)-datas->value_i,
 			datas->nbr_buffer, 10, 0));
 		sign = -1;
 	}

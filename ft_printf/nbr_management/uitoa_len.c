@@ -6,20 +6,20 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/24 16:33:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:08:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-unsigned long	uitoa_len(unsigned long nb, int base)
+unsigned long	uitoa_len(unsigned long long int nb, int base)
 {
-	unsigned long	p;
+	unsigned long	len;
 
-	p = 1;
+	len = 1;
 	if (nb < 0)
-		p++;
+		len++;
 	while ((nb) && (nb /= base))
-		p++;
-	return (p);
+		len++;
+	return (len);
 }
