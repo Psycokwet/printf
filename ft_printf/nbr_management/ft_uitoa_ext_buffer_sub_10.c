@@ -6,13 +6,14 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 16:08:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:20:14 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr, char *buffer, int base)
+int	ft_uitoa_ext_buffer_sub_10(unsigned long long int nbr, char *buffer,
+	int base)
 {
 	unsigned long	i;
 	unsigned long	len;

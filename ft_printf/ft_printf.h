@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 16:18:29 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:21:20 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ typedef struct			s_str
 ** # define FT_PF_NO_FLAG			0
 */
 
-typedef struct		s_command
+typedef struct			s_command
 {
-	int				(*command)(const char *, t_data *);
-}					t_command;
+	int					(*command)(const char *, t_data *);
+}						t_command;
 
 int						ft_printf(const char *format_s, ...);
 void					set_width_precision_u(t_data *datas);
