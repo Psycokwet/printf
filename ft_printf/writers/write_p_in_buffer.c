@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 08:00:02 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/24 16:33:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 10:12:38 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	write_p_in_buffer(t_data *datas)
 {
-	datas->value_ui = (unsigned long)datas->value_p;
+	datas->value_u = (unsigned long)datas->value_p;
 	return (write_x_in_buffer(datas));
 }
 
@@ -24,7 +24,7 @@ int	write_p_in_buffer(t_data *datas)
 
 int	write_p_in_buffer(t_data *datas)
 {
-	datas->value_ui = (unsigned long)datas->value_p;
+	datas->value_u = (unsigned long)datas->value_p;
 	if (datas->value_p)
 		return (write_x_in_buffer(datas));
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/24 16:33:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 10:12:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_data
 	char			*value_s;
 	void			*value_p; //Long long int
 	int				value_i;
-	unsigned long	value_ui;
+	unsigned long	value_u;
 	int				current_max_setter;
 	int				current_max_writer;
 }					t_data;
@@ -187,14 +187,14 @@ void				set_value_percent(t_data *datas);
 void				set_padding_c(t_data *datas);
 void				set_s_len(t_data *datas);
 void				set_value_s(t_data *datas);
-void				set_value_u(t_data *datas);
+void				set_value_ui(t_data *datas);
 void				setter_undefined(t_data *datas);
 
 # define MAX_SETTER_X_UP_X		3
 
 static const t_setter g_setter_x_up_x[MAX_SETTER_X_UP_X] = {
 	(t_setter){&set_correct_diese},
-	(t_setter){&set_value_u},
+	(t_setter){&set_value_ui},
 	(t_setter){&set_padding_c},
 };
 

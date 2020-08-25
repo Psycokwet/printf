@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 11:44:34 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/19 16:35:40 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 10:12:38 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	write_uix_value_in_buffer(t_data *datas, int base, char fauxchiffre)
 {
 	int len;
 
-	len = ft_uitoa_ext_buffer(datas->value_ui, datas->nbr_buffer, base,
+	len = ft_uitoa_ext_buffer(datas->value_u, datas->nbr_buffer, base,
 		fauxchiffre);
 	if (len <= EXIT_SUCCESS)
 		return (-EXIT_FAILURE);
