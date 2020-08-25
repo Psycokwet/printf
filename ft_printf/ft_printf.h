@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 16:39:42 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/25 16:21:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:44:14 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct			s_data
 	char				nbr_buffer[MAX_NBR_LENGTH];
 	int					precision;
 	int					field_width;
-	unsigned long		active_flags;
-	unsigned long		unauthorized_flags;
+	unsigned int		active_flags;
+	unsigned int		unauthorized_flags;
 	va_list				list;
 	char				*value_s;
 	void				*value_p;
@@ -64,7 +64,7 @@ typedef struct			s_str
 # define FT_PF_FLAG_PLUS		64u
 # define FT_PF_FLAG_L			128u
 # define FT_PF_FLAG_LL			256u
-# define FT_PF_FLAG_H			514u
+# define FT_PF_FLAG_H			512u
 # define FT_PF_FLAG_HH			1024u
 # define FT_PF_NEG_PRECISION	2048u
 # define FT_PF_NEG_FIELD_WIDTH	4096u
